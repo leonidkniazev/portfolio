@@ -1,0 +1,51 @@
+---
+import Logo from "./Logo.astro";
+import Swichlang from "./Swichlang.astro";
+---
+
+<header>
+    <nav>
+        <ul>
+            <li><a href="#">Обо мне</a></li>
+            <li><a href="#">Проекты</a></li>
+            <li><a href="#">Навыки</a></li>
+            <li><a href="#">Контакты</a></li>
+            <li><a href="#">Резюме</a></li>
+        </ul>
+        <Logo />
+        <Swichlang />
+    </nav>
+</header>
+
+<style>
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+    ul {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        list-style: none;
+        flex: 1;
+        position: relative;
+    }
+    nav {
+        background-color: #000;
+        opacity: 90%;
+        height: 50px;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        padding: 0px 52px;
+        text-transform: uppercase;
+    }
+    a {
+        color: white;
+    }
+
+    header {
+        display: flex;
+    }
+</style>
