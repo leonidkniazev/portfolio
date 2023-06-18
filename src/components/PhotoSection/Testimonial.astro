@@ -1,0 +1,39 @@
+<div class="container full-bleed">
+  <div class="content">
+    <p>
+      Разрабатываю веб и мобильные интерфейсы. Грамотно излагаю мысли, имею опыт
+      и навыки выступления перед публикой. Структурировано и быстро обрабатываю
+      информацию, обучаюсь. Люблю читать книги, изучать новые сферы
+      и самосовершенствоваться. Эффективно распределяю рабочее время, изучаю
+      техники тайм-менеджмента, могу ставить задачи перед коллективом и беру
+      ответственность за свои действия.
+    </p>
+  </div>
+</div>
+<style>
+  .container {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    background-color: black;
+  }
+  .content {
+    position: relative;
+    font-family: Montserrat;
+    font-size: 1rem;
+    line-height: 2.1rem;
+    margin: 0 3.2rem;
+    width: 100%;
+    color: white;
+  }
+  .content::before {
+    content: "“";
+    position: absolute;
+    left: -4rem;
+    top: 2rem;
+    font-size: 8.3rem;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+</style>

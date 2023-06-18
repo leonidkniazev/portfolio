@@ -1,0 +1,25 @@
+---
+import Logo from "./Logo.astro";
+import Section from "./Section.astro";
+---
+
+<Section isDark>
+  <div class="container"><Logo /></div>
+</Section>
+<div class="footer"></div>
+
+<style>
+  .container {
+    display: flex;
+    height: 14rem;
+    padding: 2.4rem 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .footer {
+    width: 100vw;
+    height: 8rem;
+    background-image: url("footer.png");
+    background-repeat: repeat no-repeat;
+  }
+</style>

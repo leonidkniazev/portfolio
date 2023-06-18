@@ -1,0 +1,56 @@
+---
+import Icon from "./Icon.astro";
+---
+
+<div class="container">
+  <p class="name">Leonid</p><p class="occupation">Product Designer</p>
+  <div class="contacts">
+    <div class="icons">
+      <Icon src="linkedin.svg" href="TODO" />
+      <Icon src="linkedin.svg" href="TODO" />
+      <Icon src="linkedin.svg" href="TODO" />
+    </div>
+    <a class="resume" href="TODO">Resume</a>
+  </div>
+</div>
+
+<style>
+  .container {
+    flex-basis: 50%;
+    flex-shrink: 0;
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+  .occupation {
+    font-size: 2.2rem;
+    font-weight: 500;
+  }
+  .name {
+    font-size: 5rem;
+    font-weight: 800;
+  }
+  .contacts {
+    display: flex;
+    width: 16rem;
+    padding: 2rem 0;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: 0.5rem;
+  }
+  .resume {
+    padding: 0.5rem 0;
+    border-radius: 9999px;
+    text-align: center;
+    font-weight: 900;
+    font-size: 2rem;
+    background-color: black;
+    text-transform: uppercase;
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import Section from "../Section.astro";
+import FirstColumn from "./FirstColumn.astro";
+import SecondColumn from "./SecondColumn.astro";
+import ThirdColumn from "./ThirdColumn.astro";
+---
+
+<Section>
+  <div class="container">
+    <FirstColumn />
+    <SecondColumn />
+    <ThirdColumn />
+  </div>
+</Section>
+
+<style>
+  .container {
+    display: grid;
+    margin: 3.2rem 0;
+    gap: 1rem;
+    grid-template-columns: repeat(3, 1fr);
+  }
+  @media (width<768px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

@@ -1,0 +1,31 @@
+---
+export interface Props {
+  src: string;
+  href: string;
+}
+
+const { src, href } = Astro.props;
+---
+
+<a href={href}>
+  <img class="svg" src={src} alt="icon" />
+</a>
+
+<style>
+  a {
+    width: 4rem;
+    cursor: pointer;
+    height: 4rem;
+    border-radius: 9999px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid;
+    border-color: black;
+    padding: 0.6rem;
+  }
+  .svg {
+    width: 75%;
+    height: 75%;
+  }
+</style>

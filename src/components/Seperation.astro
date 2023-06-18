@@ -1,0 +1,63 @@
+---
+import Section from "./Section.astro";
+
+export type Props = {
+  title: string;
+  isDark?: boolean;
+  id?: string;
+};
+const { title, isDark, id } = Astro.props;
+---
+
+<Section isDark={isDark}>
+  <div id={id} class={`container${isDark ? " dark-container" : ""}`}>
+    <span class={`${isDark ? "dark-span" : ""}`}>{title}</span>
+    <div class="pointer">
+      <img src={isDark ? "darkpointer.svg" : "pointer.svg"} />
+      <div class={`line${isDark ? " dark-line" : ""}`}></div>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .container {
+    width: 100%;
+    padding: 2rem 0;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+  .dark-container {
+    background-color: black;
+  }
+  span {
+    text-transform: uppercase;
+    line-height: 4.5rem;
+    white-space: nowrap;
+    font-size: 3rem;
+    font-weight: 900;
+  }
+  .dark-span {
+    color: white;
+    background-color: black;
+  }
+  .pointer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex: 1;
+  }
+  img {
+    position: absolute;
+    left: -20px;
+  }
+  .line {
+    height: 5px;
+    background-color: black;
+    border-radius: 99999px;
+    width: 100vw;
+  }
+  .dark-line {
+    background-color: white;
+  }
+</style>

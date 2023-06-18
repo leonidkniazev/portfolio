@@ -1,7 +1,26 @@
 ---
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "@fontsource/ysabeau/100.css";
+import "@fontsource/ysabeau/200.css";
+import "@fontsource/ysabeau/300.css";
+import "@fontsource/ysabeau/400.css";
+import "@fontsource/ysabeau/500.css";
+import "@fontsource/ysabeau/600.css";
+import "@fontsource/ysabeau/700.css";
+import "@fontsource/ysabeau/800.css";
+import "@fontsource/ysabeau/900.css";
+import "@fontsource/montserrat/100.css";
+import "@fontsource/montserrat/200.css";
+import "@fontsource/montserrat/300.css";
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/500.css";
+import "@fontsource/montserrat/600.css";
+import "@fontsource/montserrat/700.css";
+import "@fontsource/montserrat/800.css";
+import "@fontsource/montserrat/900.css";
 export interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -9,47 +28,59 @@ const { title } = Astro.props;
 
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<Header />
-	<body>
-		<slot />
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <Header />
+  <body>
+    <slot />
+    <Footer />
+  </body>
 
-	<style is:global>
-		:root {
-			--accent: 124, 58, 237;
-			--accent-gradient: linear-gradient(
-				45deg,
-				rgb(var(--accent)),
-				#da62c4 30%,
-				white 60%
-			);
-		}
+  <style is:global>
+    :root {
+      --accent: 124, 58, 237;
+      --accent-gradient: linear-gradient(
+        45deg,
+        rgb(var(--accent)),
+        #da62c4 30%,
+        white 60%
+      );
+    }
 
-		* {
-			margin: 0px;
-			padding: 0px;
-		}
-		a {
-			text-decoration: none;
-			color: white;
-		}
-		html {
-			font-family: Ysabeau;
-			background-color: #f6f6f6;
-		}
+    .full-bleed {
+      box-shadow: 0 0 0 100vmax black;
+      clip-path: inset(0 -100vmax);
+    }
+    .wrapper {
+      width: min(100% - 3rem, 1280px);
+      margin-inline: auto;
+    }
 
-		code {
-			font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-				DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New,
-				monospace;
-		}
-	</style>
+    * {
+      margin: 0;
+      font-family: Ysabeau;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    h2 {
+      font-size: 3.2rem;
+      font-family: Ysabeau;
+    }
+    html,
+    body {
+      font-family: Montserrat;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+  </style>
 </html>

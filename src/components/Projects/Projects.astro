@@ -1,0 +1,31 @@
+---
+import Project from "./Project.astro";
+import ComingSoon from "./ComingSoon.astro";
+import Section from "../Section.astro";
+---
+
+<Section>
+  <div class="container">
+    <Project
+      title="Whatever"
+      img="projects/1.png"
+      description="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+      link="TODO"
+    />
+    <ComingSoon />
+  </div>
+</Section>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+    margin-bottom: 1.2rem;
+  }
+  @media (width<768px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

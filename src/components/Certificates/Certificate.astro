@@ -1,0 +1,21 @@
+---
+export type Props = {
+  image: string;
+  href: string;
+};
+const { image, href } = Astro.props;
+---
+
+<a href={href} class="container">
+  <img src={image} />
+</a>
+
+<style>
+  .container {
+  }
+  img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+  }
+</style>

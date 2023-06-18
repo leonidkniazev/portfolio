@@ -1,0 +1,89 @@
+---
+import Section from "../Section.astro";
+import SoftSkill from "./SoftSkill.astro";
+---
+
+<Section isDark>
+  <div class="container">
+    <div class="skillz">
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever but longer" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+    </div>
+    <div class="skillz">
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+    </div>
+    <div class="tree">
+      <img class="tree-img" src="tree.png" />
+      <img class="letters" src="tree_letters.svg" />
+    </div>
+  </div>
+</Section>
+
+<script>
+  const items = document.querySelectorAll("div.skillz");
+  const handleScroll = () => {
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i] as HTMLDivElement;
+      const boundingRect = item.getBoundingClientRect();
+      if (
+        boundingRect.top - window.innerHeight < window.scrollY &&
+        boundingRect.top > 0
+      ) {
+        const percent = (boundingRect.top / window.innerHeight / 2) * 100;
+        item.style.transform = `translateX(${percent}vw)`;
+      }
+    }
+  };
+  document.addEventListener("scroll", handleScroll);
+</script>
+
+<style>
+  .container {
+    position: relative;
+    background-color: black;
+    padding: 30px 0;
+  }
+  .skillz {
+    display: flex;
+    transition: all 0.3s ease;
+    transition-delay: 0ms;
+    margin-bottom: 1.2rem;
+    gap: 1rem;
+    align-items: center;
+  }
+  .tree {
+    position: absolute;
+    z-index: 100;
+    bottom: 0;
+    right: 0;
+    transform: translateY(50%);
+    mix-blend-mode: difference;
+  }
+  .tree-img {
+    mix-blend-mode: difference;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%);
+    transform: translateX(-50%);
+    display: block;
+    bottom: 0;
+    left: 0;
+    max-width: 100px;
+  }
+  .letters {
+    mix-blend-mode: difference;
+  }
+  svg {
+  }
+  @media (width<1280px) {
+    .tree {
+      display: none;
+    }
+  }
+</style>

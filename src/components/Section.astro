@@ -1,0 +1,23 @@
+---
+export type Props = {
+  isDark?: boolean;
+};
+const { isDark } = Astro.props;
+---
+
+<section class={`${isDark ? "dark" : ""}`}><div><slot /></div></section>
+
+<style>
+  section {
+    width: 100%;
+  }
+  .dark {
+    background-color: black;
+  }
+  div {
+    margin: auto;
+    position: relative;
+    max-width: 1280px;
+    width: min(100% - 3rem, 1280px);
+  }
+</style>

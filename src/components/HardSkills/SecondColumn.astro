@@ -1,0 +1,130 @@
+---
+import PercentRound from "./PercentRound.astro";
+---
+
+<div class="container">
+  <span class="title">Languages</span>
+  <div class="skill-grid">
+    <rounded-skill data-percent={80}
+      ><PercentRound skillName="ru" image="ru.png" /></rounded-skill
+    >
+    <rounded-skill data-percent={10}
+      ><PercentRound skillName="en" image="en.png" /></rounded-skill
+    >
+  </div>
+  <span class="title">Programming</span>
+  <span class="title">Languages</span>
+  <div class="skill-grid">
+    <rounded-skill data-percent={10}
+      ><PercentRound skillName="JS" /></rounded-skill
+    >
+    <rounded-skill data-percent={80}
+      ><PercentRound skillName="CSS" /></rounded-skill
+    >
+    <rounded-skill data-percent={89}
+      ><PercentRound skillName="HTML" /></rounded-skill
+    >
+    <rounded-skill data-percent={50}
+      ><PercentRound skillName="SQL" /></rounded-skill
+    >
+  </div>
+  <span class="title">Software Skills</span>
+  <div class="skill-grid">
+    <rounded-skill data-percent={20}
+      ><PercentRound skillName="Figma" /></rounded-skill
+    >
+    <rounded-skill data-percent={80}
+      ><PercentRound skillName="Adobe's" /></rounded-skill
+    >
+    <rounded-skill data-percent={89}
+      ><PercentRound skillName="MS Office" /></rounded-skill
+    >
+    <rounded-skill data-percent={50}
+      ><PercentRound skillName="Jira" /></rounded-skill
+    >
+  </div>
+  <span class="more">And 22 more</span>
+</div>
+
+<script>
+  const DELAY = 500;
+  const SPEED = 3;
+  class RoundedSkill extends HTMLElement {
+    private hasPlayed: boolean;
+    private currentDeg: number;
+    private deg: number;
+    private async onObserve(entries: IntersectionObserverEntry[]) {
+      const entry = entries[0];
+      if (entry.isIntersecting) {
+        await this.addNumber();
+        this.hasPlayed = true;
+      }
+    }
+
+    private async addNumber() {
+      if (!this.hasPlayed) {
+        await new Promise((res) => setTimeout(res, DELAY));
+        while (this.currentDeg < this.deg) {
+          await new Promise((res) => {
+            this.style.background = `conic-gradient(from 130deg, white 100deg, #A634FF 100deg ${
+              100 + this.currentDeg
+            }deg, #F6EAFF 0deg)`;
+            this.currentDeg++;
+            setTimeout(res, SPEED);
+          });
+        }
+      }
+    }
+
+    constructor() {
+      super();
+      this.hasPlayed = false;
+      this.currentDeg = 0;
+      const ensuredPercent = Math.max(0, Math.min(100, +this.dataset.percent));
+      this.deg = ((360 - 100) / 100) * ensuredPercent;
+      this.style.background = `conic-gradient(from 130deg, white 100deg, #A634FF 100deg ${
+        100 + 0
+      }deg, #F6EAFF 0deg)`;
+      const observer = new IntersectionObserver(this.onObserve.bind(this), {
+        threshold: 0.1,
+      });
+      observer.observe(this);
+    }
+  }
+  customElements.define("rounded-skill", RoundedSkill);
+</script>
+
+<style>
+  rounded-skill {
+    width: 6rem;
+    height: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 9999px;
+  }
+  .container {
+    display: flex;
+    padding: 0 2rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  .title {
+    width: 100%;
+    font-size: 1.3rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .more {
+    font-size: 1.2rem;
+    text-transform: uppercase;
+  }
+  .skill-grid {
+    padding: 1.3rem;
+    gap: 2rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+</style>

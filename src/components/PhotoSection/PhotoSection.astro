@@ -1,0 +1,39 @@
+---
+import Section from "../Section.astro";
+import Information from "./Information.astro";
+import MainPhoto from "./MainPhoto.astro";
+import Testimonial from "./Testimonial.astro";
+---
+
+<Section>
+  <div class="container">
+    <MainPhoto />
+    <div class="content">
+      <Information />
+      <Testimonial />
+    </div>
+  </div>
+</Section>
+
+<style>
+  .container {
+    display: grid;
+    position: relative;
+    grid-template-columns: 50% auto;
+    gap: 2rem;
+  }
+  .content {
+    display: grid;
+    grid-template-rows: 50% 50%;
+    color: black;
+  }
+  @media (width<768px) {
+    .container {
+      grid-template-rows: 40rem;
+      grid-template-columns: auto;
+    }
+    .content {
+      grid-template-rows: auto;
+    }
+  }
+</style>

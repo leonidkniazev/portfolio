@@ -1,0 +1,27 @@
+---
+import Section from "../Section.astro";
+import Contact from "./Contact.astro";
+---
+
+<Section isDark>
+  <div class="container">
+    <Contact name="Instagram" href="TODO" />
+    <Contact name="Telegram" href="TODO" />
+    <Contact name="Email" href="TODO" />
+    <Contact name="Linkedin" href="TODO" />
+  </div>
+</Section>
+
+<style>
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  @media (width<768px) {
+    .container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

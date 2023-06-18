@@ -1,0 +1,32 @@
+---
+export type Props = {
+  name: string;
+  href: string;
+};
+const { href, name } = Astro.props;
+---
+
+<a href={href} class="container"><span>{name}</span></a>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid;
+    border-color: white;
+    background-color: black;
+    padding: 1.2rem 0;
+    color: white;
+    transition: all 0.2s ease-in-out;
+  }
+  span {
+    font-weight: 900;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  .container:hover {
+    background-color: white;
+    color: black;
+  }
+</style>

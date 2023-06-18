@@ -1,0 +1,25 @@
+---
+import Section from "../Section.astro";
+import Interest from "./Interest.astro";
+---
+
+<Section>
+  <div class="container">
+    <Interest title="Whatever" img="interests/art.png" />
+    <Interest title="Whatever" img="interests/dance.png" />
+    <Interest title="Whatever" img="interests/games.png" />
+    <Interest title="Whatever" img="interests/geography.png" />
+    <Interest title="Whatever" img="interests/music.png" />
+    <Interest title="Whatever" img="interests/travel.png" />
+  </div>
+</Section>
+
+<style>
+  .container {
+    overflow-x: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.2rem 0;
+    gap: 0.6rem;
+  }
+</style>

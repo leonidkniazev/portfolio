@@ -1,0 +1,40 @@
+---
+export type Props = { skillName?: string; image?: string };
+const { skillName, image } = Astro.props;
+---
+
+<div class="inner">
+  {skillName && !image && <span>{skillName}</span>}
+  {image && <img src={image} />}
+</div>
+
+<style>
+  .inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border-radius: 9999%;
+    outline: 4px solid;
+    outline-color: white;
+    background-color: black;
+    height: 80%;
+    width: 80%;
+    overflow: hidden;
+  }
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+  span {
+    font-weight: 800;
+    white-space: nowrap;
+    font-size: 1em;
+    width: fit-content;
+    max-font-size: 1.5rem;
+    min-font-size: 0.8rem;
+    color: white;
+  }
+</style>

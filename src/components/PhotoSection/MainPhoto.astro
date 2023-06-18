@@ -1,0 +1,44 @@
+<div class="container">
+  <img height="1000" width="804" src="photo.jpeg" />
+  <div class="filter"></div>
+  <div class="foot"></div>
+</div>
+
+<style>
+  .foot {
+    flex: 1;
+    background-color: black;
+    color: white;
+    width: 100%;
+  }
+  .container {
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background-color: white;
+    height: 100%;
+    border-color: white;
+    position: relative;
+    z-index: 3;
+  }
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 80%;
+    padding: 0 2rem;
+    display: block;
+    z-index: 20;
+  }
+  .filter {
+    position: absolute;
+    top: 10%;
+    z-index: -2;
+    background-color: black;
+    width: 100%;
+    height: 40%;
+  }
+</style>
