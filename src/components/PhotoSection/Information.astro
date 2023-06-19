@@ -36,6 +36,7 @@ import Icon from "./Icon.astro";
   .contacts {
     display: flex;
     width: 16rem;
+    align-items: center;
     padding: 2rem 0;
     gap: 0.9rem;
   }
@@ -54,5 +55,24 @@ import Icon from "./Icon.astro";
     font-size: 1.3rem;
     background-color: black;
     text-transform: uppercase;
+  }
+  @media (width<1280px) {
+    .contacts {
+      flex-direction: column;
+    }
+  }
+  @media (width<768px) {
+    .contacts {
+      justify-content: start;
+      align-items: center;
+    }
+    .resume {
+      width: 100%;
+    }
+    .icons {
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: stretch;
+    }
   }
 </style>

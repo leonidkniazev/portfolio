@@ -1,21 +1,29 @@
-<div class="container full-bleed">
-  <div class="content">
-    <p>
-      Разрабатываю веб и мобильные интерфейсы. Грамотно излагаю мысли, имею опыт
-      и навыки выступления перед публикой. Структурировано и быстро обрабатываю
-      информацию, обучаюсь. Люблю читать книги, изучать новые сферы
-      и самосовершенствоваться. Эффективно распределяю рабочее время, изучаю
-      техники тайм-менеджмента, могу ставить задачи перед коллективом и беру
-      ответственность за свои действия.
-    </p>
+---
+import Section from "../Section.astro";
+---
+
+<Section isDark>
+  <div class="container">
+    <div class="content">
+      <p>
+        Я родился и вырос в городе Иваново, Россия. Я учился на следователя,
+        благодаря чему грамотно излагаю мысли, имею опыт и навыки выступления
+        перед публикой.<br /><br /> Структурировано и быстро обрабатываю информацию
+        и обучаюсь. Люблю изучать новые сферы и самосовершенствоваться. Следователем
+        не стал, потому что в жизнь пришел дизайн.<br /><br /> В дизайне мне нравится
+        возможность делать технологии и просто сервис удобными, практичными и красивыми
+        для людей.
+      </p>
+    </div>
   </div>
-</div>
+</Section>
 <style>
   .container {
     display: flex;
-    justify-content: start;
+    justify-content: end;
     align-items: center;
     background-color: black;
+    padding: 3rem;
   }
   .content {
     position: relative;
@@ -23,17 +31,37 @@
     font-size: 1rem;
     line-height: 2.1rem;
     margin: 0 3.2rem;
-    width: 100%;
+    width: 40%;
     color: white;
   }
-  .content::before {
+  .content::after {
     content: "“";
     position: absolute;
-    left: -4rem;
+    right: -4rem;
     top: 2rem;
     font-size: 8.3rem;
   }
   p {
-    font-size: 1.2rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+  @media (width<1280px) {
+    .container {
+      justify-content: center;
+      padding-top: 10rem;
+    }
+    .content {
+      width: 100%;
+    }
+  }
+  @media (width<768px) {
+    .container {
+      justify-content: center;
+      padding-top: 3rem;
+    }
+    .content {
+      width: 100%;
+      margin: 0;
+    }
   }
 </style>

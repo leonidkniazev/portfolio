@@ -1,44 +1,60 @@
+<img height="1000" width="804" src="photo.jpeg" alt="photo" />
 <div class="container">
-  <img height="1000" width="804" src="photo.jpeg" />
   <div class="filter"></div>
-  <div class="foot"></div>
 </div>
 
 <style>
-  .foot {
-    flex: 1;
-    background-color: black;
-    color: white;
-    width: 100%;
-  }
   .container {
-    overflow: hidden;
+    mix-blend-mode: exclusion;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    position: absolute;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    background-color: white;
+    width: 50%;
+    left: 0;
+    top: 0;
+    z-index: 1;
     height: 100%;
-    border-color: white;
-    position: relative;
-    z-index: 3;
   }
   img {
     object-fit: cover;
-    width: 100%;
-    height: 80%;
-    padding: 0 2rem;
+    top: 0;
+    position: absolute;
+    left: 5%;
+    width: 40%;
+    height: 40rem;
+    z-index: 2;
     display: block;
-    z-index: 20;
   }
   .filter {
     position: absolute;
-    top: 10%;
-    z-index: -2;
-    background-color: black;
-    width: 100%;
-    height: 40%;
+    top: 2rem;
+    background-color: white;
+    width: 90%;
+    height: 40rem;
+  }
+  @media (width<1280px) {
+    img {
+      height: 30rem;
+    }
+    .filter {
+      height: 30rem;
+    }
+  }
+  @media (width<768px) {
+    .container {
+      position: static;
+      overflow: hidden;
+    }
+    img {
+      position: static;
+      width: 20rem;
+      height: 25rem;
+    }
+    .filter {
+      width: 20rem;
+      left: 2rem;
+      height: 25rem;
+    }
   }
 </style>
