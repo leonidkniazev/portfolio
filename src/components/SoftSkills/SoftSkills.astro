@@ -5,43 +5,58 @@ import SoftSkill from "./SoftSkill.astro";
 
 <Section isDark>
   <div class="container">
-    <div class="skillz">
+    <skill-row data-number={1} class="skillz">
       <SoftSkill name="whatever" />
       <SoftSkill name="whatever but longer" />
       <SoftSkill name="whatever" />
       <SoftSkill name="whatever" />
       <SoftSkill name="whatever" />
-    </div>
-    <div class="skillz">
+      <SoftSkill name="whatever but longer" />
       <SoftSkill name="whatever" />
       <SoftSkill name="whatever" />
       <SoftSkill name="whatever" />
-    </div>
-    <div class="tree">
-      <img class="tree-img" src="tree.png" />
-      <img class="letters" src="tree_letters.svg" />
+    </skill-row>
+    <skill-row data-number={2} class="skillz">
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever but longer" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+      <SoftSkill name="whatever" />
+    </skill-row>
+    <div class="tree-container">
+      <div class="tree">
         <img class="tree-img" src="/tree.png" />
         <img class="letters" src="/tree_letters.svg" />
+      </div>
     </div>
   </div>
 </Section>
 
 <script>
-  const items = document.querySelectorAll("div.skillz");
-  const handleScroll = () => {
-    for (let i = 0; i < items.length; i++) {
-      const item = items[i] as HTMLDivElement;
-      const boundingRect = item.getBoundingClientRect();
-      if (
-        boundingRect.top - window.innerHeight < window.scrollY &&
-        boundingRect.top > 0
-      ) {
-        const percent = (boundingRect.top / window.innerHeight / 2) * 100;
-        item.style.transform = `translateX(${percent}vw)`;
-      }
+  class SkillRow extends HTMLElement {
+    constructor() {
+      super();
+      const handleScroll = () => {
+        const boundingRect = this.getBoundingClientRect();
+        if (
+          boundingRect.top - window.innerHeight < window.scrollY &&
+          boundingRect.top > 0
+        ) {
+          const percent = (boundingRect.top / window.innerHeight / 2) * 100;
+          console.log(percent, this.dataset.number);
+          if (+this.dataset.number & 1)
+            this.style.transform = `translateX(${-percent}vw)`;
+          else this.style.transform = `translateX(${percent}vw)`;
+        }
+      };
+      document.addEventListener("scroll", handleScroll);
     }
-  };
-  document.addEventListener("scroll", handleScroll);
+  }
+  customElements.define("skill-row", SkillRow);
 </script>
 
 <style>
@@ -50,13 +65,20 @@ import SoftSkill from "./SoftSkill.astro";
     background-color: black;
     padding: 30px 0;
   }
-  .skillz {
+  skill-row {
     display: flex;
     transition: all 0.3s ease;
     transition-delay: 0ms;
     margin-bottom: 1.2rem;
     gap: 1rem;
-    align-items: center;
+    align-items: start;
+    justify-content: start;
+  }
+  skill-row:nth-child(even) {
+    align-items: end;
+  }
+  .tree-container {
+    height: 15rem;
   }
   .tree {
     position: absolute;
@@ -77,12 +99,10 @@ import SoftSkill from "./SoftSkill.astro";
     width: 80%;
     height: 85%;
   }
-  .letters {
-  }
   svg {
   }
   @media (width<1280px) {
-    .tree {
+    .tree-container {
       display: none;
     }
   }
