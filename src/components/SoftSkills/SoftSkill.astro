@@ -11,7 +11,8 @@ const { name } = Astro.props;
   div {
     padding: 0.6rem 1.2rem;
     border-radius: 1000px;
-    border: 2px solid;
+    cursor: default;
+    border: 1px solid;
     border-color: white;
     background-color: black;
     display: flex;
@@ -22,12 +23,13 @@ const { name } = Astro.props;
     transition: all 0.2s ease-in-out;
   }
   div:hover {
-    background-color: limegreen;
+    background-color: var(--accent);
     color: black;
-    border-color: limegreen;
+    border-color: var(--accent);
   }
   span {
     text-transform: uppercase;
     white-space: nowrap;
+    font-size: 1.1rem;
   }
 </style>
