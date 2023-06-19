@@ -1,6 +1,24 @@
-<div><a href="#">RU</a><span> /</span><a href="#">EN</a></div>
+---
+export type Props = {
+  selected: "ru" | "eng";
+};
+const { selected } = Astro.props;
+---
+
+<div>
+  <a href="#">EN</a>
+  <span>{" / "}</span>
+  <a class="active" href="#">RU</a>
+</div>
 <style>
-	span {
-		color: white;
-	}
+  span {
+    color: white;
+  }
+  a {
+    font-family: Ysabeau;
+  }
+  .active {
+    font-weight: 700;
+    text-decoration: underline;
+  }
 </style>
