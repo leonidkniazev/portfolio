@@ -58,26 +58,24 @@ import SoftSkill from "./SoftSkill.astro";
   }
   .tree {
     position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     z-index: 100;
     bottom: 0;
     right: 0;
     transform: translateY(50%);
-    mix-blend-mode: difference;
   }
   .tree-img {
-    mix-blend-mode: difference;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%);
-    transform: translateX(-50%);
+    transform: translate(-50%, -50%);
     display: block;
-    bottom: 0;
-    left: 0;
-    max-width: 100px;
+    width: 80%;
+    height: 85%;
   }
   .letters {
-    mix-blend-mode: difference;
   }
   svg {
   }
