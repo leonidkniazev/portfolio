@@ -44,13 +44,11 @@ const { title } = Astro.props;
 
   <style is:global>
     :root {
-      --accent: 124, 58, 237;
-      --accent-gradient: linear-gradient(
-        45deg,
-        rgb(var(--accent)),
-        #da62c4 30%,
-        white 60%
-      );
+      --primary: white;
+      --secondary: black;
+      --accent: #cfff68;
+      --fs-medium: 1rem;
+      --fs-small: 0.9rem;
     }
 
     .full-bleed {
@@ -64,7 +62,7 @@ const { title } = Astro.props;
 
     * {
       margin: 0;
-      font-family: Ysabeau;
+      font-family: Montserrat;
       padding: 0;
       box-sizing: border-box;
     }
@@ -72,9 +70,23 @@ const { title } = Astro.props;
       text-decoration: none;
       color: white;
     }
-    h2 {
-      font-size: 3.2rem;
+    h1 {
       font-family: Ysabeau;
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 7.5rem;
+    }
+    h2 {
+      font-family: Ysabeau;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 4.5rem;
+    }
+    h3 {
+      font-family: Montserrat;
+      font-size: 2.2rem;
+      font-weight: 500;
+      line-height: 3.3rem;
     }
     html,
     body {
