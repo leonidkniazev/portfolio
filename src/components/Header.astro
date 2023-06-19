@@ -6,16 +6,16 @@ import Swichlang from "./Swichlang.astro";
 <header>
   <nav>
     <ul>
-      <li><a href="#">Обо мне</a></li>
-      <li><a href="#projects">Проекты</a></li>
-      <li><a href="#skills">Навыки</a></li>
-      <li><a href="#contacts">Контакты</a></li>
-      <li><a href="#">Резюме</a></li>
+      <li><a class="link" href="#">Обо мне</a></li>
+      <li><a class="link" href="#projects">Проекты</a></li>
+      <li><a class="link" href="#skills">Навыки</a></li>
+      <li><a class="link" href="#contacts">Контакты</a></li>
+      <li><a class="link" href="#">Резюме</a></li>
     </ul>
     <div class="logo">
       <Logo />
     </div>
-    <Swichlang />
+    <Swichlang selected="ru" />
   </nav>
 </header>
 
@@ -44,8 +44,10 @@ import Swichlang from "./Swichlang.astro";
     padding: 1.2rem 3.3rem;
     text-transform: uppercase;
   }
-  a {
+  a.link {
     color: white;
+    font-size: 1rem;
+    font-family: Ysabeau;
   }
   .logo {
     display: flex;
