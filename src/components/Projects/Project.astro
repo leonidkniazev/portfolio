@@ -12,7 +12,7 @@ const { img, title, link, description } = Astro.props;
   <img class="background" src={img} alt={title} />
   <div class="content">
     <div class="header">
-      <span>{title}</span>
+      <h3>{title}</h3>
       <img src={"arrow.svg"} />
     </div>
     <p>{description}</p>
@@ -43,8 +43,11 @@ const { img, title, link, description } = Astro.props;
     justify-content: space-around;
   }
   span {
-    font-size: 2rem;
+    font-family: Ysabeau;
+    font-style: normal;
     font-weight: 900;
+    font-size: 2rem;
+    line-height: 150%;
   }
   p {
     font-weight: 400;

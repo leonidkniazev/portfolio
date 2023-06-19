@@ -11,7 +11,7 @@ const { title, isDark, id } = Astro.props;
 
 <Section isDark={isDark}>
   <div id={id} class={`container${isDark ? " dark-container" : ""}`}>
-    <span class={`${isDark ? "dark-span" : ""}`}>{title}</span>
+    <h2 class={`${isDark ? "dark-span" : ""}`}>{title}</h2>
     <div class="pointer">
       <img src={isDark ? "darkpointer.svg" : "pointer.svg"} />
       <div class={`line${isDark ? " dark-line" : ""}`}></div>
@@ -30,12 +30,9 @@ const { title, isDark, id } = Astro.props;
   .dark-container {
     background-color: black;
   }
-  span {
+  h2 {
     text-transform: uppercase;
-    line-height: 4.5rem;
     white-space: nowrap;
-    font-size: 3rem;
-    font-weight: 900;
   }
   .dark-span {
     color: white;
