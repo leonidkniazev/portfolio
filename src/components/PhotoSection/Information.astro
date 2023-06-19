@@ -1,9 +1,15 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Icon from "./Icon.astro";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="container">
-  <h1 class="name">Leonid</h1><h3 class="occupation">Product Designer</h3>
+  <h1 class="name">{t("hero.name")}</h1>
+  <h3 class="occupation">
+    {t("hero.occupation")}
+  </h3>
   <div class="contacts">
     <div class="icons">
       <Icon src="/telegram.svg" href="TODO" />

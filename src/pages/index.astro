@@ -9,21 +9,24 @@ import Certificates from "../components/Certificates/Certificates.astro";
 import Contacts from "../components/Contacts/Contacts.astro";
 import Layout from "../layouts/Layout.astro";
 import RunningRows from "../components/Certificates/RunningRows.astro";
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Layout title="Portfolio">
   <main>
     <PhotoSection />
-    <Seperation title="Whatever" id="hobbies" />
+    <Seperation title={t("section.interests")} id="hobbies" />
     <Interests />
-    <Seperation title="Another" id="projects" />
+    <Seperation title={t("section.projects")} id="projects" />
     <Projects />
-    <Seperation isDark title="And another one" id="skills" />
+    <Seperation isDark title={t("section.skills")} id="skills" />
     <SoftSkills />
     <HardSkills />
     <RunningRows />
     <Certificates />
-    <Seperation isDark title="Contacts" id="contacts" />
+    <Seperation isDark title={t("section.contacts")} id="contacts" />
     <Contacts />
   </main>
 </Layout>

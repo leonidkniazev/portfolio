@@ -1,9 +1,12 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import PercentRound from "./PercentRound.astro";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <div class="container">
-  <span class="title">Languages</span>
+  <span class="title">{t("skills.languages")}</span>
   <div class="skill-grid">
     <rounded-skill data-percent={80}
       ><PercentRound skillName="ru" image="/ru.png" /></rounded-skill
@@ -12,8 +15,7 @@ import PercentRound from "./PercentRound.astro";
       ><PercentRound skillName="en" image="/en.png" /></rounded-skill
     >
   </div>
-  <span class="title">Programming</span>
-  <span class="title">Languages</span>
+  <span class="title">{t("skills.programminglanguages")}</span>
   <div class="skill-grid">
     <rounded-skill data-percent={10}
       ><PercentRound skillName="JS" /></rounded-skill
@@ -28,7 +30,7 @@ import PercentRound from "./PercentRound.astro";
       ><PercentRound skillName="SQL" /></rounded-skill
     >
   </div>
-  <span class="title">Software Skills</span>
+  <span class="title">{t("skills.software")}</span>
   <div class="skill-grid">
     <rounded-skill data-percent={20}
       ><PercentRound skillName="Figma" /></rounded-skill
@@ -43,7 +45,7 @@ import PercentRound from "./PercentRound.astro";
       ><PercentRound skillName="Jira" /></rounded-skill
     >
   </div>
-  <span class="more">And 22 more</span>
+  <span class="more">{t("skills.more")}</span>
 </div>
 
 <script>

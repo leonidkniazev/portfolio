@@ -1,18 +1,23 @@
 ---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Section from "../Section.astro";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <Section isDark>
   <div class="container">
     <div class="content">
       <p>
-        Я родился и вырос в городе Иваново, Россия. Я учился на следователя,
-        благодаря чему грамотно излагаю мысли, имею опыт и навыки выступления
-        перед публикой.<br /><br /> Структурировано и быстро обрабатываю информацию
-        и обучаюсь. Люблю изучать новые сферы и самосовершенствоваться. Следователем
-        не стал, потому что в жизнь пришел дизайн.<br /><br /> В дизайне мне нравится
-        возможность делать технологии и просто сервис удобными, практичными и красивыми
-        для людей.
+        {t("hero.aboutme1")}
+        <br />
+        <br />
+        {t("hero.aboutme2")}
+        <br />
+        <br />
+        {t("hero.aboutme3")}
+        <br />
+        <br />
       </p>
     </div>
   </div>

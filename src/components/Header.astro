@@ -1,21 +1,25 @@
 ---
+import { getLangFromUrl, useTranslations } from "../i18n/utils";
 import Logo from "./Logo.astro";
 import Swichlang from "./Swichlang.astro";
+const lang = getLangFromUrl(Astro.url)
+const t = useTranslations(lang)
+
 ---
 
 <header>
   <nav>
     <ul>
-      <li><a class="link" href="#">Обо мне</a></li>
-      <li><a class="link" href="#projects">Проекты</a></li>
-      <li><a class="link" href="#skills">Навыки</a></li>
-      <li><a class="link" href="#contacts">Контакты</a></li>
-      <li><a class="link" href="#">Резюме</a></li>
+      <li><a class="link" href="#">{t("nav.aboutme")}</a></li>
+      <li><a class="link" href="#projects">{t("nav.projects")}</a></li>
+      <li><a class="link" href="#skills">{t("nav.skills")}</a></li>
+      <li><a class="link" href="#contacts">{t("nav.contacts")}</a></li>
+      <li><a class="link" href="#">{t("nav.resume")}</a></li>
     </ul>
     <div class="logo">
       <Logo />
     </div>
-    <Swichlang selected="ru" />
+    <Swichlang selected={lang} />
   </nav>
 </header>
 

@@ -1,14 +1,14 @@
 ---
 export type Props = {
-  selected: "ru" | "eng";
+  selected: "ru" | "en";
 };
 const { selected } = Astro.props;
 ---
 
 <div>
-  <a href="#">EN</a>
+  <a class={selected === "en" ? "active" : ""} href="/en/">EN</a>
   <span>{" / "}</span>
-  <a class="active" href="#">RU</a>
+  <a class={selected === "ru" ? "active" : ""} href="/">RU</a>
 </div>
 <style>
   span {
