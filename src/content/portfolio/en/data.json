@@ -1,38 +1,55 @@
 {
   "hardSkills": {
     "languages": [
-      { "name": "en", "img": "/en.png", "percent": 89 },
-      { "name": "ru", "img": "/ru.png", "percent": 69 }
+      { "name": "en", "img": "/en.png", "percent": 53 },
+      { "name": "ru", "img": "/ru.png", "percent": 95 }
     ],
     "programmingLanguages": [
-      { "name": "Js", "percent": 89 },
-      { "name": "html", "percent": 69 }
+      { "name": "JS", "percent": 22 },
+      { "name": "CSS", "percent": 40 },
+      { "name": "HTML", "percent": 17 },
+      { "name": "SQL", "percent": 24 }
     ],
-    "softwareSkills": [{ "name": "vim", "percent": 89 }],
-    "UXResearchSkills": ["whatever"],
-    "UXDesignSkills": ["whatever"],
-    "UIDesignSkills": ["whatever"],
+    "softwareSkills": [{ "name": "Figma", "percent": 83 },
+      { "name": "Adobe's", "percent": 40 },
+      { "name": "MS Office", "percent": 72 },
+      { "name": "Jira", "percent": 63 }],
+    "UXResearchSkills": ["qualitative research", "quantitive research", "data analysis"],
+    "UXDesignSkills": ["PRINCIples", "brainstorming", "sketching", "wireframing", "Adapting MOCKUPS"],
+    "UIDesignSkills": ["CREATING ANIMATION", "CREATING UI-kit"],
     "frameworkSkills": [
-      { "name": "whatever", "list": ["whatever", "whatever"] }
-    ],
-    "productManagmentSkills": ["whatever"]
+      { "name": "Design Thinking Process", "list": ["Empathise", "ideate", "define", "prototyping", "test"] },
+      { "name": "Empathy map" },
+      { "name": "Personas" },
+      { "name": "Customer journey map" },
+      { "name": "User flow" },
+      { "name": "User stories" },
+      { "name": "JTBD" }],
+    "productManagmentSkills": ["UNIt -economy", "Databases", "SWOT - ANALYSIS", "Customer development", "working in agile"]
   },
-  "softSkills": ["compassion", "courage"],
+  "softSkills": ["Easy learning", "curious", "attentiveness", "EMPATHY", "independence", "communicative", "persistence", "stress resistance", "Adaptivity", "organisation", "patience", "collaborative", "responsibility", "Creativity", "critical thinking", "optimism"],
   "certificates": [
-    { "img": "https://placehold.co/600x400", "href": "" },
-    { "img": "https://placehold.co/600x400", "href": "" },
-    { "img": "https://placehold.co/600x400", "href": "" },
-    { "img": "https://placehold.co/600x400", "href": "" },
-    { "img": "https://placehold.co/600x400", "href": "" },
-    { "img": "https://placehold.co/600x400", "href": "" },
-    { "img": "https://placehold.co/600x400", "href": "" }
+    { "img": "/public/certificates/PM.png", "href": "https://otus.ru/certificate/9763edb02fb04a408df855182a7c826a/en/" },
+    { "img": "/public/certificates/JS.png", "href": "https://otus.ru/certificate/0ef5a617ee4e4f928ddf836eb3edcdf8/en/" },
+    { "img": "/public/certificates/Fundamental.png", "href": "https://www.credential.net/66ee0edc-f9da-4220-978c-a45e5849f440" },
+    { "img": "/public/certificates/Essentuals.png", "href": "https://www.udemy.com/certificate/UC-d02326e2-93bc-4fb3-b8c0-074985340a62/" },
+    { "img": "/public/certificates/UI_kit.png", "href": "https://www.credential.net/66ee0edc-f9da-4220-978c-a45e5849f440" },
+    { "img": "/public/certificates/Complite.png", "href": "https://coursera.org/verify/UWWFR42FTWS4" },
+    { "img": "/public/certificates/1G.png", "href": "https://www.coursera.org/account/accomplishments/verify/W2T88XW5EYGV" },
+    { "img": "/public/certificates/2G.png", "href": "https://coursera.org/share/b97b6eac9e711ae664c0df16d1f3fca8" },
+    { "img": "/public/certificates/3G.png", "href": "https://coursera.org/verify/9YDQGC5CR94S" },
+    { "img": "/public/certificates/4G.png", "href": "https://coursera.org/verify/YY5RGKAUHCSC" },
+    { "img": "/public/certificates/5G.png", "href": "https://coursera.org/verify/693MNTUX2X7Z" },
+    { "img": "/public/certificates/6G.png", "href": "https://coursera.org/verify/VPCLZ85XUQR5" },
+    { "img": "/public/certificates/7G.png", "href": "https://coursera.org/verify/UWWFR42FTWS4" },
+    { "img": "/public/certificates/Google.png", "href": "https://coursera.org/verify/UWWFR42FTWS4" }
   ],
   "projects": [
     {
-      "img": "/projects/1.png",
+      "img": "/public/thumbnail.png",
       "href": "TODO",
-      "name": "hee",
-      "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+      "name": "Prosto Sdam",
+      "description": "My own project in edtech from the idea to the realisation"
     }
   ],
   "interests": [
