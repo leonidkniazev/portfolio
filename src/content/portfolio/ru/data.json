@@ -1,0 +1,56 @@
+{
+  "hardSkills": {
+    "languages": [
+      {
+        "name": "whatever",
+        "percent": 39,
+        "img": "https://placehold.co/600x400"
+      },
+      {
+        "name": "whatever",
+        "percent": 39,
+        "img": "https://placehold.co/600x400"
+      }
+    ],
+    "programmingLanguages": [
+      {
+        "name": "Js",
+        "percent": 100
+      }
+    ],
+    "softwareSkills": [
+      {
+        "name": "Abobe",
+        "percent": 10
+      }
+    ],
+    "UXResearchSkills": ["whatever"],
+    "UXDesignSkills": ["whatever"],
+    "UIDesignSkills": ["whatever"],
+    "frameworkSkills": [
+      { "name": "whatever", "list": ["whatever", "whatever"] }
+    ],
+    "productManagmentSkills": ["whatever"]
+  },
+  "softSkills": ["softSkill", "whatever", "hua", "program"],
+  "certificates": [
+    { "img": "https://placehold.co/600x400", "href": "" },
+    { "img": "https://placehold.co/600x400", "href": "" }
+  ],
+  "projects": [
+    {
+      "img": "/projects/1.png",
+      "href": "TODO",
+      "name": "hee",
+      "description": "Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    }
+  ],
+  "interests": [
+    { "name": "art", "img": "/interests/art.png" },
+    { "name": "dance", "img": "/interests/dance.png" },
+    { "name": "games", "img": "/interests/games.png" },
+    { "name": "geography", "img": "/interests/geography.png" },
+    { "name": "music", "img": "/interests/music.png" },
+    { "name": "travel", "img": "/interests/travel.png" }
+  ]
+}
