@@ -1,30 +1,31 @@
 ---
 import Section from "../Section.astro";
 import Certificate from "./Certificate.astro";
+export type Props = {
+  certificates: {
+    img?: string;
+    href?: string;
+  }[];
+};
+const { certificates } = Astro.props;
 ---
 
 <Section>
   <div class="container">
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
-  </div>
-  <div class="container">
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
-  </div>
-  <div class="container">
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
-    <Certificate image="https://placehold.co/600x400" href="TODO" />
+    {
+      certificates.map((item) => (
+        <Certificate image={item.img} href={item.href} />
+      ))
+    }
   </div>
 </Section>
 
 <style>
   .container {
     display: flex;
+    flex-wrap: wrap;
     margin: 1.2rem 0;
+    align-items: center;
     justify-content: space-between;
-    gap: 1.2rem;
   }
 </style>

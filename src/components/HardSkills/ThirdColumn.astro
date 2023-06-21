@@ -1,19 +1,31 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+export type Props = {
+  frameworkSkills: { name?: string; list?: string[] }[];
+};
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { frameworkSkills } = Astro.props;
+---
+
 <div class="container">
-  <span class="title">using frameworks</span>
-  <p class="item">design thinking process</p>
-  <ul class="list">
-    <li class="item">empathaise</li>
-    <li class="item">ideate</li>
-    <li class="item">define</li>
-    <li class="item">prototyping</li>
-    <li class="item">test</li>
-  </ul>
-  <p class="item">Empathy map</p>
-  <p class="item">personas</p>
-  <p class="item">customer journey map</p>
-  <p class="item">user flow</p>
-  <p class="item">user stories</p>
-  <p class="item">JTBD</p>
+  <span class="title">{t("skills.frameworks")}</span>
+  {
+    frameworkSkills.map((item) => {
+      if (item.list) {
+        return (
+          <>
+            <p class="item">{item.name}</p>
+            <ul class="list">
+              {item.list.map((listItem) => (
+                <li class="item">{listItem}</li>
+              ))}
+            </ul>
+          </>
+        );
+      } else return <p class="item">{item.name}</p>;
+    })
+  }
 </div>
 <style>
   .container {

@@ -10,22 +10,37 @@ import Contacts from "../components/Contacts/Contacts.astro";
 import Layout from "../layouts/Layout.astro";
 import RunningRows from "../components/Certificates/RunningRows.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getEntry } from "astro:content";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { interests, hardSkills, softSkills, certificates, projects } =
+  portfolio.data;
 ---
 
 <Layout title="Portfolio">
   <main>
     <PhotoSection />
     <Seperation title={t("section.interests")} id="hobbies" />
-    <Interests />
+    <Interests interests={interests} />
     <Seperation title={t("section.projects")} id="projects" />
-    <Projects />
+    <Projects projects={projects} />
     <Seperation isDark title={t("section.skills")} id="skills" />
-    <SoftSkills />
-    <HardSkills />
+    <SoftSkills softSkills={softSkills} />
+    <HardSkills
+      hardSkills={{
+        languages: hardSkills.languages,
+        programmingLanguages: hardSkills.programmingLanguages,
+        softwareSkills: hardSkills.softwareSkills,
+        productManagmentSkills: hardSkills.productManagmentSkills,
+        UXResearchSkills: hardSkills.UXResearchSkills,
+        UXDesignSkills: hardSkills.UXDesignSkills,
+        UIDesignSkills: hardSkills.UIDesignSkills,
+        frameworkSkills: hardSkills.frameworkSkills,
+      }}
+    />
     <RunningRows />
-    <Certificates />
+    <Certificates certificates={certificates} />
     <Seperation isDark title={t("section.contacts")} id="contacts" />
     <Contacts />
   </main>

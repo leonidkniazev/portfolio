@@ -1,16 +1,22 @@
 ---
 import Section from "../Section.astro";
 import Interest from "./Interest.astro";
+export type Props = {
+  interests: {
+    name?: string;
+    img?: string;
+  }[];
+};
+const { interests } = Astro.props;
 ---
 
 <Section>
   <div class="container">
-    <Interest title="Whatever" img="/interests/art.png" />
-    <Interest title="Whatever" img="/interests/dance.png" />
-    <Interest title="Whatever" img="/interests/games.png" />
-    <Interest title="Whatever" img="/interests/geography.png" />
-    <Interest title="Whatever" img="/interests/music.png" />
-    <Interest title="Whatever" img="/interests/travel.png" />
+    {
+      interests.map((interest) => (
+        <Interest title={interest.name} img={interest.img} />
+      ))
+    }
   </div>
 </Section>
 

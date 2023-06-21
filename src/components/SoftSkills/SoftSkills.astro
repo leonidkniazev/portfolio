@@ -1,8 +1,23 @@
 ---
 import Section from "../Section.astro";
 import SoftSkill from "./SoftSkill.astro";
+export type Props = {
+  softSkills: string[];
+};
+const { softSkills } = Astro.props;
+const middleIndex = Math.ceil(softSkills.length / 2);
+const firstHalf = softSkills.splice(0, middleIndex);
+const secondHalf = softSkills.splice(-middleIndex);
 ---
 
+<div class="container">
+  <skill-row data-number={1} class="skillz">
+    {firstHalf.map((item) => <SoftSkill name={item} />)}
+  </skill-row>
+  <skill-row data-number={2} class="skillz">
+    {secondHalf.map((item) => <SoftSkill name={item} />)}
+  </skill-row>
+</div>
 <Section isDark>
   <div class="tree-container">
     <div class="tree">

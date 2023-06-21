@@ -2,16 +2,29 @@
 import Project from "./Project.astro";
 import ComingSoon from "./ComingSoon.astro";
 import Section from "../Section.astro";
+export type Props = {
+  projects: {
+    img?: string;
+    href?: string;
+    name?: string;
+    description?: string;
+  }[];
+};
+const { projects } = Astro.props;
 ---
 
 <Section>
   <div class="container">
-    <Project
-      title="Whatever"
-      img="/projects/1.png"
-      description="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
-      link="TODO"
-    />
+    {
+      projects.map((project) => (
+        <Project
+          title={project.name}
+          img={project.img}
+          description={project.description}
+          link={project.href}
+        />
+      ))
+    }
     <ComingSoon />
   </div>
 </Section>

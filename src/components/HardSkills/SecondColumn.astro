@@ -3,47 +3,56 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import PercentRound from "./PercentRound.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+export type Props = {
+  languages: {
+    name?: string;
+    percent?: number;
+    img?: string;
+  }[];
+  programmingLanguages: {
+    name?: string;
+    percent?: number;
+    img?: string;
+  }[];
+  softwareSkills: {
+    name?: string;
+    percent?: number;
+    img?: string;
+  }[];
+};
+const { languages, softwareSkills, programmingLanguages } = Astro.props;
 ---
 
 <div class="container">
   <span class="title">{t("skills.languages")}</span>
   <div class="skill-grid">
-    <rounded-skill data-percent={80}
-      ><PercentRound skillName="ru" image="/ru.png" /></rounded-skill
-    >
-    <rounded-skill data-percent={10}
-      ><PercentRound skillName="en" image="/en.png" /></rounded-skill
-    >
+    {
+      languages.map((item) => (
+        <rounded-skill data-percent={item.percent}>
+          <PercentRound skillName={item.name} image={item.img} />
+        </rounded-skill>
+      ))
+    }
   </div>
   <span class="title">{t("skills.programminglanguages")}</span>
   <div class="skill-grid">
-    <rounded-skill data-percent={10}
-      ><PercentRound skillName="JS" /></rounded-skill
-    >
-    <rounded-skill data-percent={80}
-      ><PercentRound skillName="CSS" /></rounded-skill
-    >
-    <rounded-skill data-percent={89}
-      ><PercentRound skillName="HTML" /></rounded-skill
-    >
-    <rounded-skill data-percent={50}
-      ><PercentRound skillName="SQL" /></rounded-skill
-    >
+    {
+      programmingLanguages.map((item) => (
+        <rounded-skill data-percent={item.percent}>
+          <PercentRound skillName={item.name} />
+        </rounded-skill>
+      ))
+    }
   </div>
   <span class="title">{t("skills.software")}</span>
   <div class="skill-grid">
-    <rounded-skill data-percent={20}
-      ><PercentRound skillName="Figma" /></rounded-skill
-    >
-    <rounded-skill data-percent={80}
-      ><PercentRound skillName="Adobe's" /></rounded-skill
-    >
-    <rounded-skill data-percent={89}
-      ><PercentRound skillName="MS Office" /></rounded-skill
-    >
-    <rounded-skill data-percent={50}
-      ><PercentRound skillName="Jira" /></rounded-skill
-    >
+    {
+      softwareSkills.map((item) => (
+        <rounded-skill data-percent={item.percent}>
+          <PercentRound skillName={item.name} />
+        </rounded-skill>
+      ))
+    }
   </div>
   <span class="more">{t("skills.more")}</span>
 </div>

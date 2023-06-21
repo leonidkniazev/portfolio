@@ -3,13 +3,47 @@ import Section from "../Section.astro";
 import FirstColumn from "./FirstColumn.astro";
 import SecondColumn from "./SecondColumn.astro";
 import ThirdColumn from "./ThirdColumn.astro";
+export type Props = {
+  hardSkills: {
+    languages?: {
+      name?: string;
+      percent?: number;
+      img?: string;
+    }[];
+    programmingLanguages?: {
+      name?: string;
+      percent?: number;
+      img?: string;
+    }[];
+    softwareSkills?: {
+      name?: string;
+      percent?: number;
+      img?: string;
+    }[];
+    UXResearchSkills?: string[];
+    UXDesignSkills?: string[];
+    UIDesignSkills?: string[];
+    frameworkSkills?: { name?: string; list?: string[] }[];
+    productManagmentSkills?: string[];
+  };
+};
+const { hardSkills } = Astro.props;
 ---
 
 <Section>
   <div class="container">
-    <FirstColumn />
-    <SecondColumn />
-    <ThirdColumn />
+    <FirstColumn
+      UIDesign={hardSkills.UIDesignSkills}
+      UXDesign={hardSkills.UXDesignSkills}
+      UXResearch={hardSkills.UXResearchSkills}
+      productManagment={hardSkills.productManagmentSkills}
+    />
+    <SecondColumn
+      languages={hardSkills.languages}
+      programmingLanguages={hardSkills.programmingLanguages}
+      softwareSkills={hardSkills.softwareSkills}
+    />
+    <ThirdColumn frameworkSkills={hardSkills.frameworkSkills} />
   </div>
 </Section>
 

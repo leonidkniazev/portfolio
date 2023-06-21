@@ -1,25 +1,25 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+export type Props = {
+  UXResearch: string[];
+  UXDesign: string[];
+  UIDesign: string[];
+  productManagment: string[];
+};
+const { UXDesign, UIDesign, UXResearch, productManagment } = Astro.props;
+---
+
 <div class="container">
-  <span class="title">UX-exploration</span><span class="text">
-    quality research
-  </span>
-  <span class="text">Quantative research</span>
-  <span class="text">Data analysis</span>
-  <span class="title">UX-disign</span><span class="text"> Principles</span>
-  <span class="text">Brainstrorming</span>
-  <span class="text">Sketching</span>
-  <span class="text">wire framing</span>
-  <span class="text">adpating makets</span>
-  <span class="title">UI-disign</span><span class="text">
-    Creating animation
-  </span>
-  <span class="text">Creating ui-kit</span>
-  <span class="title">Product management</span><span class="text">
-    Unit Economy
-  </span>
-  <span class="text">Data bases</span>
-  <span class="text">swot analysis</span>
-  <span class="text">customer development</span>
-  <span class="text">working in agile</span>
+  <span class="title">{t("skills.uxexploration")}</span>
+  {UXResearch.map((item) => <span class="text">{item}</span>)}
+  <span class="title">{t("skills.uxdesign")}</span>
+  {UXDesign.map((item) => <span class="text">{item}</span>)}
+  <span class="title">{t("skills.uidesign")}</span>
+  {UIDesign.map((item) => <span class="text">{item}</span>)}
+  <span class="title">{t("skills.productmanagment")}</span>
+  {productManagment.map((item) => <span class="text">{item}</span>)}
 </div>
 
 <style>
