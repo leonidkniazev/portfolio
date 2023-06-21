@@ -19,11 +19,11 @@ import SoftSkill from "./SoftSkill.astro";
       const handleScroll = () => {
         const boundingRect = this.getBoundingClientRect();
         if (
-          boundingRect.top - window.innerHeight < window.scrollY &&
+          boundingRect.top - window.scrollY + window.innerHeight <
+            window.innerHeight &&
           boundingRect.top > 0
         ) {
-          const percent = (boundingRect.top / window.innerHeight / 2) * 100;
-          console.log(percent, this.dataset.number);
+          const percent = (boundingRect.top / window.scrollY) * 100;
           if (+this.dataset.number & 1)
             this.style.transform = `translateX(${percent}%)`;
           else this.style.transform = `translateX(${-percent}%)`;
