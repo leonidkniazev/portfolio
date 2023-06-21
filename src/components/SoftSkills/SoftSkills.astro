@@ -4,34 +4,10 @@ import SoftSkill from "./SoftSkill.astro";
 ---
 
 <Section isDark>
-  <div class="container">
-    <skill-row data-number={1} class="skillz">
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever but longer" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever but longer" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-    </skill-row>
-    <skill-row data-number={2} class="skillz">
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever but longer" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-      <SoftSkill name="whatever" />
-    </skill-row>
-    <div class="tree-container">
-      <div class="tree">
-        <img class="tree-img" src="/tree.png" />
-        <img class="letters" src="/tree_letters.svg" />
-      </div>
+  <div class="tree-container">
+    <div class="tree">
+      <img class="tree-img" src="/tree.png" />
+      <img class="letters" src="/tree_letters.svg" />
     </div>
   </div>
 </Section>
@@ -49,8 +25,8 @@ import SoftSkill from "./SoftSkill.astro";
           const percent = (boundingRect.top / window.innerHeight / 2) * 100;
           console.log(percent, this.dataset.number);
           if (+this.dataset.number & 1)
-            this.style.transform = `translateX(${-percent}vw)`;
-          else this.style.transform = `translateX(${percent}vw)`;
+            this.style.transform = `translateX(${percent}%)`;
+          else this.style.transform = `translateX(${-percent}%)`;
         }
       };
       document.addEventListener("scroll", handleScroll);
@@ -63,22 +39,24 @@ import SoftSkill from "./SoftSkill.astro";
   .container {
     position: relative;
     background-color: black;
-    padding: 30px 0;
+    width: 100%;
   }
   skill-row {
     display: flex;
     transition: all 0.3s ease;
     transition-delay: 0ms;
-    margin-bottom: 1.2rem;
     gap: 1rem;
-    align-items: start;
+    padding-top: 1rem;
+    align-items: center;
     justify-content: start;
+    transform: translateX(-100%);
   }
   skill-row:nth-child(even) {
-    align-items: end;
+    justify-content: end;
+    transform: translateX(100%);
   }
   .tree-container {
-    height: 15rem;
+    height: 18rem;
   }
   .tree {
     position: absolute;
