@@ -9,6 +9,7 @@ const t = useTranslations(lang)
 
 <header>
   <nav>
+  <div class="burger"><img src="/burger.svg"/></div>
     <ul>
       <li><a class="link" href="#">{t("nav.aboutme")}</a></li>
       <li><a class="link" href="#projects">{t("nav.projects")}</a></li>
@@ -45,6 +46,7 @@ const t = useTranslations(lang)
     width: 100%;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 1.2rem 3.3rem;
     text-transform: uppercase;
   }
@@ -56,6 +58,13 @@ const t = useTranslations(lang)
   .logo {
     display: flex;
     align-items: center;
+  }
+  .burger {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
   }
 
   header {
@@ -69,5 +78,8 @@ const t = useTranslations(lang)
     ul {
         display: none;
       }
+    .burger {
+      display: flex;
+    }
   }
 </style>
