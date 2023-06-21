@@ -27,6 +27,10 @@ export const ui = {
     "skills.software": "SOFTWARE SKILLS",
     "skills.more": "and 22 more",
     "skills.frameworks": "USING FRAMEWORKS",
+    "skills.uxexploration": "ux-exploartion",
+    "skills.uxdesign": "ux-design",
+    "skills.uidesign": "ui-design",
+    "skills.productmanagment": "product managment",
 
     "section.interests": "MY INTERESTS",
     "section.projects": "PROJECTS",
@@ -54,6 +58,10 @@ export const ui = {
     "skills.software": "SOFTWARE SKIlls",
     "skills.more": "и еще 22",
     "skills.frameworks": "ФРЕЙМВОРКИ",
+    "skills.uxexploration": "ux-исследования",
+    "skills.uxdesign": "ux-дизайн",
+    "skills.uidesign": "ui-дизайн",
+    "skills.productmanagment": "продукт менеджмент",
 
     "section.interests": "ИНТЕРЕСЫ",
     "section.projects": "ПРОЕКТЫ",
