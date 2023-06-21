@@ -10,10 +10,12 @@
       { "name": "HTML", "percent": 17 },
       { "name": "SQL", "percent": 24 }
     ],
-    "softwareSkills": [{ "name": "Figma", "percent": 83 },
+    "softwareSkills": [
+      { "name": "Figma", "percent": 83 },
       { "name": "Adobe's", "percent": 40 },
       { "name": "MS Office", "percent": 72 },
-      { "name": "Jira", "percent": 63 }],
+      { "name": "Jira", "percent": 63 }
+    ],
     "UXResearchSkills": ["qualitative research", "quantitive research", "data analysis"],
     "UXDesignSkills": ["PRINCIples", "brainstorming", "sketching", "wireframing", "Adapting MOCKUPS"],
     "UIDesignSkills": ["CREATING ANIMATION", "CREATING UI-kit"],
