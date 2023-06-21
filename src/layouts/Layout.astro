@@ -38,8 +38,8 @@ const lang = getLangFromUrl(Astro.url);
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
   </head>
-  <Header />
   <body>
+    <Header />
     <slot />
     <Footer />
   </body>
@@ -89,6 +89,9 @@ const lang = getLangFromUrl(Astro.url);
       font-size: 2.2rem;
       font-weight: 500;
       line-height: 3.3rem;
+    }
+    main {
+      margin-top: 3.5rem;
     }
     html,
     body {
