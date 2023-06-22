@@ -5,12 +5,13 @@ import Swichlang from "./../Swichlang.astro";
 import BurgerMenu from "./BurgerMenu";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+//FIX role button
 ---
 
 <BurgerMenu language={lang} client:only />
 <header>
   <nav>
-    <div id="burgerbtn" class="menu-btn"><span></span></div>
+    <div role="button" id="burgerbtn" class="menu-btn"><span></span></div>
     <ul>
       <li><a class="link" href="#">{t("nav.aboutme")}</a></li>
       <li><a class="link" href="#projects">{t("nav.projects")}</a></li>
