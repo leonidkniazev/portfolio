@@ -27,6 +27,10 @@ const project = z.object({
   name: z.string(),
   description: z.string(),
 });
+const metadata = z.object({
+  description: z.string(),
+  keywords: z.string().array(),
+});
 
 const portfolio = defineCollection({
   type: "data",
@@ -51,6 +55,7 @@ const portfolio = defineCollection({
       linkedin: social,
       email: social,
     }),
+    metadata,
   }),
 });
 

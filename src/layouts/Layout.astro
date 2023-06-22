@@ -20,6 +20,7 @@ import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 import { getLangFromUrl } from "../i18n/utils";
+import { getEntry } from "astro:content";
 import Analytics from "../components/Analytics";
 export interface Props {
   title: string;
@@ -27,13 +28,16 @@ export interface Props {
 
 const { title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { metadata } = portfolio.data;
 ---
 
 <!DOCTYPE html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta name="description" content={metadata.description} />
+    <meta name="keywords" content={metadata.keywords.join(", ")} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />

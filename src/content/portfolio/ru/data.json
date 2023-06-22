@@ -152,5 +152,9 @@
       "href": "https://www.linkedin.com/in/leonid-kniazev-770a35253"
     },
     "email": { "href": "mailto:knyazb08081999@gmail.com" }
+  },
+  "metadata": {
+    "description": "Личный сайт продуктового дизайнера Князева Леонида.",
+    "keywords": ["портфолио", "Леонид", "Князев", "дизайнер"]
   }
 }
