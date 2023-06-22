@@ -1,8 +1,11 @@
 ---
+import { getEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Icon from "./Icon.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { socials } = portfolio.data;
 ---
 
 <div class="container">
@@ -12,9 +15,9 @@ const t = useTranslations(lang);
   </h3>
   <div class="contacts">
     <div class="icons">
-      <Icon src="/telegram.svg" href="TODO" />
-      <Icon src="/instagram.svg" href="TODO" />
-      <Icon src="/linkedin.svg" href="TODO" />
+      <Icon src={socials.telegram.icon} href={socials.telegram.href} />
+      <Icon src={socials.instagram.icon} href={socials.instagram.href} />
+      <Icon src={socials.linkedin.icon} href={socials.linkedin.href} />
     </div>
     <a class="resume" href="/resume.pdf" target="_blank" rel="noreferrer"
       >{t("hero.resume")}</a

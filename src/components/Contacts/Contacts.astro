@@ -10,7 +10,10 @@ const { socials } = portfolio.data;
 
 <Section isDark>
   <div class="container">
-    {socials.map((item) => <Contact name={item.name} href={item.href} />)}
+    <Contact name={"Instagram"} href={socials.instagram.href} />
+    <Contact name={"Telegram"} href={socials.telegram.href} />
+    <Contact name={"LinkedIn"} href={socials.linkedin.href} />
+    <Contact name={"Email"} href={socials.email.href} />
   </div>
 </Section>
 

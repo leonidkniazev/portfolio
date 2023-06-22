@@ -141,13 +141,16 @@
     { "name": "музыка", "img": "/interests/music.png" },
     { "name": "путешествия", "img": "/interests/travel.png" }
   ],
-  "socials": [
-    { "name": "telegram", "href": "https://t.me/constant_l" },
-    { "name": "instagram", "href": "https://www.instagram.com/leonidkniazev_" },
-    {
-      "name": "linkedin",
+  "socials": {
+    "telegram": { "icon": "/telegram.svg", "href": "https://t.me/constant_l" },
+    "instagram": {
+      "icon": "/instagram.svg",
+      "href": "https://www.instagram.com/leonidkniazev_"
+    },
+    "linkedin": {
+      "icon": "./linkedin.svg",
       "href": "https://www.linkedin.com/in/leonid-kniazev-770a35253"
     },
-    { "name": "email", "href": "mailto:knyazb08081999@gmail.com" }
-  ]
+    "email": { "href": "mailto:knyazb08081999@gmail.com" }
+  }
 }
