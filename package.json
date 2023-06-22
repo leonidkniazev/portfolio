@@ -13,6 +13,7 @@
 		"@astrojs/solid-js": "^2.2.0",
 		"@fontsource/montserrat": "^5.0.3",
 		"@fontsource/ysabeau": "^5.0.3",
+		"@vercel/analytics": "^1.0.1",
 		"astro": "^2.5.6",
 		"astro-i18n-aut": "^0.0.15",
 		"solid-js": "^1.7.6"
