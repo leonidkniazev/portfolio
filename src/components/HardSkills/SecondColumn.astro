@@ -1,33 +1,18 @@
 ---
+import { getEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import PercentRound from "./PercentRound.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-export type Props = {
-  languages: {
-    name?: string;
-    percent?: number;
-    img?: string;
-  }[];
-  programmingLanguages: {
-    name?: string;
-    percent?: number;
-    img?: string;
-  }[];
-  softwareSkills: {
-    name?: string;
-    percent?: number;
-    img?: string;
-  }[];
-};
-const { languages, softwareSkills, programmingLanguages } = Astro.props;
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { hardSkills } = portfolio.data;
 ---
 
 <div class="container">
   <span class="title">{t("skills.languages")}</span>
   <div class="skill-grid">
     {
-      languages.map((item) => (
+      hardSkills.languages.map((item) => (
         <rounded-skill data-percent={item.percent}>
           <PercentRound skillName={item.name} image={item.img} />
         </rounded-skill>
@@ -37,7 +22,7 @@ const { languages, softwareSkills, programmingLanguages } = Astro.props;
   <span class="title">{t("skills.programminglanguages")}</span>
   <div class="skill-grid">
     {
-      programmingLanguages.map((item) => (
+      hardSkills.programmingLanguages.map((item) => (
         <rounded-skill data-percent={item.percent}>
           <PercentRound skillName={item.name} />
         </rounded-skill>
@@ -47,7 +32,7 @@ const { languages, softwareSkills, programmingLanguages } = Astro.props;
   <span class="title">{t("skills.software")}</span>
   <div class="skill-grid">
     {
-      softwareSkills.map((item) => (
+      hardSkills.softwareSkills.map((item) => (
         <rounded-skill data-percent={item.percent}>
           <PercentRound skillName={item.name} />
         </rounded-skill>

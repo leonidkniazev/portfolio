@@ -1,18 +1,16 @@
 ---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils";
 import Section from "../Section.astro";
 import Contact from "./Contact.astro";
-export type Props = {
-  contacts?: {
-    name?: string;
-    href?: string;
-  }[];
-};
-const { contacts } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { socials } = portfolio.data;
 ---
 
 <Section isDark>
   <div class="container">
-    {contacts.map((item) => <Contact name={item.name} href={item.href} />)}
+    {socials.map((item) => <Contact name={item.name} href={item.href} />)}
   </div>
 </Section>
 

@@ -1,10 +1,11 @@
 ---
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils";
 import Section from "../Section.astro";
 import SoftSkill from "./SoftSkill.astro";
-export type Props = {
-  softSkills: string[];
-};
-const { softSkills } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { softSkills } = portfolio.data;
 const middleIndex = Math.ceil(softSkills.length / 2);
 const firstHalf = softSkills.splice(0, middleIndex);
 const secondHalf = softSkills.splice(-middleIndex);

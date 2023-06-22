@@ -2,15 +2,11 @@
 import Project from "./Project.astro";
 import ComingSoon from "./ComingSoon.astro";
 import Section from "../Section.astro";
-export type Props = {
-  projects: {
-    img?: string;
-    href?: string;
-    name?: string;
-    description?: string;
-  }[];
-};
-const { projects } = Astro.props;
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { projects } = portfolio.data;
 ---
 
 <Section>

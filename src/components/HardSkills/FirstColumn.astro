@@ -1,25 +1,25 @@
 ---
+import { getEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-export type Props = {
-  UXResearch: string[];
-  UXDesign: string[];
-  UIDesign: string[];
-  productManagment: string[];
-};
-const { UXDesign, UIDesign, UXResearch, productManagment } = Astro.props;
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { hardSkills } = portfolio.data;
 ---
 
 <div class="container">
   <span class="title">{t("skills.uxexploration")}</span>
-  {UXResearch.map((item) => <span class="text">{item}</span>)}
+  {hardSkills.UXResearchSkills.map((item) => <span class="text">{item}</span>)}
   <span class="title">{t("skills.uxdesign")}</span>
-  {UXDesign.map((item) => <span class="text">{item}</span>)}
+  {hardSkills.UXDesignSkills.map((item) => <span class="text">{item}</span>)}
   <span class="title">{t("skills.uidesign")}</span>
-  {UIDesign.map((item) => <span class="text">{item}</span>)}
+  {hardSkills.UIDesignSkills.map((item) => <span class="text">{item}</span>)}
   <span class="title">{t("skills.productmanagment")}</span>
-  {productManagment.map((item) => <span class="text">{item}</span>)}
+  {
+    hardSkills.productManagmentSkills.map((item) => (
+      <span class="text">{item}</span>
+    ))
+  }
 </div>
 
 <style>

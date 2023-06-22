@@ -1,17 +1,16 @@
 ---
+import { getEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
-export type Props = {
-  frameworkSkills: { name?: string; list?: string[] }[];
-};
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const { frameworkSkills } = Astro.props;
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { hardSkills } = portfolio.data;
 ---
 
 <div class="container">
   <p class="main-title">{t("skills.frameworks")}</p>
   {
-    frameworkSkills.map((item) => {
+    hardSkills.frameworkSkills.map((item) => {
       if (item.list) {
         return (
           <>
