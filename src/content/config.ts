@@ -13,6 +13,10 @@ const interest = z.object({
   name: z.string(),
   img: z.string(),
 });
+const social = z.object({
+  name: z.string(),
+  href: z.string(),
+});
 const certificate = z.object({
   img: z.string(),
   href: z.string(),
@@ -41,6 +45,7 @@ const portfolio = defineCollection({
     certificates: certificate.array(),
     projects: project.array(),
     interests: interest.array(),
+    socials: social.array(),
   }),
 });
 

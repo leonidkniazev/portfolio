@@ -1,14 +1,18 @@
 ---
 import Section from "../Section.astro";
 import Contact from "./Contact.astro";
+export type Props = {
+  contacts?: {
+    name?: string;
+    href?: string;
+  }[];
+};
+const { contacts } = Astro.props;
 ---
 
 <Section isDark>
   <div class="container">
-    <Contact name="Instagram" href="TODO" />
-    <Contact name="Telegram" href="TODO" />
-    <Contact name="Email" href="TODO" />
-    <Contact name="Linkedin" href="TODO" />
+    {contacts.map((item) => <Contact name={item.name} href={item.href} />)}
   </div>
 </Section>
 

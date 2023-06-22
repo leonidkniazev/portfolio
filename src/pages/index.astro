@@ -14,7 +14,7 @@ import { getEntry } from "astro:content";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
-const { interests, hardSkills, softSkills, certificates, projects } =
+const { socials, interests, hardSkills, softSkills, certificates, projects } =
   portfolio.data;
 ---
 
@@ -42,6 +42,6 @@ const { interests, hardSkills, softSkills, certificates, projects } =
     <RunningRows />
     <Certificates certificates={certificates} />
     <Seperation isDark title={t("section.contacts")} id="contacts" />
-    <Contacts />
+    <Contacts contacts={socials} />
   </main>
 </Layout>
