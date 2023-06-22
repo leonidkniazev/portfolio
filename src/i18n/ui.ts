@@ -14,7 +14,7 @@ export const ui = {
     "nav.contacts": "Contacts",
 
     "hero.name": "Leonid",
-    "hero.resume": "Resume",
+    "hero.resume": "Get CV",
     "hero.occupation": "Product Designer",
     "hero.aboutme1": "I was born and raised in Ivanovo, Russia.",
     "hero.aboutme2":
@@ -36,6 +36,7 @@ export const ui = {
     "section.projects": "PROJECTS",
     "section.skills": "SKILLS",
     "section.contacts": "contacts",
+    "projects.tobecontinued": "to be continued",
   },
   ru: {
     "nav.aboutme": "Обо Мне",
@@ -46,7 +47,7 @@ export const ui = {
 
     "hero.name": "Леонид",
     "hero.resume": "Резюме",
-    "hero.occupation": "Продукт дизайнер",
+    "hero.occupation": "Product Designer",
     "hero.aboutme1": "Я родился и вырос в городе Иваново, Россия.",
     "hero.aboutme2":
       "Я учился на следователя, благодаря чему грамотно излагаю мысли, имею опыт и навыки выступления перед публикой. Структурировано и быстро обрабатываю информацию и обучаюсь. Люблю изучать новые сферы и самосовершенствоваться. Следователем не стал, потому что в жизнь пришёл дизайн",
@@ -67,5 +68,6 @@ export const ui = {
     "section.projects": "ПРОЕКТЫ",
     "section.skills": "НАВЫКИ",
     "section.contacts": "КОНТАКТЫ",
+    "projects.tobecontinued": "скоро обновление",
   },
 } as const;
