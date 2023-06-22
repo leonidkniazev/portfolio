@@ -1,0 +1,141 @@
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import Logo from ".././Logo.astro";
+import Swichlang from "./../Swichlang.astro";
+import BurgerMenu from "./BurgerMenu";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<BurgerMenu language={lang} client:only />
+<header>
+  <nav>
+    <div id="burgerbtn" class="menu-btn"><span></span></div>
+    <ul>
+      <li><a class="link" href="#">{t("nav.aboutme")}</a></li>
+      <li><a class="link" href="#projects">{t("nav.projects")}</a></li>
+      <li><a class="link" href="#skills">{t("nav.skills")}</a></li>
+      <li><a class="link" href="#contacts">{t("nav.contacts")}</a></li>
+      <li>
+        <a class="link" href="/resume.pdf" target="_blank">{t("nav.resume")}</a>
+      </li>
+    </ul>
+    <div class="logo">
+      <Logo />
+    </div>
+    <Swichlang selected={lang} />
+  </nav>
+</header>
+
+<style>
+  .menu-btn {
+    height: 32px;
+    width: 40px;
+    cursor: pointer;
+  }
+
+  .menu-btn span,
+  .menu-btn span::before,
+  .menu-btn span::after {
+    background: white;
+    content: "";
+    position: absolute;
+    width: 40px;
+    height: 3px;
+    margin-top: 13px;
+
+    -webkit-transition: 0.3s ease-in-out;
+    -moz-transition: 0.3s ease-in-out;
+    -o-transition: 0.3s ease-in-out;
+    transition: 0.3s ease-in-out;
+  }
+
+  .menu-btn span::before {
+    margin-top: -12px;
+  }
+
+  .menu-btn span::after {
+    margin-top: 12px;
+  }
+
+  .menu-btn.active span {
+    background: transparent;
+  }
+
+  .menu-btn.active span::before {
+    margin-top: 0;
+
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .menu-btn.active span::after {
+    margin-top: 0;
+
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+  header {
+    position: fixed;
+    backdrop-filter: blur(5px);
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+  }
+  ul {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    list-style: none;
+    flex: 1;
+    position: relative;
+  }
+  nav {
+    background-color: #000;
+    opacity: 90%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 3.3rem;
+    text-transform: uppercase;
+  }
+  a.link {
+    color: white;
+    font-size: 1rem;
+    font-family: Ysabeau;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+  .menu-btn {
+    z-index: 150;
+    display: none;
+    background-color: transparent;
+  }
+  header {
+    display: flex;
+  }
+  @media (width<1280px) {
+    .logo {
+      display: none;
+    }
+  }
+  @media (width<768px) {
+    ul {
+      display: none;
+    }
+    .menu-btn {
+      display: block;
+    }
+    nav {
+      padding: 0.8rem 2rem;
+    }
+  }
+</style>
