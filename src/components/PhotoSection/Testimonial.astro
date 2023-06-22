@@ -8,16 +8,16 @@ const t = useTranslations(lang);
 <Section isDark>
   <div class="container">
     <div class="content">
-      <p>
+      <p class="first">
         {t("hero.aboutme1")}
+      </p>
         <br />
-        <br />
+      <p>
         {t("hero.aboutme2")}
+      </p>
         <br />
-        <br />
+      <p>
         {t("hero.aboutme3")}
-        <br />
-        <br />
       </p>
     </div>
   </div>
@@ -28,7 +28,7 @@ const t = useTranslations(lang);
     justify-content: end;
     align-items: center;
     background-color: black;
-    padding: 3rem;
+    padding: 3rem 0rem;
   }
   .content {
     position: relative;
@@ -43,13 +43,16 @@ const t = useTranslations(lang);
     content: "“";
     font-family: Ysabeau;
     position: absolute;
-    right: -4rem;
+    right: 0rem;
     top: 1rem;
     font-size: 8.3rem;
   }
   p {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+  p.first {
+    width: 80%;
   }
   @media (max-width: 1280px) {
     .container {
