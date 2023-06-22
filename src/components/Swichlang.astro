@@ -6,9 +6,9 @@ const { selected } = Astro.props;
 ---
 
 <div>
-  <a class={selected === "en" ? "active" : ""} href="/en/">EN</a>
+  <a class={selected === "en" ? "active" : ""} href="/">EN</a>
   <span>{" / "}</span>
-  <a class={selected === "ru" ? "active" : ""} href="/">RU</a>
+  <a class={selected === "ru" ? "active" : ""} href="/ru/">RU</a>
 </div>
 <style>
   span {
