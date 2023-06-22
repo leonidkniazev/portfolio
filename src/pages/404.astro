@@ -1,0 +1,26 @@
+---
+import Section from "../components/Section.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Page not found">
+  <Section>
+    <div class="container">
+      <div class="inner-container"></div><p class="text">404</p>
+    </div>
+  </Section>
+</Layout>
+
+<style>
+  .container {
+    margin-top: 5rem;
+    height: 100vh;
+    width: 100wh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .text {
+    font-size: 30rem;
+  }
+</style>
