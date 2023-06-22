@@ -3,7 +3,7 @@ export type Props = { skillName?: string; image?: string };
 const { skillName, image } = Astro.props;
 ---
 
-<div class="inner">
+<div class=`inner${image ? " has-image" : ""}`>
   {skillName && !image && <span>{skillName}</span>}
   {image && <img src={image} />}
 </div>
@@ -15,10 +15,15 @@ const { skillName, image } = Astro.props;
     align-items: center;
     background-color: white;
     border-radius: 9999%;
+    border: 6px solid;
+    border-color: white;
     background-color: black;
-    height: 80%;
-    width: 80%;
+    height: 85%;
+    width: 85%;
     overflow: hidden;
+  }
+  .inner.has-image {
+    background-color: white
   }
   img {
     display: block;
