@@ -57,4 +57,12 @@ const { title, isDark, id } = Astro.props;
   .dark-line {
     background-color: white;
   }
+  @media (width<768px) {
+    img {
+      scale: 0.5;
+    }
+    .container {
+      padding: 0;
+    }
+  }
 </style>

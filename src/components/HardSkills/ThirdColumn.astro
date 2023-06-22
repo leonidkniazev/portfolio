@@ -9,7 +9,7 @@ const { frameworkSkills } = Astro.props;
 ---
 
 <div class="container">
-  <span class="title">{t("skills.frameworks")}</span>
+  <p class="main-title">{t("skills.frameworks")}</p>
   {
     frameworkSkills.map((item) => {
       if (item.list) {
@@ -30,6 +30,13 @@ const { frameworkSkills } = Astro.props;
 <style>
   .container {
     margin: 70% auto;
+    padding: 0 3.3rem;
+  }
+  .main-title {
+    padding: 0.6rem 0;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 1.3rem;
   }
   .title {
     font-weight: 800;

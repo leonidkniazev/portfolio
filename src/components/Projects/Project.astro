@@ -12,7 +12,7 @@ const { img, title, link, description } = Astro.props;
   <img class="background" src={img} alt={title} />
   <div class="content">
     <div class="header">
-      <h3>{title}</h3>
+      <h3 class="title">{title}</h3>
       <img src={"/arrow.svg"} />
     </div>
     <p>{description}</p>
@@ -48,6 +48,10 @@ const { img, title, link, description } = Astro.props;
     font-weight: 900;
     font-size: 2rem;
     line-height: 150%;
+  }
+  .title {
+    font-weight: 700;
+    text-transform: uppercase;
   }
   p {
     font-weight: 400;

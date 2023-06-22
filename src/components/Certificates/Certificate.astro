@@ -8,7 +8,7 @@ const { image, href } = Astro.props;
 
 <div class="container">
   <div class="image-container">
-    <a href={href} class="verify">
+    <a href={href} target="_blank" class="verify">
       <img class="icon" src="/external.svg" alt="certificate icon" />
     </a>
     <img class="img" src={image} />
@@ -27,19 +27,19 @@ const { image, href } = Astro.props;
     background-color: black;
     border-radius: 1rem;
     color: black;
-    top: 2rem;
-    right: 2rem;
+    top: 1rem;
+    right: 1rem;
   }
   .container {
     width: 100%;
-    margin: 1rem;
+    padding: 1rem;
     flex-basis: 33%;
     flex-shrink: 0;
     flex-grow: 1;
   }
   .container:hover {
     .verify {
-      opacity: 100;
+      opacity: 70%;
     }
   }
   .image-container {
@@ -55,5 +55,14 @@ const { image, href } = Astro.props;
     display: block;
     max-width: 100%;
     object-fit: cover;
+  }
+  @media (width<768px) {
+    .container {
+      flex-basis: 100%;
+      padding: 1rem 0;
+    }
+    .verify {
+      opacity: 70%;
+    }
   }
 </style>
