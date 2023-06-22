@@ -1,7 +1,31 @@
-<div><span>Coming soon</span></div>
+---
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+---
+
+<div class="container">
+  <div class="text-container">
+    <img src="/arc.svg" />
+    <h3 class="text">{t("projects.tobecontinued")}</h3>
+  </div>
+</div>
 
 <style>
-  div {
+  .text {
+    text-transform: uppercase;
+  }
+  img {
+    position: absolute;
+    top: -100%;
+    left: 60%;
+    width: 70%;
+    transform: translateX(-50%);
+  }
+  .text-container {
+    position: relative;
+  }
+  .container {
     width: 100%;
     aspect-ratio: 1/1;
     background-color: black;
