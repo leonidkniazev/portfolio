@@ -15,7 +15,7 @@ const interest = z.object({
 });
 const social = z.object({
   name: z.string(),
-  href: z.string(),
+  href: z.string().url(),
 });
 const certificate = z.object({
   img: z.string(),
