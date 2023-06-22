@@ -18,5 +18,8 @@ export default defineConfig({
       defaultLocale,
     }),
   ],
+  experimental: {
+    assets: true,
+  },
   trailingSlash: "always",
 });
