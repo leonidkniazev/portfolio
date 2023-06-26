@@ -18,8 +18,18 @@
   position: relative;
   background-color: black;
   flex-direction: column;
-  justify-content: start;
-  width: 80%;
+  justify-content: center;
+  background-color: white;
+  height: 80%;
+  aspect-ratio: 4/3;
+}
+
+.image {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: 100%;
+  object-fit: contain;
 }
 
 .closing {

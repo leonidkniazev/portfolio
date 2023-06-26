@@ -77,7 +77,7 @@ const CeritificateView = () => {
                 <img class={styles.icon} src="/close.svg" alt="close icon" />
               </button>
             </div>
-            <img src={imgUrl()} alt={"Certificate"} />
+            <img class={styles.image} src={imgUrl()} alt={"Certificate"} />
           </div>
         </div>
       )}
