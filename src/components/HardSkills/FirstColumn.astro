@@ -14,6 +14,12 @@ const { hardSkills } = portfolio.data;
   {hardSkills.UXDesignSkills.map((item) => <span class="text">{item}</span>)}
   <span class="title">{t("skills.uidesign")}</span>
   {hardSkills.UIDesignSkills.map((item) => <span class="text">{item}</span>)}
+  <span class="title framework">{t("skills.frameworks")}</span>
+  {
+    hardSkills.frameworkSkills.map((item) => (
+      <span class="text framework">{item.name}</span>
+    ))
+  }
   <span class="title">{t("skills.productmanagment")}</span>
   {
     hardSkills.productManagmentSkills.map((item) => (
@@ -44,9 +50,17 @@ const { hardSkills } = portfolio.data;
     text-transform: uppercase;
     font-size: 1.3rem;
   }
+  .framework {
+    display: none;
+  }
   @media (max-width: 768px) {
     .container {
       margin-right: 0;
+    }
+  }
+  @media (max-width: 1280px) {
+    .framework {
+      display: block;
     }
   }
 </style>
