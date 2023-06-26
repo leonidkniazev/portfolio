@@ -3,6 +3,7 @@ import { getEntry } from "astro:content";
 import { getLangFromUrl } from "../../i18n/utils";
 import Section from "../Section.astro";
 import Certificate from "./Certificate.astro";
+import CeritificateView from "./CeritificateView";
 const lang = getLangFromUrl(Astro.url);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { certificates } = portfolio.data;
@@ -17,6 +18,7 @@ const { certificates } = portfolio.data;
     }
   </div>
 </Section>
+<CeritificateView client:only />
 
 <style>
   .container {

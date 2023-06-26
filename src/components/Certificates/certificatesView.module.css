@@ -1,0 +1,86 @@
+.overlay {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  margin: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  animation: fade-in 0.2s ease-in-out;
+}
+
+.container {
+  display: flex;
+  position: relative;
+  background-color: black;
+  flex-direction: column;
+  justify-content: start;
+  width: 80%;
+}
+
+.closing {
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.buttons {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.icon {
+  display: block;
+  max-width: 100%;
+  object-fit: cover;
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+.close {
+  cursor: pointer;
+  padding: 1rem;
+  border: 0;
+  background-color: transparent;
+}
+
+.link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  background-color: black;
+  border-radius: 1rem;
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: 80%;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
