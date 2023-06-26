@@ -8,7 +8,7 @@ const t = useTranslations(lang);
 //FIX role button
 ---
 
-<BurgerMenu language={lang} client:only />
+<BurgerMenu language={lang} client:media="(max-width: 768px)" />
 <header>
   <nav>
     <div role="button" id="burgerbtn" class="menu-btn"><span></span></div>

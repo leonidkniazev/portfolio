@@ -1,4 +1,4 @@
-import { createSignal, onCleanup } from "solid-js";
+import { createSignal, onCleanup, onMount } from "solid-js";
 import styles from "./burgerMenu.module.css";
 import { useTranslations } from "../../i18n/utils";
 
@@ -12,7 +12,7 @@ const BurgerMenu = (props: {
   const t = useTranslations(props.language);
   const [isOpen, setIsOpen] = createSignal(false);
   const [isClosing, setIsClosing] = createSignal(false);
-  const openBtn = document.getElementById("burgerbtn") as HTMLButtonElement;
+  let openBtn: HTMLButtonElement;
   let timeout: ReturnType<typeof setTimeout> = null;
   function handleResize() {
     if (window.innerWidth >= 768 && isOpen()) {
@@ -39,9 +39,13 @@ const BurgerMenu = (props: {
       setIsOpen(true);
     }
   }
-  openBtn.addEventListener("click", handleOpen);
-  window.addEventListener("resize", handleResize);
+  onMount(() => {
+    openBtn = document.getElementById("burgerbtn") as HTMLButtonElement;
+    openBtn.addEventListener("click", handleOpen);
+    window.addEventListener("resize", handleResize);
+  });
   onCleanup(() => {
+    if (typeof window === "undefined") return;
     openBtn.removeEventListener("click", handleOpen);
     window.removeEventListener("resize", handleResize);
   });

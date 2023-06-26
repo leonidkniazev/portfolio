@@ -1,4 +1,4 @@
-import { createSignal, onCleanup } from "solid-js";
+import { createSignal, onCleanup, onMount } from "solid-js";
 import styles from "./certificatesView.module.css";
 
 const CeritificateView = () => {
@@ -6,8 +6,7 @@ const CeritificateView = () => {
   const [isClosing, setIsClosing] = createSignal(false);
   const [imgUrl, setImgUrl] = createSignal<string>();
   const [verificationUrl, setVerificationUrl] = createSignal<string>();
-  const certificateButtons =
-    document.querySelectorAll<HTMLButtonElement>("button.certificate");
+  let certificateButtons: NodeListOf<HTMLButtonElement>;
   let timeout: ReturnType<typeof setTimeout> = null;
 
   function handleOpen(e: MouseEvent) {
@@ -44,17 +43,21 @@ const CeritificateView = () => {
     }
   }
 
-  window.addEventListener("resize", handleResize);
-
-  certificateButtons.forEach((btn) => {
-    btn.addEventListener("click", handleOpen);
+  onMount(() => {
+    certificateButtons =
+      document.querySelectorAll<HTMLButtonElement>("button.certificate");
+    window.addEventListener("resize", handleResize);
+    certificateButtons.forEach((btn) => {
+      btn.addEventListener("click", handleOpen);
+    });
   });
 
   onCleanup(() => {
-    certificateButtons.forEach((btn) => {
+    if (typeof window === "undefined") return;
+    certificateButtons?.forEach((btn) => {
       btn.removeEventListener("click", handleOpen);
     });
-    window.removeEventListener("resize", handleResize);
+    window?.removeEventListener("resize", handleResize);
   });
 
   return (
