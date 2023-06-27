@@ -8,6 +8,7 @@ type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any
 
 const BurgerMenu = (props: {
   language: ArgumentTypes<typeof useTranslations>[0];
+  resumeUrl: string;
 }) => {
   const t = useTranslations(props.language);
   const [isOpen, setIsOpen] = createSignal(false);
@@ -70,7 +71,7 @@ const BurgerMenu = (props: {
               {t("nav.contacts")}
             </a>
             <a
-              href="/resume.pdf"
+              href={props.resumeUrl}
               target="_blank"
               onClick={handleOpen}
               class={styles.item}

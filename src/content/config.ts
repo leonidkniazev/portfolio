@@ -56,6 +56,7 @@ const portfolio = defineCollection({
       email: social,
     }),
     metadata,
+    resumeUrl: z.string(),
   }),
 });
 

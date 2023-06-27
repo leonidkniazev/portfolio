@@ -5,7 +5,7 @@ import Icon from "./Icon.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
-const { socials } = portfolio.data;
+const { socials, resumeUrl } = portfolio.data;
 ---
 
 <div class="container">
@@ -19,7 +19,7 @@ const { socials } = portfolio.data;
       <Icon src={socials.instagram.icon} href={socials.instagram.href} />
       <Icon src={socials.linkedin.icon} href={socials.linkedin.href} />
     </div>
-    <a class="resume" href="/resume.pdf" target="_blank" rel="noreferrer"
+    <a class="resume" href={resumeUrl} target="_blank" rel="noreferrer"
       >{t("hero.resume")}</a
     >
   </div>

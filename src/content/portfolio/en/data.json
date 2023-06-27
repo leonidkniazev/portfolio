@@ -156,5 +156,6 @@
   "metadata": {
     "description": "Personal website of product designer Leonid Kniazev.",
     "keywords": ["portfolio", "Leonid", "Kniazev", "designer"]
-  }
+  },
+  "resumeUrl": "/en/resume.pdf"
 }

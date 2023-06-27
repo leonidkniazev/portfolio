@@ -1,14 +1,21 @@
 ---
+import { getEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Logo from ".././Logo.astro";
 import Swichlang from "./../Swichlang.astro";
 import BurgerMenu from "./BurgerMenu";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { resumeUrl } = portfolio.data;
 //FIX role button
 ---
 
-<BurgerMenu language={lang} client:media="(max-width: 768px)" />
+<BurgerMenu
+  resumeUrl={resumeUrl}
+  language={lang}
+  client:media="(max-width: 768px)"
+/>
 <header>
   <nav>
     <div role="button" id="burgerbtn" class="menu-btn"><span></span></div>
@@ -18,7 +25,7 @@ const t = useTranslations(lang);
       <li><a class="link" href="#skills">{t("nav.skills")}</a></li>
       <li><a class="link" href="#contacts">{t("nav.contacts")}</a></li>
       <li>
-        <a class="link" href="/resume.pdf" target="_blank">{t("nav.resume")}</a>
+        <a class="link" href={resumeUrl} target="_blank">{t("nav.resume")}</a>
       </li>
     </ul>
     <div class="logo">
