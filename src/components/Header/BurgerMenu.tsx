@@ -53,9 +53,16 @@ const BurgerMenu = (props: {
   return (
     <>
       {isOpen() && (
-        <div class={styles.overlay} onClick={handleOpen}>
+        <div
+          class={`${styles.overlay} ${
+            isClosing() ? styles.overlayClosing : ""
+          }`}
+          onClick={handleOpen}
+        >
           <div
-            class={`${styles.container} ${isClosing() ? styles.closing : ""}`}
+            class={`${styles.container} ${
+              isClosing() ? styles.containerClosing : ""
+            }`}
             onClick={(e) => e.stopPropagation()}
           >
             <a href="#" onClick={handleOpen} class={styles.item}>
