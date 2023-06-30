@@ -1,23 +1,25 @@
 ---
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
+import { getEntry } from "astro:content";
+import { getLangFromUrl } from "../../i18n/utils";
 import Section from "../Section.astro";
 const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { aboutMe } = portfolio.data;
 ---
 
 <Section isDark>
   <div class="container">
     <div class="content">
       <p class="first">
-        {t("hero.aboutme1")}
+        {aboutMe.about1}
       </p>
-        <br />
+      <br />
       <p>
-        {t("hero.aboutme2")}
+        {aboutMe.about2}
       </p>
-        <br />
+      <br />
       <p>
-        {t("hero.aboutme3")}
+        {aboutMe.about3}
       </p>
     </div>
   </div>

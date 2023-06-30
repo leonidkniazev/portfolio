@@ -5,13 +5,13 @@ import Icon from "./Icon.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
-const { socials, resumeUrl } = portfolio.data;
+const { socials, resumeUrl, aboutMe } = portfolio.data;
 ---
 
 <div class="container">
-  <h1 class="name">{t("hero.name")}</h1>
+  <h1 class="name">{aboutMe.name}</h1>
   <h3 class="occupation">
-    {t("hero.occupation")}
+    {aboutMe.occupation}
   </h3>
   <div class="contacts">
     <div class="icons">
