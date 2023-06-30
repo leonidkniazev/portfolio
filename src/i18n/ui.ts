@@ -36,7 +36,12 @@ export const ui = {
     "section.projects": "PROJECTS",
     "section.skills": "SKILLS",
     "section.contacts": "contacts",
+
     "projects.tobecontinued": "to be continued",
+
+    "notfound.backhome": "go back home",
+    "notfound.notfound": "Page is not found",
+    "notfound.cv": "get cv",
   },
   ru: {
     "nav.aboutme": "Обо Мне",
@@ -68,6 +73,11 @@ export const ui = {
     "section.projects": "ПРОЕКТЫ",
     "section.skills": "НАВЫКИ",
     "section.contacts": "КОНТАКТЫ",
+
     "projects.tobecontinued": "скоро обновление",
+
+    "notfound.backhome": "Назад",
+    "notfound.notfound": "Страница не найдена",
+    "notfound.cv": "резюме",
   },
 } as const;
