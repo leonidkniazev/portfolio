@@ -1,5 +1,13 @@
 import { defineCollection, z } from "astro:content";
 
+const aboutMe = z.object({
+  name: z.string(),
+  occupation: z.string(),
+  about1: z.string(),
+  about2: z.string(),
+  about3: z.string(),
+});
+
 const roundedSkill = z.object({
   name: z.string(),
   percent: z.number().min(0).max(100),
@@ -35,6 +43,7 @@ const metadata = z.object({
 const portfolio = defineCollection({
   type: "data",
   schema: z.object({
+    aboutMe,
     hardSkills: z.object({
       languages: roundedSkill.array(),
       programmingLanguages: roundedSkill.array(),

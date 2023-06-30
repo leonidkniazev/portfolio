@@ -13,14 +13,7 @@ export const ui = {
     "nav.resume": "Resume",
     "nav.contacts": "Contacts",
 
-    "hero.name": "Leonid",
     "hero.resume": "Get CV",
-    "hero.occupation": "Product Designer",
-    "hero.aboutme1": "I was born and raised in Ivanovo, Russia.",
-    "hero.aboutme2":
-      "I studied to be an investigator, thanks to which I competently express my thoughts, I have experience and skills in speaking to the public. Structured and quickly I process information and learn. I like to explore new areas and improve myself. I didn’t become an investigator, because design came to life.",
-    "hero.aboutme3":
-      "In design, I like the ability to make technology and just service convenient, practical and beautiful for people.",
 
     "skills.languages": "LANGUAGES",
     "skills.programminglanguages": "Programming languages",
@@ -50,14 +43,7 @@ export const ui = {
     "nav.resume": "Резюме",
     "nav.contacts": "Контакты",
 
-    "hero.name": "Леонид",
     "hero.resume": "Резюме",
-    "hero.occupation": "Product Designer",
-    "hero.aboutme1": "Я родился и вырос в городе Иваново, Россия.",
-    "hero.aboutme2":
-      "Я учился на следователя, благодаря чему грамотно излагаю мысли, имею опыт и навыки выступления перед публикой. Структурировано и быстро обрабатываю информацию и обучаюсь. Люблю изучать новые сферы и самосовершенствоваться. Следователем не стал, потому что в жизнь пришёл дизайн",
-    "hero.aboutme3":
-      "В дизайне мне нравится возможность делать технологии и просто сервис удобными, практичными и красивыми для людей.",
 
     "skills.languages": "Языки",
     "skills.programminglanguages": "ЯЗЫКИ ПРОГРАММИРОВАНИЯ",
