@@ -1,4 +1,11 @@
 {
+  "aboutMe": {
+    "name": "Leonid",
+    "occupation": "Product Designer",
+    "about1": "I work on creation and IT products in different roles",
+    "about2": "I studied to be an investigator, thanks to which I competently express my thoughts, I have experience and skills in speaking to the public. Structured and quickly I process information and learn. I like to explore new areas and improve myself. I didn’t become an investigator, because design came to life.",
+    "about3": "In design, I like the ability to make technology and just service convenient, practical and beautiful for people."
+  },
   "hardSkills": {
     "languages": [
       { "name": "en", "img": "/en.png", "percent": 53 },
@@ -127,7 +134,7 @@
   ],
   "projects": [
     {
-      "img": "/thumbnail.png",
+      "img": "/projects/1.png",
       "href": "https://www.figma.com/proto/KSJECODF0nFreEQA9mESKd/CV?page-id=497%3A1322&type=design&node-id=561-1331&viewport=530%2C479%2C0.26&scaling=min-zoom&starting-point-node-id=561%3A1331&show-proto-sidebar=1&mode=design",
       "name": "Prosto Sdam",
       "description": "My own project in edtech from the idea to the realisation"
