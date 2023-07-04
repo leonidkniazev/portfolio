@@ -7,7 +7,7 @@ const { title, img } = Astro.props;
 ---
 
 <div class="container">
-  <img src={img} />
+  <img src={img} alt={`${title} photo`} />
   <span>{title}</span>
 </div>
 

@@ -5,7 +5,7 @@ const { skillName, image } = Astro.props;
 
 <div class=`inner${image ? " has-image" : ""}`>
   {skillName && !image && <span>{skillName}</span>}
-  {image && <img src={image} />}
+  {image && <img src={image} alt={`${skillName} image`} />}
 </div>
 
 <style>
@@ -23,7 +23,7 @@ const { skillName, image } = Astro.props;
     overflow: hidden;
   }
   .inner.has-image {
-    background-color: white
+    background-color: white;
   }
   img {
     display: block;

@@ -13,7 +13,7 @@ const { title, isDark, id } = Astro.props;
   <div id={id} class={`container${isDark ? " dark-container" : ""}`}>
     <h2 class={`${isDark ? "dark-span" : ""}`}>{title}</h2>
     <div class="pointer">
-      <img src={isDark ? "/darkpointer.svg" : "/pointer.svg"} />
+      <img src={isDark ? "/darkpointer.svg" : "/pointer.svg"} alt="" />
       <div class={`line${isDark ? " dark-line" : ""}`}></div>
     </div>
   </div>
