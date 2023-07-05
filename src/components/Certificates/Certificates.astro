@@ -12,9 +12,9 @@ const { certificates } = portfolio.data;
 <Section>
   <div class="container">
     {
-      certificates.map((item) => (
-        <Certificate image={item.img} href={item.href} />
-      ))
+      certificates.map((item) => {
+        return <Certificate image={item.img} href={item.href} />;
+      })
     }
   </div>
 </Section>

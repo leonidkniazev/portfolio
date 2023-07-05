@@ -1,14 +1,21 @@
 ---
+import { ImageMetadata } from "astro";
 export interface Props {
-  src: string;
+  image: ImageMetadata;
   href: string;
 }
 
-const { src, href } = Astro.props;
+const { image, href } = Astro.props;
 ---
 
 <a href={href}>
-  <img class="svg" src={src} alt="icon" />
+  <img
+    class="svg"
+    src={image.src}
+    height={image.height}
+    width={image.width}
+    alt="icon"
+  />
 </a>
 
 <style>

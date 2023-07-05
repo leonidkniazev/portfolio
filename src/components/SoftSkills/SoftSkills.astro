@@ -3,6 +3,9 @@ import { getEntry } from "astro:content";
 import { getLangFromUrl } from "../../i18n/utils";
 import Section from "../Section.astro";
 import SoftSkill from "./SoftSkill.astro";
+import tree from "~/assets/tree.png";
+import treeLetters from "~/assets/tree_letters.svg";
+import { Image } from "astro:assets";
 const lang = getLangFromUrl(Astro.url);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { softSkills } = portfolio.data;
@@ -22,8 +25,14 @@ const secondHalf = softSkills.splice(-middleIndex);
 <Section isDark>
   <div class="tree-container">
     <div class="tree">
-      <img class="tree-img" src="/tree.png" alt="" />
-      <img class="letters" src="/tree_letters.svg" alt="" />
+      <Image class="tree-img" src={tree} alt="" />
+      <img
+        class="letters"
+        src={treeLetters.src}
+        width={treeLetters.width}
+        height={treeLetters.height}
+        alt=""
+      />
     </div>
   </div>
 </Section>

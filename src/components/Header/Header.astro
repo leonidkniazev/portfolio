@@ -18,7 +18,9 @@ const { resumeUrl } = portfolio.data;
 />
 <header>
   <nav>
-    <div role="button" id="burgerbtn" class="menu-btn"><span></span></div>
+    <div role="button" id="burgerbtn" aria-label="Burger menu" class="menu-btn">
+      <span></span>
+    </div>
     <ul>
       <li><a class="link" href="#">{t("nav.aboutme")}</a></li>
       <li><a class="link" href="#projects">{t("nav.projects")}</a></li>

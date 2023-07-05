@@ -1,11 +1,13 @@
 ---
-export type Props = { skillName?: string; image?: string };
+import { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+export type Props = { skillName?: string; image?: ImageMetadata };
 const { skillName, image } = Astro.props;
 ---
 
 <div class=`inner${image ? " has-image" : ""}`>
   {skillName && !image && <span>{skillName}</span>}
-  {image && <img src={image} alt={`${skillName} image`} />}
+  {image && <Image src={image} alt={`${skillName} image`} />}
 </div>
 
 <style>

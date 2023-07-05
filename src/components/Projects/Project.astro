@@ -2,18 +2,21 @@
 export type Props = {
   title: string;
   description: string;
-  img: string;
+  img: ImageMetadata;
   link: string;
 };
 const { img, title, link, description } = Astro.props;
+import { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import arrow from "~/assets/arrow.svg";
 ---
 
 <a href={link} class="container">
-  <img class="background" src={img} alt={title} />
+  <Image class="background" src={img} quality={"low"} alt={title} />
   <div class="content">
     <div class="header">
       <h3 class="title">{title}</h3>
-      <img src={"/arrow.svg"} alt="" />
+      <img src={arrow.src} height={arrow.height} width={arrow.width} alt="" />
     </div>
     <p>{description}</p>
   </div>

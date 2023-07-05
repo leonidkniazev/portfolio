@@ -1,4 +1,9 @@
-<img height="1000" width="804" src="/photo.jpeg" alt="photo" />
+---
+import { Image } from "astro:assets";
+import photo from "~/assets/photo.jpeg";
+---
+
+<Image src={photo} loading="eager" alt="photo" />
 <div class="container">
   <div class="filter"></div>
 </div>

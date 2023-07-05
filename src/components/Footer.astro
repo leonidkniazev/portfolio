@@ -1,12 +1,22 @@
 ---
+import { getImage } from "astro:assets";
 import Logo from "./Logo.astro";
 import Section from "./Section.astro";
+import background from "~/assets/footer.png";
+const optimizedBackground = await getImage({
+  src: background,
+  format: "png",
+});
 ---
 
 <Section isDark>
   <div class="container"><Logo /></div>
 </Section>
-<div class="footer"></div>
+<div
+  class="footer"
+  style={`background-image: url(${optimizedBackground.src});`}
+>
+</div>
 
 <style>
   .container {
@@ -18,7 +28,6 @@ import Section from "./Section.astro";
   .footer {
     width: 100vw;
     height: 8rem;
-    background-image: url("/footer.png");
     background-repeat: repeat no-repeat;
   }
 </style>

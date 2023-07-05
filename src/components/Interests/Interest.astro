@@ -1,13 +1,15 @@
 ---
+import { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 export type Props = {
   title: string;
-  img: string;
+  img: ImageMetadata;
 };
 const { title, img } = Astro.props;
 ---
 
 <div class="container">
-  <img src={img} alt={`${title} photo`} />
+  <Image src={img} quality={"low"} alt={`${title} photo`} />
   <span>{title}</span>
 </div>
 

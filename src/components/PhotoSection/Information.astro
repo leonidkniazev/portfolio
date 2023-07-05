@@ -10,14 +10,14 @@ const { socials, resumeUrl, aboutMe } = portfolio.data;
 
 <div class="container">
   <h1 class="name">{aboutMe.name}</h1>
-  <h3 class="occupation">
+  <h2 class="occupation">
     {aboutMe.occupation}
-  </h3>
+  </h2>
   <div class="contacts">
     <div class="icons">
-      <Icon src={socials.telegram.icon} href={socials.telegram.href} />
-      <Icon src={socials.instagram.icon} href={socials.instagram.href} />
-      <Icon src={socials.linkedin.icon} href={socials.linkedin.href} />
+      <Icon image={socials.telegram.icon} href={socials.telegram.href} />
+      <Icon image={socials.instagram.icon} href={socials.instagram.href} />
+      <Icon image={socials.linkedin.icon} href={socials.linkedin.href} />
     </div>
     <a class="resume" href={resumeUrl} target="_blank" rel="noreferrer"
       >{t("hero.resume")}</a

@@ -1,5 +1,7 @@
 import { createSignal, onCleanup, onMount } from "solid-js";
 import styles from "./certificatesView.module.css";
+import externalIcon from "~/assets/external.svg";
+import closeIcon from "~/assets/close.svg";
 
 const CeritificateView = () => {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -72,12 +74,20 @@ const CeritificateView = () => {
               <a class={styles.link} href={verificationUrl()} target="_blank">
                 <img
                   class={styles.icon}
-                  src="/external.svg"
+                  src={externalIcon.src}
+                  height={externalIcon.height}
+                  width={externalIcon.width}
                   alt="certificate icon"
                 />
               </a>
               <button class={styles.close} onClick={handleOpen}>
-                <img class={styles.icon} src="/close.svg" alt="close icon" />
+                <img
+                  class={styles.icon}
+                  src={closeIcon.src}
+                  height={closeIcon.height}
+                  width={closeIcon.width}
+                  alt="close icon"
+                />
               </button>
             </div>
             <img class={styles.image} src={imgUrl()} alt={"Certificate"} />

@@ -1,21 +1,30 @@
 ---
 export type Props = {
-  image: string;
+  image: ImageMetadata;
   href: string;
 };
 const { image, href } = Astro.props;
+import { ImageMetadata } from "astro";
+import { Image } from "astro:assets";
+import extenalIcon from "~/assets/external.svg";
 ---
 
 <div class="container">
   <a href={href} target="_blank" class="verify">
-    <img class="icon" src="/external.svg" alt="certificate icon" />
+    <img
+      class="icon"
+      src={extenalIcon.src}
+      height={extenalIcon.height}
+      width={extenalIcon.width}
+      alt="certificate icon"
+    />
   </a>
   <button
     class="image-container certificate"
     data-verification={href}
-    data-img={image}
+    data-img={image.src}
   >
-    <img class="img" src={image} alt="Project" />
+    <Image class="img" src={image} alt="Project" />
   </button>
 </div>
 
@@ -48,19 +57,21 @@ const { image, href } = Astro.props;
     }
   }
   .image-container {
-    width: fit-content;
     border: 0;
+    background-color: white;
     cursor: pointer;
+    aspect-ratio: 4/3;
   }
   .icon {
     display: block;
     max-width: 100%;
     object-fit: cover;
   }
-  img.img {
+  .img {
     display: block;
     max-width: 100%;
-    object-fit: cover;
+    max-height: 100%;
+    object-fit: contain;
   }
   @media (max-width: 768px) {
     .container {

@@ -12,11 +12,13 @@ const { hardSkills } = portfolio.data;
   <span class="title">{t("skills.languages")}</span>
   <div class="skill-grid">
     {
-      hardSkills.languages.map((item) => (
-        <rounded-skill data-percent={item.percent}>
-          <PercentRound skillName={item.name} image={item.img} />
-        </rounded-skill>
-      ))
+      hardSkills.languages.map((item) => {
+        return (
+          <rounded-skill data-percent={item.percent}>
+            <PercentRound skillName={item.name} image={item.img} />
+          </rounded-skill>
+        );
+      })
     }
   </div>
   <span class="title">{t("skills.programminglanguages")}</span>

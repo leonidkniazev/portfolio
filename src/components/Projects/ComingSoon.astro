@@ -2,11 +2,12 @@
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+import arc from "~/assets/arc.svg";
 ---
 
 <div class="container">
   <div class="text-container">
-    <img src="/arc.svg" alt="" />
+    <img src={arc.src} width={arc.width} height={arc.height} alt="" />
     <h3 class="text">{t("projects.tobecontinued")}</h3>
   </div>
 </div>

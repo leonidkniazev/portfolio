@@ -8,8 +8,8 @@
   },
   "hardSkills": {
     "languages": [
-      { "name": "en", "img": "/en.png", "percent": 53 },
-      { "name": "ru", "img": "/ru.png", "percent": 95 }
+      { "name": "en", "img": "~/assets/en.png", "percent": 53 },
+      { "name": "ru", "img": "~/assets/ru.png", "percent": 95 }
     ],
     "programmingLanguages": [
       { "name": "JS", "percent": 22 },
@@ -76,86 +76,89 @@
   ],
   "certificates": [
     {
-      "img": "/certificates/PM.png",
+      "img": "~/assets/certificates/PM.png",
       "href": "https://otus.ru/certificate/9763edb02fb04a408df855182a7c826a/en/"
     },
     {
-      "img": "/certificates/JS.png",
+      "img": "~/assets/certificates/JS.png",
       "href": "https://otus.ru/certificate/0ef5a617ee4e4f928ddf836eb3edcdf8/en/"
     },
     {
-      "img": "/certificates/Fundamental.png",
+      "img": "~/assets/certificates/Fundamental.png",
       "href": "https://www.credential.net/66ee0edc-f9da-4220-978c-a45e5849f440"
     },
     {
-      "img": "/certificates/Essentuals.png",
+      "img": "~/assets/certificates/Essentuals.png",
       "href": "https://www.udemy.com/certificate/UC-d02326e2-93bc-4fb3-b8c0-074985340a62/"
     },
     {
-      "img": "/certificates/UI_kit.png",
+      "img": "~/assets/certificates/UI_kit.png",
       "href": "https://www.credential.net/66ee0edc-f9da-4220-978c-a45e5849f440"
     },
     {
-      "img": "/certificates/Complite.png",
+      "img": "~/assets/certificates/Complite.png",
       "href": "https://coursera.org/verify/UWWFR42FTWS4"
     },
     {
-      "img": "/certificates/1G.png",
+      "img": "~/assets/certificates/1G.png",
       "href": "https://www.coursera.org/account/accomplishments/verify/W2T88XW5EYGV"
     },
     {
-      "img": "/certificates/2G.png",
+      "img": "~/assets/certificates/2G.png",
       "href": "https://coursera.org/share/b97b6eac9e711ae664c0df16d1f3fca8"
     },
     {
-      "img": "/certificates/3G.png",
+      "img": "~/assets/certificates/3G.png",
       "href": "https://coursera.org/verify/9YDQGC5CR94S"
     },
     {
-      "img": "/certificates/4G.png",
+      "img": "~/assets/certificates/4G.png",
       "href": "https://coursera.org/verify/YY5RGKAUHCSC"
     },
     {
-      "img": "/certificates/5G.png",
+      "img": "~/assets/certificates/5G.png",
       "href": "https://coursera.org/verify/693MNTUX2X7Z"
     },
     {
-      "img": "/certificates/6G.png",
+      "img": "~/assets/certificates/6G.png",
       "href": "https://coursera.org/verify/VPCLZ85XUQR5"
     },
     {
-      "img": "/certificates/7G.png",
+      "img": "~/assets/certificates/7G.png",
       "href": "https://coursera.org/verify/UWWFR42FTWS4"
     },
     {
-      "img": "/certificates/Google.png",
+      "img": "~/assets/certificates/Google.png",
       "href": "https://coursera.org/verify/UWWFR42FTWS4"
     }
   ],
   "projects": [
     {
-      "img": "/projects/1.png",
+      "img": "~/assets/projects/1.png",
       "href": "https://www.figma.com/proto/KSJECODF0nFreEQA9mESKd/CV?page-id=497%3A1322&type=design&node-id=561-1331&viewport=530%2C479%2C0.26&scaling=min-zoom&starting-point-node-id=561%3A1331&show-proto-sidebar=1&mode=design",
       "name": "Prosto Sdam",
       "description": "My own project in edtech from the idea to the realisation"
     }
   ],
   "interests": [
-    { "name": "art", "img": "/interests/art.png" },
-    { "name": "dance", "img": "/interests/dance.png" },
-    { "name": "games", "img": "/interests/games.png" },
-    { "name": "geography", "img": "/interests/geography.png" },
-    { "name": "music", "img": "/interests/music.png" },
-    { "name": "travel", "img": "/interests/travel.png" }
+    { "name": "art", "img": "~/assets/interests/art.png" },
+    { "name": "dance", "img": "~/assets/interests/dance.png" },
+    { "name": "games", "img": "~/assets/interests/games.png" },
+    { "name": "geography", "img": "~/assets/interests/geography.png" },
+    { "name": "music", "img": "~/assets/interests/music.png" },
+    { "name": "travel", "img": "~/assets/interests/travel.png" }
   ],
   "socials": {
-    "telegram": { "icon": "/telegram.svg", "href": "https://t.me/constant_l" },
+    "telegram": {
+      "icon": "~/assets/telegram.svg",
+      "href": "https://t.me/constant_l"
+    },
     "instagram": {
-      "icon": "/instagram.svg",
+      "icon": "~/assets/instagram.svg",
       "href": "https://www.instagram.com/leonidkniazev_"
     },
     "linkedin": {
-      "icon": "/linkedin.svg",
+      "icon": "~/assets/linkedin.svg",
       "href": "https://www.linkedin.com/in/leonid-kniazev-770a35253"
     },
     "email": { "href": "mailto:knyazb08081999@gmail.com" }

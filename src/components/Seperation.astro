@@ -1,5 +1,7 @@
 ---
 import Section from "./Section.astro";
+import darkPointer from "~/assets/darkpointer.svg";
+import pointer from "~/assets/pointer.svg";
 
 export type Props = {
   title: string;
@@ -13,7 +15,12 @@ const { title, isDark, id } = Astro.props;
   <div id={id} class={`container${isDark ? " dark-container" : ""}`}>
     <h2 class={`${isDark ? "dark-span" : ""}`}>{title}</h2>
     <div class="pointer">
-      <img src={isDark ? "/darkpointer.svg" : "/pointer.svg"} alt="" />
+      <img
+        height={isDark ? darkPointer.height : pointer.height}
+        width={isDark ? darkPointer.width : pointer.width}
+        src={isDark ? darkPointer.src : pointer.src}
+        alt=""
+      />
       <div class={`line${isDark ? " dark-line" : ""}`}></div>
     </div>
   </div>

@@ -12,14 +12,16 @@ const { projects } = portfolio.data;
 <Section>
   <div class="container">
     {
-      projects.map((project) => (
-        <Project
-          title={project.name}
-          img={project.img}
-          description={project.description}
-          link={project.href}
-        />
-      ))
+      projects.map((project) => {
+        return (
+          <Project
+            title={project.name}
+            img={project.img}
+            description={project.description}
+            link={project.href}
+          />
+        );
+      })
     }
     <ComingSoon />
   </div>

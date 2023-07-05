@@ -11,9 +11,13 @@ const { interests } = portfolio.data;
 <Section>
   <div class="container">
     {
-      interests.map((interest) => (
-        <Interest title={interest.name} img={interest.img} />
-      ))
+      interests.map((interest) => {
+        return (
+          <>
+            <Interest img={interest.img} title={interest.name} />
+          </>
+        );
+      })
     }
   </div>
 </Section>
