@@ -14,7 +14,7 @@ const BurgerMenu = (props: {
   const [isOpen, setIsOpen] = createSignal(false);
   const [isClosing, setIsClosing] = createSignal(false);
   let openBtn: HTMLButtonElement;
-  let timeout: ReturnType<typeof setTimeout> = null;
+  let timeout: ReturnType<typeof setTimeout>;
   function handleResize() {
     if (window.innerWidth >= 768 && isOpen()) {
       openBtn.classList.remove("active");

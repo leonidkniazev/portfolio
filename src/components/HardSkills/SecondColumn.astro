@@ -76,7 +76,7 @@ const { hardSkills } = portfolio.data;
       super();
       this.hasPlayed = false;
       this.currentDeg = 0;
-      const ensuredPercent = Math.max(0, Math.min(100, +this.dataset.percent));
+      const ensuredPercent = Math.max(0, Math.min(100, +this.dataset.percent!));
       this.deg = ((360 - 100) / 100) * ensuredPercent;
       this.style.background = `conic-gradient(from 130deg, white 100deg, #A634FF 100deg ${
         100 + 0

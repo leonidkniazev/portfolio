@@ -7,7 +7,7 @@ const CeritificateView = () => {
   const [imgUrl, setImgUrl] = createSignal<string>();
   const [verificationUrl, setVerificationUrl] = createSignal<string>();
   let certificateButtons: NodeListOf<HTMLButtonElement>;
-  let timeout: ReturnType<typeof setTimeout> = null;
+  let timeout: ReturnType<typeof setTimeout>;
 
   function handleOpen(e: MouseEvent) {
     if (window.innerWidth <= 768) return;
