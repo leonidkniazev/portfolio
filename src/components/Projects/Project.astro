@@ -16,7 +16,13 @@ import arrow from "~/assets/arrow.svg";
   <div class="content">
     <div class="header">
       <h3 class="title">{title}</h3>
-      <img src={arrow.src} height={arrow.height} width={arrow.width} alt="" />
+      <img
+        src={arrow.src}
+        class="arrow"
+        height={arrow.height}
+        width={arrow.width}
+        alt=""
+      />
     </div>
     <p>{description}</p>
   </div>
@@ -62,5 +68,24 @@ import arrow from "~/assets/arrow.svg";
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+  .container:hover {
+    .arrow {
+      animation: bounce 0.8s ease-in-out;
+    }
+  }
+
+  @keyframes bounce {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    30%,
+    70% {
+      transform: translateX(15px);
+    }
+    50% {
+      transform: translateX(-15px);
+    }
   }
 </style>
