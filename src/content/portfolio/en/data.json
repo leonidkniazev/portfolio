@@ -138,7 +138,13 @@
       "href": "https://www.figma.com/proto/KSJECODF0nFreEQA9mESKd/CV?page-id=497%3A1322&type=design&node-id=561-1331&viewport=530%2C479%2C0.26&scaling=min-zoom&starting-point-node-id=561%3A1331&show-proto-sidebar=1&mode=design",
       "name": "Prosto Sdam",
       "description": "My own project in edtech from the idea to the realisation"
-    }
+    },
+    {
+      "img": "~/assets/projects/2_eng.png",
+      "href": "https://www.figma.com/proto/9o58TcPuQzNzNeyJ3m4msf/Raiffeisen-Bank?page-id=0%3A1&type=design&node-id=38-79&viewport=1033%2C471%2C0.1&t=YWJIN07e0BzUKsvo-1&scaling=min-zoom&starting-point-node-id=38%3A79&show-proto-sidebar=1&mode=design",
+      "name": "Raiffeisen Bank - interface",
+      "description": "This is the project where I created service for managing power of attorney"}
+    
   ],
   "interests": [
     { "name": "art", "img": "~/assets/interests/art.png" },
