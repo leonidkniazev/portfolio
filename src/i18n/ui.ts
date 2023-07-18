@@ -20,7 +20,7 @@ export const ui = {
     "skills.software": "SOFTWARE SKILLS",
     "skills.more": "and 22 more",
     "skills.frameworks": "USING FRAMEWORKS",
-    "skills.uxexploration": "ux-exploartion",
+    "skills.uxexploration": "ux-research",
     "skills.uxdesign": "ux-design",
     "skills.uidesign": "ui-design",
     "skills.productmanagment": "product managment",
