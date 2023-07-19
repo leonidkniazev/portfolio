@@ -1,0 +1,35 @@
+---
+import Hero from "../../components/Cases/Hero/Hero.astro";
+import Introduction from "../../components/Cases/Introduction.astro";
+import Process from "../../components/Cases/Process.astro";
+import Research from "../../components/Cases/Research/Research.astro";
+import SectionTitle from "../../components/Cases/SectionTitle.astro";
+import CaseLayout from "../../layouts/CaseLayout.astro";
+
+export function getStaticPaths() {
+  return [
+    { params: { id: "test" } },
+    { params: { id: "2" } },
+    { params: { id: "3" } },
+  ];
+}
+
+const { id } = Astro.params;
+---
+
+<CaseLayout title={`Case: ${id}`}>
+  <div class="mt-16"></div>
+  <Hero
+    title="prosto sdam"
+    description="Mobile app for preparing students for exams"
+    prototypeUrl="todo"
+    firstImg="test"
+    logoUrl="/projects/1.svg"
+  />
+  <SectionTitle text="Introduction" number={1} />
+  <Introduction />
+  <SectionTitle text="Process" number={2} />
+  <Process />
+  <SectionTitle text="Research" number={3} />
+  <Research />
+</CaseLayout>
