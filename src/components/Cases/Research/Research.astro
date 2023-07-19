@@ -1,0 +1,38 @@
+---
+import Section from "../../Section.astro";
+import Insight from "./Insight.astro";
+---
+
+<Section>
+  <h3 class="mb-4 text-3xl font-medium uppercase md:text-4xl">User research</h3>
+  <p class="w-1/2 text-sm md:text-base">
+    Since the approach was applied, it was decided to conduct a set of studies
+    focused on the user. First, a qualitative research (user interview) in order
+    to identify the main layer of problems that schoolchildren face, and then a
+    quantitative study (survey) in order to validate these problems for the
+    popularity of the problem. It was also decided at the same time to learn
+    more about the users themselves, what is important for them when preparing,
+    in order to develop a base for compiling a value proposition.
+  </p>
+  <div class="flex items-center justify-center">
+    <img src="/projects/1.png" />
+  </div>
+  <span class="block text-right text-sm text-zinc-600 md:text-base">
+    After conducting a qualitative study, we made an empathy map
+  </span>
+  <h3 class="text-3xl uppercase md:text-4xl">Research insights</h3>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <Insight
+      number={1}
+      text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    />
+    <Insight
+      number={2}
+      text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    />
+    <Insight
+      number={3}
+      text="Lorem ipsum dolor sit amet, qui minim labore adipisicing minim sint cillum sint consectetur cupidatat."
+    />
+  </div>
+</Section>
