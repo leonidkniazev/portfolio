@@ -1,7 +1,26 @@
 ---
 import Section from "../Section.astro";
+export type Props = {
+  number: number;
+  text: string;
+  color?: string;
+};
+const { number, text, color } = Astro.props;
+const phase = number < 10 ? `0${number}` : number.toString();
 ---
 
 <Section>
-  <div></div>
+  <div class="my-10 flex w-full items-center justify-start gap-1.5">
+    <span
+      class="text-5xl font-black leading-10 text-blue-700 opacity-40 sm:text-7xl xl:text-[150px]"
+    >
+      {phase}
+    </span>
+    <span
+      class="text-5xl font-black leading-10 text-indigo-200 opacity-40 sm:text-7xl xl:text-[150px]"
+    >
+      {text}
+    </span>
+  </div>
 </Section>
+
