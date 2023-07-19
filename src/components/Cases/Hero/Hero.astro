@@ -1,0 +1,70 @@
+---
+import Section from "../../Section.astro";
+import PinkPhone from "./PinkPhone.astro";
+import BluePhone from "./BluePhone.astro";
+
+export type Props = {
+  title: string;
+  logoUrl: string;
+  description: string;
+  prototypeUrl: string;
+  firstImg: string;
+  secondImg?: string;
+};
+const { title, description, secondImg, firstImg, prototypeUrl, logoUrl } =
+  Astro.props;
+---
+
+<Section>
+  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
+    <div
+      class="flex h-full flex-col items-center justify-center gap-32 md:self-center"
+    >
+      <div class="flex flex-col gap-5">
+        <div class="flex gap-3">
+          <img src={logoUrl} alt="Project Logo" />
+          <span class="text-3xl font-medium uppercase leading-10 lg:text-6xl"
+            >{title}</span
+          >
+        </div>
+        <p class="text-sm lg:text-2xl">
+          {description}
+        </p>
+      </div>
+      <div
+        class="hidden flex-col items-center gap-2 md:flex lg:flex-row lg:gap-14"
+      >
+        <a
+          href={prototypeUrl}
+          class="w-full whitespace-nowrap rounded-full bg-black px-7 py-4 text-center text-sm font-semibold uppercase sm:w-auto lg:text-lg"
+          >Go to prototype</a
+        >
+        <span class="text-sm text-zinc-500">or</span>
+        <div class="flex items-center gap-3">
+          <img src="/chevron.svg" />
+          <a href="todo" class="text-sm text-black">View the process</a>
+        </div>
+      </div>
+    </div>
+    <div class="relative m-auto flex justify-end md:justify-end md:py-16">
+      <div class="scale-75 lg:scale-100">
+        <BluePhone img={secondImg} />
+      </div>
+      <div class="absolute right-24 top-32 scale-75 lg:right-32 lg:scale-100">
+        <PinkPhone img={firstImg} />
+      </div>
+    </div>
+    <div class="flex flex-col items-center gap-2 md:hidden">
+      <a
+        href={prototypeUrl}
+        class="w-full whitespace-nowrap rounded-full bg-black px-7 py-4 text-center text-sm font-semibold uppercase md:w-auto"
+        >Go to prototype</a
+      >
+      <span class="text-sm text-zinc-500">or</span>
+      <div class="flex items-center gap-3">
+        <img src="/chevron.svg" />
+        <a href="todo" class="text-sm text-black">View the process</a>
+      </div>
+    </div>
+  </div>
+</Section>
