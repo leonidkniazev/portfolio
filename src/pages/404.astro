@@ -1,6 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
-import Layout from "../layouts/Layout.astro";
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 let homeUrl: string;
@@ -15,7 +15,7 @@ if (lang === "en") {
 resumeUrl += "resume.pdf";
 ---
 
-<Layout title={t("notfound.notfound")}>
+<PortfolioLayout title={t("notfound.notfound")}>
   <div class="container">
     <div class="upper-section">
       <p class="text">404</p>
@@ -28,7 +28,7 @@ resumeUrl += "resume.pdf";
       </div>
     </div>
   </div>
-</Layout>
+</PortfolioLayout>
 
 <style>
   .container {
