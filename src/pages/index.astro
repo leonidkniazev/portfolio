@@ -7,14 +7,14 @@ import SoftSkills from "../components/SoftSkills/SoftSkills.astro";
 import HardSkills from "../components/HardSkills/HardSkills.astro";
 import Certificates from "../components/Certificates/Certificates.astro";
 import Contacts from "../components/Contacts/Contacts.astro";
-import Layout from "../layouts/Layout.astro";
+import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 import RunningRows from "../components/Certificates/RunningRows.astro";
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Layout title="Portfolio">
+<PortfolioLayout title="Portfolio">
   <main>
     <PhotoSection />
     <Seperation title={t("section.projects")} id="projects" />
