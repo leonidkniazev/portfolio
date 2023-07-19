@@ -1,0 +1,119 @@
+---
+import Header from "../components/Header/Header.astro";
+import Footer from "../components/Footer.astro";
+import "@fontsource/ysabeau/100.css";
+import "@fontsource/ysabeau/200.css";
+import "@fontsource/ysabeau/300.css";
+import "@fontsource/ysabeau/400.css";
+import "@fontsource/ysabeau/500.css";
+import "@fontsource/ysabeau/600.css";
+import "@fontsource/ysabeau/700.css";
+import "@fontsource/ysabeau/800.css";
+import "@fontsource/ysabeau/900.css";
+import "@fontsource/montserrat/100.css";
+import "@fontsource/montserrat/200.css";
+import "@fontsource/montserrat/300.css";
+import "@fontsource/montserrat/400.css";
+import "@fontsource/montserrat/500.css";
+import "@fontsource/montserrat/600.css";
+import "@fontsource/montserrat/700.css";
+import "@fontsource/montserrat/800.css";
+import "@fontsource/montserrat/900.css";
+import { getLangFromUrl } from "../i18n/utils";
+import { getEntry } from "astro:content";
+import Analytics from "../components/Analytics";
+import "../tailwind.css";
+export interface Props {
+  title: string;
+}
+
+const { title } = Astro.props;
+const lang = getLangFromUrl(Astro.url);
+const portfolio = await getEntry("portfolio", `${lang}/data`);
+const { metadata } = portfolio.data;
+
+---
+
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content={metadata.description} />
+    <meta name="keywords" content={metadata.keywords.join(", ")} />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Analytics client:only />
+    <Header />
+    <slot />
+    <Footer />
+  </body>
+
+  <style is:global>
+    :root {
+      --primary: white;
+      --secondary: black;
+      --accent: #cfff68;
+      --fs-medium: 1rem;
+      --fs-small: 0.9rem;
+    }
+
+    .full-bleed {
+      box-shadow: 0 0 0 100vmax black;
+      clip-path: inset(0 -100vmax);
+    }
+    .wrapper {
+      width: min(100% - 3rem, 1280px);
+      margin-inline: auto;
+    }
+
+    * {
+      margin: 0;
+      font-family: Montserrat;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    h1 {
+      font-family: Ysabeau;
+      font-size: 5rem;
+      font-weight: 900;
+      line-height: 7.5rem;
+    }
+    h2 {
+      font-family: Ysabeau;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 4.5rem;
+    }
+    h3 {
+      font-family: Montserrat;
+      font-size: 1.8rem;
+      font-weight: 700;
+      line-height: 3.3rem;
+    }
+    main {
+      margin-top: 3.5rem;
+    }
+    html,
+    body {
+      font-family: Montserrat;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    @media (max-width: 768px) {
+      h2 {
+        font-size: 2rem;
+      }
+      h3 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</html>
