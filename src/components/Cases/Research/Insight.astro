@@ -1,0 +1,17 @@
+---
+export type Props = {
+  number: number;
+  text: string;
+};
+const { number, text } = Astro.props;
+---
+
+<div class="flex w-full items-center gap-4">
+  <div class="relative rounded-full border-4 border-black bg-yellow-400 p-10">
+    <span
+      class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 text-3xl font-bold"
+      >{number}</span
+    >
+  </div>
+  <p>{text}</p>
+</div>
