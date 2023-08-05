@@ -8,7 +8,6 @@ export type Props = {
 const { img, title, link, description } = Astro.props;
 import { ImageMetadata } from "astro";
 import { Image } from "astro:assets";
-import arrow from "~/assets/arrow.svg";
 ---
 
 <a href={link} target="_blank" class="container">
@@ -16,15 +15,8 @@ import arrow from "~/assets/arrow.svg";
   <div class="content">
     <div class="header">
       <h3 class="title">{title}</h3>
-      <img
-        src={arrow.src}
-        class="arrow"
-        height={arrow.height}
-        width={arrow.width}
-        alt=""
-      />
     </div>
-    <p>{description}</p>
+    <p title={description} class="description">{description}</p>
   </div>
 </a>
 <style>
@@ -41,13 +33,15 @@ import arrow from "~/assets/arrow.svg";
   }
   .content {
     position: absolute;
-    bottom: 5%;
+    bottom: 0%;
     height: 9rem;
     width: 100%;
     background-color: black;
     display: flex;
-    padding: 0.6rem 1.2rem;
+    padding: 1rem;
+    gap: 1rem;
     flex-direction: column;
+    justify-content: center;
   }
   span {
     font-family: Ysabeau;
@@ -59,11 +53,16 @@ import arrow from "~/assets/arrow.svg";
   .title {
     font-weight: 700;
     line-height: unset;
-    margin-bottom: 0.5rem;
     text-transform: uppercase;
   }
-  p {
+  .description {
     font-weight: 400;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-clamp: 2;
+    overflow: hidden;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
     font-size: 1rem;
   }
   .header {
