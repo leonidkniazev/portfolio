@@ -12,7 +12,10 @@ const { title, isDark, id } = Astro.props;
 ---
 
 <Section isDark={isDark}>
-  <div id={id} class={`container${isDark ? " dark-container" : ""}`}>
+  <pointer-seperation
+    id={id}
+    class={`container${isDark ? " dark-container" : ""}`}
+  >
     <h2 class={`${isDark ? "dark-span" : ""}`}>{title}</h2>
     <div class="pointer">
       <img
@@ -23,8 +26,32 @@ const { title, isDark, id } = Astro.props;
       />
       <div class={`line${isDark ? " dark-line" : ""}`}></div>
     </div>
-  </div>
+  </pointer-seperation>
 </Section>
+
+<script>
+  class Arrow extends HTMLElement {
+    private observer: IntersectionObserver;
+    private async onObserve(entries: IntersectionObserverEntry[]) {
+      console.log("hi from onObserve");
+      const entry = entries[0];
+      let target = this.querySelector(".pointer") as HTMLDivElement;
+      if (entry.isIntersecting) {
+        console.log("add class");
+        target.classList.add("active");
+        this.observer.disconnect();
+      }
+    }
+    constructor() {
+      super();
+      this.observer = new IntersectionObserver(this.onObserve.bind(this), {
+        threshold: 0.1,
+      });
+      this.observer.observe(this);
+    }
+  }
+  customElements.define("pointer-seperation", Arrow);
+</script>
 
 <style>
   .container {
@@ -49,7 +76,12 @@ const { title, isDark, id } = Astro.props;
     position: relative;
     display: flex;
     align-items: center;
+    translate: 100%;
     flex: 1;
+    transition: translate 1.3s ease-in-out;
+  }
+  .active {
+    translate: 0%;
   }
   img {
     position: absolute;
