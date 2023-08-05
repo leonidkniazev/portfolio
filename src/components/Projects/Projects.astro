@@ -12,7 +12,7 @@ const { projects } = portfolio.data;
 <Section>
   <div class="container">
     {
-      projects.map((project) => {
+      projects.reverse().map((project) => {
         return (
           <Project
             title={project.name}
