@@ -33,11 +33,9 @@ const { title, isDark, id } = Astro.props;
   class Arrow extends HTMLElement {
     private observer: IntersectionObserver;
     private async onObserve(entries: IntersectionObserverEntry[]) {
-      console.log("hi from onObserve");
       const entry = entries[0];
       let target = this.querySelector(".pointer") as HTMLDivElement;
       if (entry.isIntersecting) {
-        console.log("add class");
         target.classList.add("active");
         this.observer.disconnect();
       }
