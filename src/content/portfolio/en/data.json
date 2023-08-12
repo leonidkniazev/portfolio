@@ -144,6 +144,12 @@
       "href": "https://www.figma.com/proto/9o58TcPuQzNzNeyJ3m4msf/Raiffeisen-Bank?page-id=0%3A1&type=design&node-id=38-79&viewport=1033%2C471%2C0.1&t=YWJIN07e0BzUKsvo-1&scaling=min-zoom&starting-point-node-id=38%3A79&show-proto-sidebar=1&mode=design",
       "name": "Form interface",
       "description": "This is the project where I created service for managing power of attorney"
+    },
+    {
+      "img": "~/assets/projects/3.png",
+      "href": "https://www.figma.com/proto/ZyzeLE6ZElWwqqXFnnYKDZ/DEDEX?page-id=344%3A9094&type=design&node-id=502-10470&viewport=-2186%2C117%2C0.17&t=nJyHYUfljnAPJb2E-1&scaling=min-zoom&starting-point-node-id=502%3A10470&mode=design",
+      "name": "DEDEX",
+      "description": "App for decentralized derivatives exchange"
     }
   ],
   "interests": [
