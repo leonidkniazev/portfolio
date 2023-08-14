@@ -1,70 +1,94 @@
 ---
-import Section from "../../Section.astro";
-import PinkPhone from "./PinkPhone.astro";
-import BluePhone from "./BluePhone.astro";
-
+import { ImageMetadata } from "astro";
+import Links from "./Links.astro";
 export type Props = {
-  title: string;
-  logoUrl: string;
+  title?: string;
   description: string;
   prototypeUrl: string;
-  firstImg: string;
-  secondImg?: string;
+  img: ImageMetadata;
+  behanceUrl: string;
+  figmaUrl: string;
 };
-const { title, description, secondImg, firstImg, prototypeUrl, logoUrl } =
+
+const { title, description, prototypeUrl, img, behanceUrl, figmaUrl } =
   Astro.props;
 ---
 
-<Section>
-  <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-    <div
-      class="flex h-full flex-col items-center justify-center gap-32 md:self-center"
-    >
-      <div class="flex flex-col gap-5">
-        <div class="flex gap-3">
-          <img src={logoUrl} alt="Project Logo" />
-          <span class="text-3xl font-medium uppercase leading-10 lg:text-6xl"
-            >{title}</span
-          >
-        </div>
-        <p class="text-sm lg:text-2xl">
-          {description}
-        </p>
-      </div>
-      <div
-        class="hidden flex-col items-center gap-2 md:flex lg:flex-row lg:gap-14"
-      >
-        <a
-          href={prototypeUrl}
-          class="w-full whitespace-nowrap rounded-full bg-black px-7 py-4 text-center text-sm font-semibold uppercase sm:w-auto lg:text-lg"
-          >Go to prototype</a
-        >
-        <span class="text-sm text-zinc-500">or</span>
-        <div class="flex items-center gap-3">
-          <img src="/chevron.svg" />
-          <a href="todo" class="text-sm text-black">View the process</a>
-        </div>
-      </div>
+<div class="container">
+  <div class="content">
+    <div class="title-section">
+      {title && <h1 class="title">{title}</h1>}
+      <p class="description">{description}</p>
     </div>
-    <div class="relative m-auto flex justify-end md:justify-end md:py-16">
-      <div class="scale-75 lg:scale-100">
-        <BluePhone img={secondImg} />
-      </div>
-      <div class="absolute right-24 top-32 scale-75 lg:right-32 lg:scale-100">
-        <PinkPhone img={firstImg} />
-      </div>
-    </div>
-    <div class="flex flex-col items-center gap-2 md:hidden">
-      <a
-        href={prototypeUrl}
-        class="w-full whitespace-nowrap rounded-full bg-black px-7 py-4 text-center text-sm font-semibold uppercase md:w-auto"
-        >Go to prototype</a
-      >
-      <span class="text-sm text-zinc-500">or</span>
-      <div class="flex items-center gap-3">
-        <img src="/chevron.svg" />
-        <a href="todo" class="text-sm text-black">View the process</a>
-      </div>
-    </div>
+    <Links
+      prototypeUrl={prototypeUrl}
+      behanceUrl={behanceUrl}
+      figmaUrl={figmaUrl}
+    />
   </div>
-</Section>
+  <div class="img-container">
+    <img
+      class="img"
+      height={img.height}
+      width={img.width}
+      src={img.src}
+      alt=""
+    />
+  </div>
+</div>
+<div class="footer full-bleed"></div>
+
+<style>
+  .container {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 40% 60%;
+  }
+  .content {
+    display: flex;
+    z-index: 10;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .title-section {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  .title {
+    font-size: 5rem;
+    font-weight: 800;
+  }
+  .description {
+    font-size: 2.1875rem;
+    font-weight: 400;
+  }
+  .img-container {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+  .img {
+    display: block;
+    max-width: 100%;
+    height: fit-content;
+  }
+  .footer {
+    height: 1rem;
+    background-color: black;
+  }
+  @media (max-width: 1280px) {
+    .title {
+      font-size: 3rem;
+    }
+    .description {
+      font-size: 1.75rem;
+    }
+    .container {
+      grid-template-rows: 1fr;
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+  }
+</style>

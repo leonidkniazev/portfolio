@@ -1,0 +1,136 @@
+---
+import figma from "~/assets/figma.svg";
+import behance from "~/assets/behance.svg";
+import website from "~/assets/website.svg";
+import chevron from "~/assets/chevron.svg";
+import { getLangFromUrl, useTranslations } from "../../../i18n/utils";
+export type Props = {
+  prototypeUrl: string;
+  figmaUrl: string;
+  behanceUrl: string;
+};
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+const { prototypeUrl, figmaUrl, behanceUrl } = Astro.props;
+---
+
+<div class="container">
+  <span class="title">{t("case.lookat")}</span>
+  <div class="links">
+    <div class="link-container">
+      <div class="link">
+        <img
+          height={website.height}
+          width={website.width}
+          src={website.src}
+          alt=""
+        />
+      </div>
+      <span>Website</span>
+    </div>
+    <div class="link-container">
+      <a href={figmaUrl} aria-label="Figma project page" class="link">
+        <img height={figma.height} width={figma.width} src={figma.src} alt="" />
+      </a>
+      <span>Figma</span>
+    </div>
+    <div class="link-container">
+      <a href={behanceUrl} aria-label="Behance project page" class="link">
+        <img
+          height={behance.height}
+          width={behance.width}
+          src={behance.src}
+          alt=""
+        />
+      </a>
+      <span>Behance</span>
+    </div>
+  </div>
+  <div class="prototype-container">
+    <a href={prototypeUrl} class="goto-prototype">{t("case.gotoprototype")}</a>
+    <span class="or">{t("case.or")}</span>
+    <div class="view">
+      <img
+        width={chevron.width}
+        height={chevron.height}
+        src={chevron.src}
+        alt=""
+      />
+      <span class="view-text">{t("case.viewtheprocess")}</span>
+    </div>
+  </div>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 1.5rem;
+    margin: 2.5rem 0;
+    border-radius: 20px;
+    background: #d7ecff;
+  }
+  .title {
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .links {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 4rem;
+  }
+  .link-container {
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+    gap: 1rem;
+  }
+  .link {
+    width: 5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 5rem;
+    object-fit: cover;
+    border-radius: 9999px;
+    background: black;
+  }
+  .prototype-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .goto-prototype {
+    width: 100%;
+    white-space: nowrap;
+    border-radius: 9999px;
+    background-color: black;
+    padding: 1rem 1.85rem;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  .or {
+    color: #7e7e7e;
+    font-size: 1rem;
+  }
+  .view {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+  .view-text {
+    color: black;
+  }
+</style>
