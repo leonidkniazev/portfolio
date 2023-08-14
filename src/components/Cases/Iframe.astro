@@ -1,0 +1,28 @@
+---
+export type Props = {
+  url: string;
+  id: string;
+  title: string;
+};
+
+const { url, id, title } = Astro.props;
+---
+
+<div class="container">
+  <iframe
+    id={id}
+    loading="lazy"
+    width="2000"
+    height="800"
+    title={title}
+    src={url}></iframe>
+</div>
+
+<style>
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 100%;
+  }
+</style>

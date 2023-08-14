@@ -1,0 +1,29 @@
+---
+let slot = await Astro.slots.render("default");
+let isImage = slot.includes("<img src=");
+---
+
+{
+  isImage ? (
+    <div class="wrapper">
+      <slot />
+    </div>
+  ) : (
+    <p class="text">
+      <slot />
+    </p>
+  )
+}
+
+<style>
+  .text {
+    max-width: 40rem;
+    flex: 1;
+    line-height: 150%;
+  }
+  .wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+  }
+</style>
