@@ -1,10 +1,4 @@
 ---
-import Hero from "../../components/Cases/Hero/Hero.astro";
-import Introduction from "../../components/Cases/Introduction.astro";
-import Process from "../../components/Cases/Process.astro";
-import Research from "../../components/Cases/Research/Research.astro";
-import SectionTitle from "../../components/Cases/SectionTitle.astro";
-import CaseLayout from "../../layouts/CaseLayout.astro";
 import "@fontsource/jost/100.css";
 import "@fontsource/jost/200.css";
 import "@fontsource/jost/300.css";
@@ -14,31 +8,71 @@ import "@fontsource/jost/600.css";
 import "@fontsource/jost/700.css";
 import "@fontsource/jost/800.css";
 import "@fontsource/jost/900.css";
+import CaseLayout from "../../layouts/CaseLayout.astro";
+import { getCollection, getEntry } from "astro:content";
+import Section from "../../components/Section.astro";
+import H2 from "../../components/Cases/H2.astro";
+import H3 from "../../components/Cases/H3.astro";
+import P from "../../components/Cases/P.astro";
+import Table from "../../components/Cases/ContentTable/Table";
+import Hero from "../../components/Cases/Hero/Hero.astro";
+import { getLangFromUrl } from "../../i18n/utils";
+import Iframe from "../../components/Cases/Iframe.astro";
+import ThanksForAttention from "../../components/Cases/ThanksForAttention.astro";
+const lang = getLangFromUrl(Astro.url);
 
-export function getStaticPaths() {
-  return [
-    { params: { id: "test" } },
-    { params: { id: "2" } },
-    { params: { id: "3" } },
-  ];
+export async function getStaticPaths() {
+  const blogEntries = await getCollection("cases");
+  return blogEntries.map((entry) => {
+    let [, rest] = entry.slug.split("/");
+    return {
+      params: { id: rest },
+      props: { entry: entry },
+    };
+  });
 }
 
-const { id } = Astro.params;
+const entry = await getEntry({ collection: "cases", slug: `${lang}/first` });
+const { title, description, figmaUrl, behanceUrl, heroImg } = entry.data;
+const { Content } = await entry.render();
 ---
 
-<CaseLayout title={`Case: ${id}`}>
-  <div class="mt-16"></div>
-  <Hero
-    title="prosto sdam"
-    description="Mobile app for preparing students for exams"
-    prototypeUrl="todo"
-    firstImg="test"
-    logoUrl="/projects/1.svg"
-  />
-  <SectionTitle text="Introduction" number={1} />
-  <Introduction />
-  <SectionTitle text="Process" number={2} />
-  <Process />
-  <SectionTitle text="Research" number={3} />
-  <Research />
+<CaseLayout title={`Case: ${title}`}>
+  <Table client:only />
+  <Section>
+    <article>
+      <Hero
+        img={heroImg}
+        behanceUrl={behanceUrl}
+        figmaUrl={figmaUrl}
+        title={title}
+        prototypeUrl="https://placeholder.co/200x200"
+        description={description}
+      />
+      <Content
+        components={{
+          h2: H2,
+          h3: H3,
+          p: P,
+        }}
+      />
+      <Iframe
+        url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FZyzeLE6ZElWwqqXFnnYKDZ%2FDEDEX%3Ftype%3Ddesign%26node-id%3D413%253A4422%26mode%3Ddev"
+        title="Figma Iframe"
+        id="iframe"
+      />
+      <ThanksForAttention />
+    </article>
+  </Section>
 </CaseLayout>
+
+<style>
+  article {
+    margin-right: 20rem;
+  }
+  @media (max-width: 768px) {
+    article {
+      margin-right: 0rem;
+    }
+  }
+</style>
