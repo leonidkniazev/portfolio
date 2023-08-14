@@ -1,0 +1,75 @@
+---
+const slot = await Astro.slots.render("default");
+
+function generateContent(data: string, token: string) {
+  let chunks = data.replaceAll("\n", "").split("");
+  let splitPoints: number[] = [];
+  let shouldSplit = false;
+  let openTags = 0;
+
+  for (let i = 0; i < chunks.length; i++) {
+    let chunk = chunks[i];
+    if (chunk == "<" && chunks[i + 1] !== "/") {
+      openTags++;
+    }
+    if (
+      (chunk == ">" && chunks[i - 1] == "/") ||
+      (chunk == "<" && chunks[i + 1] == "/")
+    ) {
+      openTags--;
+    }
+
+    if (token.split("").every((token, idx) => token == chunks[i + idx])) {
+      shouldSplit = true;
+    }
+
+    if (shouldSplit && openTags == 0) {
+      if (chunk == ">") {
+        splitPoints.push(i + 1);
+        shouldSplit = false;
+      }
+    }
+  }
+
+  let result: string[] = [];
+  if (splitPoints[0])
+    result.push(chunks.slice(0, splitPoints[0]).join("").replaceAll(token, ""));
+
+  for (let i = 0; i < splitPoints.length; i++) {
+    let point = splitPoints[i];
+    let nextPoint = splitPoints[i + 1];
+    if (nextPoint) {
+      result.push(
+        chunks.slice(point, nextPoint).join("").replaceAll(token, ""),
+      );
+    }
+  }
+
+  let lastPoint = splitPoints.at(-1);
+  if (lastPoint)
+    result.push(
+      chunks.slice(lastPoint, chunks.length).join("").replaceAll(token, ""),
+    );
+  return result;
+}
+export type Props = {
+  delimiter: string;
+};
+const { delimiter } = Astro.props;
+const content = generateContent(slot, delimiter);
+---
+
+<div class="container">
+  {content.map((item) => <div class="item" set:html={item} />)}
+</div>
+
+<style>
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  .item {
+    flex: 1;
+  }
+</style>
