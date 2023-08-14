@@ -30,7 +30,6 @@ const { title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { metadata } = portfolio.data;
-
 ---
 
 <!DOCTYPE html>
