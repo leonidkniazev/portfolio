@@ -35,6 +35,13 @@ export const ui = {
     "notfound.backhome": "go back home",
     "notfound.notfound": "Page is not found",
     "notfound.cv": "get cv",
+
+    "case.lookat": "Look at this case in suitable format:",
+    "case.gotoprototype": "Go to prototype",
+    "case.or": "or",
+    "case.viewtheprocess": "View the process",
+    "case.thanksforattention": "THANK YOU FOR the ATTENTION",
+    "case.gladtocooperate": "I will be glad to any cooperation",
   },
   ru: {
     "nav.aboutme": "Обо Мне",
@@ -65,5 +72,12 @@ export const ui = {
     "notfound.backhome": "Назад",
     "notfound.notfound": "Страница не найдена",
     "notfound.cv": "резюме",
+
+    "case.lookat": "Посмотрите этот кейс на:",
+    "case.gotoprototype": "ПЕРЕЙТИ К ПРОТОТИПУ",
+    "case.or": "или",
+    "case.viewtheprocess": "Посмотреть процесс",
+    "case.thanksforattention": "СПАСИБО ЗА ВНИМАНИЕ",
+    "case.gladtocooperate": "Буду рад любому сотрудничеству",
   },
 } as const;
