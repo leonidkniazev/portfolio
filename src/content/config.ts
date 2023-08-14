@@ -72,6 +72,21 @@ const portfolio = defineCollection({
     }),
 });
 
+const cases = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
+    z.object({
+      figmaUrl: z.string().url(),
+      behanceUrl: z.string().url(),
+      title: z.string(),
+      description: z.string(),
+      heroImg: image(),
+      boxart: image(),
+      date: z.date(),
+    }),
+});
+
 export const collections = {
-  portfolio: portfolio,
+  portfolio,
+  cases,
 };
