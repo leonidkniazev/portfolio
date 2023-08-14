@@ -3,12 +3,21 @@ export type Props = {
   selected: "ru" | "en";
 };
 const { selected } = Astro.props;
+let ruUrl = Astro.url.pathname;
+let enUrl = Astro.url.pathname;
+if (selected === "en") {
+  ruUrl = `/ru${Astro.url.pathname}`;
+}
+if (selected === "ru") {
+  let [, , ...rest] = Astro.url.pathname.split("/");
+  enUrl = "/" + rest.join("/");
+}
 ---
 
 <div>
-  <a class={selected === "en" ? "active" : ""} href="/">EN</a>
+  <a class={selected === "en" ? "active" : ""} href={enUrl}>EN</a>
   <span>{" / "}</span>
-  <a class={selected === "ru" ? "active" : ""} href="/ru/">RU</a>
+  <a class={selected === "ru" ? "active" : ""} href={ruUrl}>RU</a>
 </div>
 <style>
   span {
