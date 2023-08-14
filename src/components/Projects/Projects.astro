@@ -2,23 +2,27 @@
 import Project from "./Project.astro";
 import ComingSoon from "./ComingSoon.astro";
 import Section from "../Section.astro";
-import { getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import { getLangFromUrl } from "../../i18n/utils";
 const lang = getLangFromUrl(Astro.url);
-const portfolio = await getEntry("portfolio", `${lang}/data`);
-const { projects } = portfolio.data;
+const cases = await getCollection("cases", (entry) => {
+  let [caseLanguage] = entry.slug.split("/");
+  return lang === caseLanguage;
+});
 ---
 
 <Section>
   <div class="container">
     {
-      projects.map((project) => {
+      cases.map((entry) => {
+        let { title, boxart, description } = entry.data;
+        let [, name] = entry.slug.split("/");
         return (
           <Project
-            title={project.name}
-            img={project.img}
-            description={project.description}
-            link={project.href}
+            title={title}
+            img={boxart}
+            description={description}
+            link={`${lang === "ru" ? "/ru" : ""}/cases/${name}/`}
           />
         );
       })
