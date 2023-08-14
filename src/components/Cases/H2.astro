@@ -1,0 +1,21 @@
+---
+type Props = {
+  id: string;
+};
+const { id } = Astro.props;
+---
+
+<h2 class="heading" id={id}>
+  <slot />
+</h2>
+
+<style>
+  h2 {
+    font-family: Montserrat;
+    font-size: 3.75rem;
+    font-weight: 800;
+    line-height: 150%;
+    scroll-margin-top: 4rem;
+    margin: 2rem 0 1rem 0;
+  }
+</style>
