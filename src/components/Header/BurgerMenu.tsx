@@ -11,6 +11,7 @@ const BurgerMenu = (props: {
   resumeUrl: string;
 }) => {
   const t = useTranslations(props.language);
+  let currentUrl = props.language === "ru" ? "/ru" : "";
   const [isOpen, setIsOpen] = createSignal(false);
   const [isClosing, setIsClosing] = createSignal(false);
   let openBtn: HTMLButtonElement;
@@ -65,16 +66,32 @@ const BurgerMenu = (props: {
             }`}
             onClick={(e) => e.stopPropagation()}
           >
-            <a href="#" onClick={handleOpen} class={styles.item}>
+            <a
+              href={`${currentUrl}/#`}
+              onClick={handleOpen}
+              class={styles.item}
+            >
               {t("nav.aboutme")}
             </a>
-            <a href="#projects" onClick={handleOpen} class={styles.item}>
+            <a
+              href={`${currentUrl}/#projects`}
+              onClick={handleOpen}
+              class={styles.item}
+            >
               {t("nav.projects")}
             </a>
-            <a href="#skills" onClick={handleOpen} class={styles.item}>
+            <a
+              href={`${currentUrl}/#skills`}
+              onClick={handleOpen}
+              class={styles.item}
+            >
               {t("nav.skills")}
             </a>
-            <a href="#contacts" onClick={handleOpen} class={styles.item}>
+            <a
+              href={`${currentUrl}/#contacts`}
+              onClick={handleOpen}
+              class={styles.item}
+            >
               {t("nav.contacts")}
             </a>
             <a

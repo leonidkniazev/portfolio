@@ -1,4 +1,7 @@
 ---
+export type Props = {
+  isSticky: boolean;
+};
 import { getEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Logo from ".././Logo.astro";
@@ -8,7 +11,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { resumeUrl } = portfolio.data;
-//FIX role button
+const { isSticky } = Astro.props;
+let currentUrl = lang === "ru" ? "/ru" : "";
+//FIX: role button
 ---
 
 <BurgerMenu
@@ -16,16 +21,24 @@ const { resumeUrl } = portfolio.data;
   language={lang}
   client:media="(max-width: 768px)"
 />
-<header>
+<header class={`${isSticky ? "sticky" : "fixed"}`}>
   <nav>
     <div role="button" id="burgerbtn" aria-label="Burger menu" class="menu-btn">
       <span></span>
     </div>
     <ul>
-      <li><a class="link" href="#">{t("nav.aboutme")}</a></li>
-      <li><a class="link" href="#projects">{t("nav.projects")}</a></li>
-      <li><a class="link" href="#skills">{t("nav.skills")}</a></li>
-      <li><a class="link" href="#contacts">{t("nav.contacts")}</a></li>
+      <li>
+        <a class="link" href={`${currentUrl}/#`}>{t("nav.aboutme")}</a>
+      </li>
+      <li>
+        <a class="link" href={`${currentUrl}/#projects`}>{t("nav.projects")}</a>
+      </li>
+      <li>
+        <a class="link" href={`${currentUrl}/#skills`}>{t("nav.skills")}</a>
+      </li>
+      <li>
+        <a class="link" href={`${currentUrl}/#contacts`}>{t("nav.contacts")}</a>
+      </li>
       <li>
         <a class="link" href={resumeUrl} target="_blank">{t("nav.resume")}</a>
       </li>
@@ -89,8 +102,13 @@ const { resumeUrl } = portfolio.data;
     -o-transform: rotate(-45deg);
     transform: rotate(-45deg);
   }
-  header {
+  .sticky {
+    position: sticky;
+  }
+  .fixed {
     position: fixed;
+  }
+  header {
     backdrop-filter: blur(5px);
     top: 0;
     left: 0;
