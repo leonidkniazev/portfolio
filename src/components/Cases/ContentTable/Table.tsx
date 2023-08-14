@@ -31,7 +31,6 @@ export default function Table() {
         (window.innerHeight / 100) * 30;
 
       if (tagname != "H2" && tagname != "H3") {
-        console.log("unknown tagname", tagname);
         continue;
       }
       if (id && content) {
@@ -75,6 +74,7 @@ export default function Table() {
 
   onMount(() => {
     onScroll();
+    onResize();
     window.addEventListener("resize", onResize);
     document.addEventListener("scroll", onScroll);
   });
