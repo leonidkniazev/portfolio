@@ -1,27 +1,21 @@
 import { createSignal, onCleanup, onMount } from "solid-js";
 import styles from "./Table.module.css";
 
-type TagType = "H1" | "H2";
+type TagType = "H2" | "H3";
 
 type Content = {
   title: string;
-  number?: number;
+  number: number;
+  topOffset: number;
   href: string;
   type: TagType;
 };
 
 export default function Table() {
-  const [currentItem, setCurrentItem] = createSignal(1);
+  const [currentItem, setCurrentItem] = createSignal(0);
   const [isOpen, setIsOpen] = createSignal(true);
   const headings = getHeadings();
-  const content = generateContent();
-  const observer = new IntersectionObserver(onObserve, {
-    threshold: 1,
-  });
-
-  for (const item of headings.values()) {
-    observer.observe(item);
-  }
+  let content = generateContent();
 
   function generateContent() {
     let result: Content[] = [];
@@ -30,59 +24,63 @@ export default function Table() {
       let id = heading.getAttribute("id");
       let content = heading.innerText;
       let tagname = heading.tagName as TagType;
-      if (tagname != "H1" && tagname != "H2") {
+      let offsetFromTop =
+        heading.getBoundingClientRect().top +
+        window.scrollY -
+        // 30% of screen
+        (window.innerHeight / 100) * 30;
+
+      if (tagname != "H2" && tagname != "H3") {
         console.log("unknown tagname", tagname);
         continue;
       }
       if (id && content) {
-        if (tagname == "H1") {
-          result.push({
-            href: `#${id}`,
-            title: content,
-            type: tagname,
-            number: ++number,
-          });
-        } else {
-          result.push({ href: `#${id}`, title: content, type: tagname });
-        }
+        result.push({
+          href: `#${id}`,
+          topOffset: offsetFromTop,
+          title: content,
+          type: tagname,
+          number: tagname === "H2" ? ++number : number,
+        });
       }
     }
     return result;
-  }
-
-  function onObserve(entries: IntersectionObserverEntry[]) {
-    const entry = entries[entries.length - 1];
-    console.log(entries.length);
-
-    let number = 0;
-    headings.forEach((heading) => {
-      if (heading.tagName == "H1") number++;
-      if (entry.target !== heading) return;
-      if (entry.isIntersecting) {
-        setCurrentItem(number);
-        console.log("setting current item: ", number);
-        return;
-      }
-    });
   }
 
   function getHeadings() {
     return document.querySelectorAll<HTMLHeadingElement>(".heading");
   }
 
+  function onScroll() {
+    if (!isOpen()) return;
+    const currentScroll = window.scrollY;
+    let rightItemNumber = 1;
+    content.forEach((item) => {
+      if (item.topOffset < currentScroll) {
+        rightItemNumber = item.number;
+        return;
+      }
+    });
+    setCurrentItem(rightItemNumber);
+  }
+
   function onResize() {
     if (window.innerWidth <= 768) {
       setIsOpen(false);
     } else {
+      content = generateContent();
       setIsOpen(true);
     }
   }
 
   onMount(() => {
+    onScroll();
     window.addEventListener("resize", onResize);
+    document.addEventListener("scroll", onScroll);
   });
   onCleanup(() => {
     window.removeEventListener("resize", onResize);
+    document.removeEventListener("scroll", onScroll);
   });
 
   return (
@@ -94,16 +92,18 @@ export default function Table() {
               return (
                 <li
                   class={`${styles.item} ${
-                    item.number == currentItem() ? styles.active : ""
+                    item.number == currentItem() && item.type != "H3"
+                      ? styles.active
+                      : ""
                   }`}
                 >
                   <a
                     class={`${styles.link} ${
-                      item.type == "H2" && styles.subtitle
+                      item.type == "H3" && styles.subtitle
                     }`}
                     href={item.href}
                   >
-                    {item.type == "H1" ? (
+                    {item.type == "H2" ? (
                       <span>{item.number}. </span>
                     ) : (
                       <span>- </span>
