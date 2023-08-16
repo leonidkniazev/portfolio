@@ -9,7 +9,7 @@ import "@fontsource/jost/700.css";
 import "@fontsource/jost/800.css";
 import "@fontsource/jost/900.css";
 import CaseLayout from "../../layouts/CaseLayout.astro";
-import { getCollection, getEntry } from "astro:content";
+import { CollectionEntry, getCollection, getEntry } from "astro:content";
 import Section from "../../components/Section.astro";
 import H2 from "../../components/Cases/H2.astro";
 import H3 from "../../components/Cases/H3.astro";
@@ -21,18 +21,25 @@ import Iframe from "../../components/Cases/Iframe.astro";
 import ThanksForAttention from "../../components/Cases/ThanksForAttention.astro";
 const lang = getLangFromUrl(Astro.url);
 
+type Slug = CollectionEntry<"cases">["slug"];
+type SlugLang<T> = T extends `${typeof lang}/${infer U}` ? U : never;
+
 export async function getStaticPaths() {
   const blogEntries = await getCollection("cases");
   return blogEntries.map((entry) => {
     let [, rest] = entry.slug.split("/");
     return {
       params: { id: rest },
-      props: { entry: entry },
+      props: { entry },
     };
   });
 }
 
-const entry = await getEntry({ collection: "cases", slug: `${lang}/first` });
+const { id } = Astro.params as { id: SlugLang<Slug> };
+const entry = await getEntry({
+  collection: "cases",
+  slug: `${lang}/${id}`,
+});
 const { title, description, figmaUrl, behanceUrl, heroImg } = entry.data;
 const { Content } = await entry.render();
 ---
