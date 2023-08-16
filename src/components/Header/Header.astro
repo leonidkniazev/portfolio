@@ -5,7 +5,7 @@ export type Props = {
 import { getEntry } from "astro:content";
 import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Logo from ".././Logo.astro";
-import Swichlang from "./../Swichlang.astro";
+import SwitchLang from "./../SwitchLang.astro";
 import BurgerMenu from "./BurgerMenu";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -46,7 +46,7 @@ let currentUrl = lang === "ru" ? "/ru" : "";
     <div class="logo">
       <Logo />
     </div>
-    <Swichlang selected={lang} />
+    <SwitchLang selected={lang} />
   </nav>
 </header>
 
