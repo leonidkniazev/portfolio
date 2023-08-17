@@ -7,17 +7,19 @@ import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 import Logo from ".././Logo.astro";
 import SwitchLang from "./../SwitchLang.astro";
 import BurgerMenu from "./BurgerMenu";
+import { defaultLang } from "../../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { resumeUrl } = portfolio.data;
 const { isSticky } = Astro.props;
-let currentUrl = lang === "ru" ? "/ru" : "";
+let currentUrl = lang === defaultLang ? "" : `/${lang}`;
 //FIX: role button
 ---
 
 <BurgerMenu
   resumeUrl={resumeUrl}
+  currentUrl={lang === defaultLang ? "" : `/${lang}`}
   language={lang}
   client:media="(max-width: 768px)"
 />

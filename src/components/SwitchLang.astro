@@ -1,30 +1,56 @@
 ---
+import { getLangFromUrl } from "../i18n/utils";
+import { defaultLang, locales } from "../i18n/ui";
+
 export type Props = {
-  selected: "ru" | "en";
+  selected: ReturnType<typeof getLangFromUrl>;
 };
+
+function createUrl(locale: keyof typeof locales) {
+  let result = "/";
+  let rest = "";
+  if (defaultLang == selected) {
+    rest = Astro.url.pathname.split("/").filter(Boolean).join("/");
+  } else {
+    let [, ...buf] = Astro.url.pathname.split("/").filter(Boolean);
+    rest = buf.join("/");
+  }
+
+  if (locale == defaultLang) {
+    if (rest) result += `${rest}/`;
+  } else {
+    if (rest) result += `${locale}/${rest}/`;
+    else result += `${locale}/`;
+  }
+  return result;
+}
 const { selected } = Astro.props;
-let ruUrl = Astro.url.pathname;
-let enUrl = Astro.url.pathname;
-if (selected === "en") {
-  ruUrl = `/ru${Astro.url.pathname}`;
-}
-if (selected === "ru") {
-  let [, , ...rest] = Astro.url.pathname.split("/");
-  enUrl = "/" + rest.join("/");
-}
+const languages = Object.keys(locales) as (keyof typeof locales)[];
 ---
 
 <div>
-  <a class={selected === "en" ? "active" : ""} href={enUrl}>EN</a>
-  <span>{" / "}</span>
-  <a class={selected === "ru" ? "active" : ""} href={ruUrl}>RU</a>
+  {
+    languages.map((lang, idx) => {
+      const isActive = selected === lang;
+      return (
+        <>
+          <a class={isActive ? "active" : ""} href={createUrl(lang)}>
+            {lang}
+          </a>
+          {languages.length - 1 !== idx && <span>{" / "}</span>}
+        </>
+      );
+    })
+  }
 </div>
+
 <style>
   span {
     color: white;
   }
   a {
     font-family: Ysabeau;
+    text-transform: uppercase;
   }
   .active {
     font-weight: 700;

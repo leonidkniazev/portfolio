@@ -6,12 +6,14 @@ type ArgumentTypes<F extends Function> = F extends (...args: infer A) => any
   ? A
   : never;
 
-const BurgerMenu = (props: {
+type Props = {
   language: ArgumentTypes<typeof useTranslations>[0];
   resumeUrl: string;
-}) => {
+  currentUrl: string;
+};
+
+const BurgerMenu = (props: Props) => {
   const t = useTranslations(props.language);
-  let currentUrl = props.language === "ru" ? "/ru" : "";
   const [isOpen, setIsOpen] = createSignal(false);
   const [isClosing, setIsClosing] = createSignal(false);
   let openBtn: HTMLButtonElement;
@@ -67,28 +69,28 @@ const BurgerMenu = (props: {
             onClick={(e) => e.stopPropagation()}
           >
             <a
-              href={`${currentUrl}/#`}
+              href={`${props.currentUrl}/#`}
               onClick={handleOpen}
               class={styles.item}
             >
               {t("nav.aboutme")}
             </a>
             <a
-              href={`${currentUrl}/#projects`}
+              href={`${props.currentUrl}/#projects`}
               onClick={handleOpen}
               class={styles.item}
             >
               {t("nav.projects")}
             </a>
             <a
-              href={`${currentUrl}/#skills`}
+              href={`${props.currentUrl}/#skills`}
               onClick={handleOpen}
               class={styles.item}
             >
               {t("nav.skills")}
             </a>
             <a
-              href={`${currentUrl}/#contacts`}
+              href={`${props.currentUrl}/#contacts`}
               onClick={handleOpen}
               class={styles.item}
             >

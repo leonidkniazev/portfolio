@@ -5,6 +5,11 @@ export const languages = {
 
 export const defaultLang = "en";
 
+export const locales = {
+  en: "en-US",
+  ru: "ru-RU",
+} as const;
+
 export const ui = {
   en: {
     "nav.aboutme": "About Me",

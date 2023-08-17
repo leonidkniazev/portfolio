@@ -1,13 +1,14 @@
 ---
 import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { defaultLang } from "../i18n/ui";
 import PortfolioLayout from "../layouts/PortfolioLayout.astro";
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 let homeUrl: string;
 let resumeUrl: string;
-if (lang === "en") {
+if (lang === defaultLang) {
   homeUrl = "/";
-  resumeUrl = "/en/";
+  resumeUrl = `/${defaultLang}/`;
 } else {
   homeUrl = `/${lang}/`;
   resumeUrl = `/${lang}/`;
