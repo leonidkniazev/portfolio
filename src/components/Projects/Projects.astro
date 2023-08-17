@@ -4,6 +4,7 @@ import ComingSoon from "./ComingSoon.astro";
 import Section from "../Section.astro";
 import { getCollection } from "astro:content";
 import { getLangFromUrl } from "../../i18n/utils";
+import { defaultLang } from "../../i18n/ui";
 const lang = getLangFromUrl(Astro.url);
 const cases = await getCollection("cases", (entry) => {
   let [caseLanguage] = entry.slug.split("/");
@@ -22,7 +23,7 @@ const cases = await getCollection("cases", (entry) => {
             title={title}
             img={boxart}
             description={description}
-            link={`${lang === "ru" ? "/ru" : ""}/cases/${name}/`}
+            link={`${lang === defaultLang ? "" : `/${lang}`}/cases/${name}/`}
           />
         );
       })

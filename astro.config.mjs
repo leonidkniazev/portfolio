@@ -2,11 +2,7 @@ import { defineConfig } from "astro/config";
 import solidJs from "@astrojs/solid-js";
 import i18n from "astro-i18n-aut";
 import mdx from "@astrojs/mdx";
-const defaultLocale = "en";
-const locales = {
-  en: "en-US",
-  ru: "ru-RU",
-};
+import { locales, defaultLang } from "./src/i18n/ui";
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,7 +10,7 @@ export default defineConfig({
     solidJs(),
     i18n({
       locales,
-      defaultLocale,
+      defaultLocale: defaultLang,
     }),
     mdx(),
   ],
