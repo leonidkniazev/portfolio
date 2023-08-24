@@ -10,7 +10,8 @@ function generateContent(data: string, token: string) {
   for (let i = 0; i < chunks.length; i++) {
     let chunk = chunks[i];
     if (chunk == "<" && chunks[i + 1] !== "/") {
-      openTags++;
+      if (chunks[i + 1] != "i" && chunks[i + 2] != "m" && chunks[i + 3] != "g")
+        openTags++;
     }
     if (
       (chunk == ">" && chunks[i - 1] == "/") ||
@@ -32,6 +33,10 @@ function generateContent(data: string, token: string) {
   }
 
   let result: string[] = [];
+  if (splitPoints.length == 0) {
+    result.push(slot.replaceAll(token, ""));
+    return result;
+  }
   if (splitPoints[0])
     result.push(chunks.slice(0, splitPoints[0]).join("").replaceAll(token, ""));
 
@@ -67,7 +72,6 @@ const content = generateContent(slot, delimiter);
   .container {
     display: flex;
     flex-wrap: wrap;
-    gap: 2rem;
   }
   .item {
     flex: 1;
