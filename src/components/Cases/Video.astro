@@ -1,0 +1,26 @@
+---
+export type Props = {
+  src: string;
+};
+const { src } = Astro.props;
+---
+
+<video src={src} autoplay loop muted controls={false}
+  >Your browser cannot play videos</video
+>
+
+<script>
+  let videos = document.getElementsByTagName("video");
+  function onContextMenu(e: Event) {
+    e.preventDefault();
+  }
+  for (let video of videos) {
+    video.addEventListener("contextmenu", onContextMenu);
+  }
+</script>
+
+<style>
+  video {
+    width: 100%;
+  }
+</style>
