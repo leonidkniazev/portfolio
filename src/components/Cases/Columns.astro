@@ -58,23 +58,25 @@ function generateContent(data: string, token: string) {
   return result;
 }
 export type Props = {
-  delimiter: string;
+  delimiter?: string;
 };
 const { delimiter } = Astro.props;
-const content = generateContent(slot, delimiter);
+const content = generateContent(slot, delimiter ?? "@@");
 ---
 
 <div class="container">
-  {content.map((item) => <div class="item" set:html={item} />)}
+  {content.map((item) => <div class="column" set:html={item} />)}
 </div>
 
 <style>
   .container {
     display: flex;
     gap: 2rem;
+    margin: 1rem 0;
     flex-wrap: wrap;
   }
-  .item {
+  .column {
     flex: 1;
+    height: fit-content;
   }
 </style>
