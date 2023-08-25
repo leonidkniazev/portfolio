@@ -91,7 +91,7 @@ export default function Table() {
             {content.map((item) => {
               return (
                 <li
-                  class={`${styles.item} ${
+                  class={`${item.type == "H2" ? styles.large : styles.small} ${
                     item.number == currentItem() && item.type != "H3"
                       ? styles.active
                       : ""
