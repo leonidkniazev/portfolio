@@ -17,7 +17,6 @@ import P from "../../components/Cases/P.astro";
 import Table from "../../components/Cases/ContentTable/Table";
 import Hero from "../../components/Cases/Hero/Hero.astro";
 import { getLangFromUrl } from "../../i18n/utils";
-import Iframe from "../../components/Cases/Iframe.astro";
 import ThanksForAttention from "../../components/Cases/ThanksForAttention.astro";
 const lang = getLangFromUrl(Astro.url);
 
@@ -62,11 +61,6 @@ const { Content } = await entry.render();
           h3: H3,
           p: P,
         }}
-      />
-      <Iframe
-        url="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2FZyzeLE6ZElWwqqXFnnYKDZ%2FDEDEX%3Ftype%3Ddesign%26node-id%3D413%253A4422%26mode%3Ddev"
-        title="Figma Iframe"
-        id="iframe"
       />
       <ThanksForAttention />
     </article>
