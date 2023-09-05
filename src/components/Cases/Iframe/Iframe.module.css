@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 600px;
+  background-color: darkgrey;
+  cursor: pointer;
+}
+
+.text {
+  position: absolute;
+  font-size: 3rem;
+  color: white;
+  text-align: center;
+  font-weight: 500;
+}
+
+.img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.iframe {
+  border: none;
+}

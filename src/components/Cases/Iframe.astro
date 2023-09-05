@@ -1,21 +1,21 @@
 ---
+import { ImageMetadata } from "astro";
+import SolidIframe from "./Iframe/Iframe";
+import { Image } from "astro:assets";
+
 export type Props = {
   url: string;
-  id: string;
+  placeholder: ImageMetadata;
   title: string;
 };
 
-const { url, id, title } = Astro.props;
+const { url, title, placeholder } = Astro.props;
 ---
 
 <div class="container">
-  <iframe
-    id={id}
-    loading="lazy"
-    width="2000"
-    height="800"
-    title={title}
-    src={url}></iframe>
+  <SolidIframe client:only src={url} title={title}>
+    <Image src={placeholder} alt="Prototype placeholder" />
+  </SolidIframe>
 </div>
 
 <style>
@@ -24,5 +24,6 @@ const { url, id, title } = Astro.props;
     justify-content: center;
     align-items: center;
     max-width: 100%;
+    margin: 1rem 0 1rem 0;
   }
 </style>
