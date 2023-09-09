@@ -86,13 +86,19 @@ const { metadata } = portfolio.data;
 
     ul > li::marker {
       font-size: 0.5rem;
+    ul > li::before {
+      content: "\2022";
+      font-size: 1.5rem;
+      position: absolute;
+      left: -1rem;
     }
     ul > li {
-      margin: 0.5rem 0;
+      position: relative;
       line-height: 1.5rem;
+      margin-left: 1rem;
     }
     ul {
-      padding-left: 1rem;
+      list-style: none;
     }
     ol {
       padding-left: 1rem;

@@ -28,20 +28,20 @@ let currentUrl = lang === defaultLang ? "" : `/${lang}`;
     <div role="button" id="burgerbtn" aria-label="Burger menu" class="menu-btn">
       <span></span>
     </div>
-    <ul>
-      <li>
+    <ul class="nav-list">
+      <li class="link-container">
         <a class="link" href={`${currentUrl}/#`}>{t("nav.aboutme")}</a>
       </li>
-      <li>
+      <li class="link-container">
         <a class="link" href={`${currentUrl}/#projects`}>{t("nav.projects")}</a>
       </li>
-      <li>
+      <li class="link-container">
         <a class="link" href={`${currentUrl}/#skills`}>{t("nav.skills")}</a>
       </li>
-      <li>
+      <li class="link-container">
         <a class="link" href={`${currentUrl}/#contacts`}>{t("nav.contacts")}</a>
       </li>
-      <li>
+      <li class="link-container">
         <a class="link" href={resumeUrl} target="_blank">{t("nav.resume")}</a>
       </li>
     </ul>
@@ -117,13 +117,20 @@ let currentUrl = lang === defaultLang ? "" : `/${lang}`;
     right: 0;
     z-index: 100;
   }
-  ul {
+  .nav-list {
     display: flex;
     align-items: center;
     gap: 1.2rem;
     list-style: none;
     flex: 1;
     position: relative;
+  }
+  .link-container {
+    line-height: 1rem;
+    margin: 0;
+  }
+  .link-container::before {
+    display: none;
   }
   nav {
     background-color: #000;
