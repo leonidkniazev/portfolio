@@ -1,20 +1,18 @@
 ---
-import { ImageMetadata } from "astro";
 import SolidIframe from "./Iframe/Iframe";
 import { Image } from "astro:assets";
+import Placeholder from "~/projects/article1/for_prototype.png";
 
 export type Props = {
-  url: string;
-  placeholder: ImageMetadata;
-  title: string;
+  src: string;
 };
 
-const { url, title, placeholder } = Astro.props;
+const { src } = Astro.props;
 ---
 
 <div class="container">
-  <SolidIframe client:only src={url} title={title}>
-    <Image src={placeholder} alt="Prototype placeholder" />
+  <SolidIframe client:only src={src} title="Prototype">
+    <Image src={Placeholder} alt="Prototype placeholder" />
   </SolidIframe>
 </div>
 
