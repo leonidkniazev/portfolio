@@ -1,6 +1,6 @@
-import { JSX, createSignal } from "solid-js";
+import { type JSX, createSignal } from "solid-js";
 import styles from "./Iframe.module.css";
-import { ImageMetadata } from "astro";
+import { type ImageMetadata } from "astro";
 
 type Props = {
   src: string;

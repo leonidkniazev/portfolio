@@ -1,4 +1,4 @@
-import { ImageFunction, defineCollection, z } from "astro:content";
+import { type ImageFunction, defineCollection, z } from "astro:content";
 
 const roundedSkill = (image: ImageFunction) =>
   z.object({
