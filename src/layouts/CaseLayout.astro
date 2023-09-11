@@ -20,9 +20,11 @@ import "@fontsource/montserrat/700.css";
 import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 import { getLangFromUrl } from "../i18n/utils";
-import { getEntry } from "astro:content";
+import { getEntry, type CollectionEntry } from "astro:content";
 import Analytics from "../components/Analytics";
 import { ViewTransitions } from "astro:transitions";
+export type Slug = CollectionEntry<"cases">["slug"];
+export type SlugLang<T> = T extends `${typeof lang}/${infer U}` ? U : never;
 export interface Props {
   title: string;
 }
@@ -31,14 +33,23 @@ const { title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { metadata } = portfolio.data;
+const { id } = Astro.params as { id: SlugLang<Slug> };
+const entry = await getEntry({
+  collection: "cases",
+  slug: `${lang}/${id}`,
+});
+const { description, title: projectTitle } = entry.data;
 ---
 
 <!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content={metadata.description} />
-    <meta name="keywords" content={metadata.keywords.join(", ")} />
+    <meta name="description" content={description} />
+    <meta
+      name="keywords"
+      content={[...metadata.keywords, projectTitle].join(", ")}
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
