@@ -1,10 +1,10 @@
 import { type JSX, createSignal } from "solid-js";
 import styles from "./Iframe.module.css";
-import { type ImageMetadata } from "astro";
 
 type Props = {
   src: string;
   title: string;
+  placeholderText: string;
   children: JSX.Element;
 };
 
@@ -26,7 +26,10 @@ const Iframe = (props: Props) => {
           src={props.src}
         ></iframe>
       ) : (
-        <>{props.children}</>
+        <>
+          {props.children}
+          <span class={styles.text}>{props.placeholderText}</span>
+        </>
       )}
     </div>
   );

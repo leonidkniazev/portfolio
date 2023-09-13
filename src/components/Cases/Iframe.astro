@@ -1,27 +1,102 @@
 ---
-import SolidIframe from "./Iframe/Iframe";
 import { Image } from "astro:assets";
-import Placeholder from "~/projects/article1/for_prototype.png";
+import Placeholder from "~/assets/prototype.png";
+import { getLangFromUrl, useTranslations } from "../../i18n/utils";
 
 export type Props = {
   src: string;
 };
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
 const { src } = Astro.props;
 ---
 
 <div class="container">
-  <SolidIframe client:only src={src} title="Prototype">
-    <Image src={Placeholder} alt="Prototype placeholder" />
-  </SolidIframe>
+  <prototype-component data-src={src} data-alt="Prototype">
+    <div role="button" class="inner-container">
+      <Image src={Placeholder} alt="Prototype placeholder" />
+      <span>{t("case.prototypetitle")}</span>
+    </div>
+  </prototype-component>
 </div>
 
+<script>
+  class Prototype extends HTMLElement {
+    handleClick() {
+      while (this.firstElementChild) {
+        let child = this.firstElementChild;
+        this.removeChild(child);
+      }
+      console.log(this.dataset.src);
+      console.log(this.dataset.alt);
+      if (this.dataset.src && this.dataset.alt) {
+        let prototype = document.createElement("iframe");
+        prototype.src = this.dataset.src;
+        prototype.width = "100%";
+        prototype.height = "600";
+        prototype.style.border = "none";
+        prototype.title = this.dataset.alt;
+        this.appendChild(prototype);
+      }
+    }
+    constructor() {
+      super();
+      let image = this.querySelector("div")!;
+      image.addEventListener("click", this.handleClick.bind(this));
+    }
+  }
+  customElements.define("prototype-component", Prototype);
+</script>
+
 <style>
-  .container {
+  prototype-component {
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 100%;
     margin: 1rem 0 1rem 0;
+  }
+  .inner-container {
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 600px;
+    background-color: darkgrey;
+    cursor: pointer;
+  }
+
+  span {
+    position: absolute;
+    user-select: none;
+    pointer-events: none;
+    font-size: 2.5rem;
+    color: white;
+    text-align: center;
+    font-weight: 500;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (min-width: 768px) {
+    img {
+      filter: blur(8px);
+      transition: filter 0.2s ease-in-out;
+    }
+    img:hover {
+      filter: none;
+    }
+  }
+
+  iframe {
+    border: none;
   }
 </style>

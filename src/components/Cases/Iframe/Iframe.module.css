@@ -18,7 +18,7 @@
   font-weight: 500;
 }
 
-.img {
+img {
   width: 100%;
   object-fit: cover;
 }
