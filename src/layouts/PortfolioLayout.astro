@@ -21,8 +21,8 @@ import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 import { getLangFromUrl } from "../i18n/utils";
 import { getEntry } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
 import Analytics from "../components/Analytics";
-import { ViewTransitions } from "astro:transitions";
 export interface Props {
   title: string;
 }
@@ -36,14 +36,7 @@ const { metadata } = portfolio.data;
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={metadata.description} />
-    <meta name="keywords" content={metadata.keywords.join(", ")} />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ViewTransitions />
+    <BaseHead title={title} description={metadata.description} />
   </head>
   <body>
     <Analytics client:idle />
@@ -51,33 +44,6 @@ const { metadata } = portfolio.data;
     <slot />
     <Footer />
     <style is:global>
-      :root {
-        --primary: white;
-        --secondary: black;
-        --accent: #cfff68;
-        --fs-medium: 1rem;
-        --fs-small: 0.9rem;
-      }
-
-      .full-bleed {
-        box-shadow: 0 0 0 100vmax black;
-        clip-path: inset(0 -100vmax);
-      }
-      .wrapper {
-        width: min(100% - 3rem, 1280px);
-        margin-inline: auto;
-      }
-
-      * {
-        margin: 0;
-        font-family: Montserrat;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      a {
-        text-decoration: none;
-        color: white;
-      }
       h1 {
         font-family: Ysabeau;
         font-size: 5rem;

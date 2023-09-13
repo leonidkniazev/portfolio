@@ -22,17 +22,14 @@ import "@fontsource/montserrat/900.css";
 import { getLangFromUrl } from "../i18n/utils";
 import { getEntry, type CollectionEntry } from "astro:content";
 import Analytics from "../components/Analytics";
-import { ViewTransitions } from "astro:transitions";
+import BaseHead from "../components/BaseHead.astro";
 export type Slug = CollectionEntry<"cases">["slug"];
 export type SlugLang<T> = T extends `${typeof lang}/${infer U}` ? U : never;
 export interface Props {
   title: string;
 }
 
-const { title } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
-const portfolio = await getEntry("portfolio", `${lang}/data`);
-const { metadata } = portfolio.data;
 const { id } = Astro.params as { id: SlugLang<Slug> };
 const entry = await getEntry({
   collection: "cases",
@@ -44,17 +41,11 @@ const { description, title: projectTitle } = entry.data;
 <!doctype html>
 <html lang={lang}>
   <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content={description} />
-    <meta
-      name="keywords"
-      content={[...metadata.keywords, projectTitle].join(", ")}
+    <BaseHead
+      title={projectTitle}
+      description={description}
+      additionalKeywords={[projectTitle]}
     />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <ViewTransitions />
   </head>
   <body>
     <Analytics client:only />
@@ -62,39 +53,6 @@ const { description, title: projectTitle } = entry.data;
     <slot />
     <Footer />
     <style is:global>
-      :root {
-        --primary: white;
-        --secondary: black;
-        --accent: #cfff68;
-        --fs-medium: 1rem;
-        --fs-small: 0.9rem;
-      }
-
-      .full-bleed {
-        box-shadow: 0 0 0 100vmax black;
-        clip-path: inset(0 -100vmax);
-      }
-      .wrapper {
-        width: min(100% - 3rem, 1280px);
-        margin-inline: auto;
-      }
-
-      * {
-        margin: 0;
-        font-family: Montserrat;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      a {
-        text-decoration: none;
-        color: white;
-      }
-      html,
-      body {
-        font-family: Montserrat;
-        scroll-behavior: smooth;
-      }
-
       p {
         min-width: 25rem;
       }
