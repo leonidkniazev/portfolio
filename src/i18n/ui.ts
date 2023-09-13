@@ -41,6 +41,7 @@ export const ui = {
     "notfound.notfound": "Page is not found",
     "notfound.cv": "get cv",
 
+    "case.prototypetitle": "CLICK, to view prototype",
     "case.lookat": "Look at this case in suitable format:",
     "case.gotoprototype": "Go to prototype",
     "case.or": "or",
@@ -78,6 +79,7 @@ export const ui = {
     "notfound.notfound": "Страница не найдена",
     "notfound.cv": "резюме",
 
+    "case.prototypetitle": "КЛИКНИ, чтобы просмотреть прототип",
     "case.lookat": "Посмотрите этот кейс на:",
     "case.gotoprototype": "ПЕРЕЙТИ К ПРОТОТИПУ",
     "case.or": "или",
