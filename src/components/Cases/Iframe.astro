@@ -13,7 +13,7 @@ const t = useTranslations(lang);
 const { src } = Astro.props;
 ---
 
-<div class="container">
+<div id="iframe-prototype" class="container">
   <prototype-component data-src={src} data-alt="Prototype">
     <div role="button" class="inner-container">
       <Image src={Placeholder} alt="Prototype placeholder" />
@@ -51,6 +51,9 @@ const { src } = Astro.props;
 </script>
 
 <style>
+  .container {
+    scroll-margin-top: 4rem;
+  }
   prototype-component {
     display: flex;
     justify-content: center;
