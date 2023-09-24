@@ -6,11 +6,11 @@ export type Props = {
   link: string;
 };
 const { img, title, link, description } = Astro.props;
-import { ImageMetadata } from "astro";
+import { type ImageMetadata } from "astro";
 import { Image } from "astro:assets";
 ---
 
-<a href={link} target="_blank" class="container">
+<a href={link} class="container">
   <Image class="background" src={img} quality={"max"} alt={title} />
   <div class="content">
     <div class="header">
