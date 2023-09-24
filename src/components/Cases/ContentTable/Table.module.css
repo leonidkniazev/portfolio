@@ -65,12 +65,26 @@
   background-color: white;
 }
 
-.subtitle {
-  padding: 0 0 0 2rem;
-}
-
 .link {
   padding: 0;
   color: inherit;
   height: 100%;
+}
+
+.childrenContainer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 500ms;
+}
+
+.childrenContainer > ul {
+  overflow: hidden;
+}
+
+.childrenContainer > ul:last-child {
+  grid-row: 1 / span 2;
+}
+
+.open {
+  grid-template-rows: 1fr;
 }
