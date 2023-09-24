@@ -32,7 +32,7 @@ const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { metadata } = portfolio.data;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
@@ -45,7 +45,7 @@ const { metadata } = portfolio.data;
   </head>
   <body>
     <VercelAnalytics client:idle />
-    <Header />
+    <Header isSticky={false} />
     <slot />
     <Footer />
   </body>
