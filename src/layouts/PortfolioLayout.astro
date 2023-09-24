@@ -21,7 +21,8 @@ import "@fontsource/montserrat/800.css";
 import "@fontsource/montserrat/900.css";
 import { getLangFromUrl } from "../i18n/utils";
 import { getEntry } from "astro:content";
-import VercelAnalytics from "../components/Analytics";
+import Analytics from "../components/Analytics";
+import { ViewTransitions } from "astro:transitions";
 export interface Props {
   title: string;
 }
@@ -42,90 +43,91 @@ const { metadata } = portfolio.data;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
-    <VercelAnalytics client:idle />
+    <Analytics client:idle />
     <Header isSticky={false} />
     <slot />
     <Footer />
-  </body>
-  <!-- Google tag (gtag.js) -->
-  <script
-    is:raw
-    async
-    src="https://www.googletagmanager.com/gtag/js?id=G-ZHT7H82XNG"></script>
-  <script is:raw>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+    <!-- Google tag (gtag.js) -->
+    <script
+      is:raw
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZHT7H82XNG"></script>
+    <script is:raw>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-    gtag("config", "G-ZHT7H82XNG");
-  </script>
+      gtag("config", "G-ZHT7H82XNG");
+    </script>
 
-  <style is:global>
-    :root {
-      --primary: white;
-      --secondary: black;
-      --accent: #cfff68;
-      --fs-medium: 1rem;
-      --fs-small: 0.9rem;
-    }
+    <style is:global>
+      :root {
+        --primary: white;
+        --secondary: black;
+        --accent: #cfff68;
+        --fs-medium: 1rem;
+        --fs-small: 0.9rem;
+      }
 
-    .full-bleed {
-      box-shadow: 0 0 0 100vmax black;
-      clip-path: inset(0 -100vmax);
-    }
-    .wrapper {
-      width: min(100% - 3rem, 1280px);
-      margin-inline: auto;
-    }
+      .full-bleed {
+        box-shadow: 0 0 0 100vmax black;
+        clip-path: inset(0 -100vmax);
+      }
+      .wrapper {
+        width: min(100% - 3rem, 1280px);
+        margin-inline: auto;
+      }
 
-    * {
-      margin: 0;
-      font-family: Montserrat;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    a {
-      text-decoration: none;
-      color: white;
-    }
-    h1 {
-      font-family: Ysabeau;
-      font-size: 5rem;
-      font-weight: 900;
-      line-height: 7.5rem;
-    }
-    h2 {
-      font-family: Ysabeau;
-      font-size: 3rem;
-      font-weight: 900;
-      line-height: 4.5rem;
-    }
-    h3 {
-      font-family: Montserrat;
-      font-size: 1.8rem;
-      font-weight: 700;
-      line-height: 3.3rem;
-    }
-    main {
-      margin-top: 3.5rem;
-    }
-    html,
-    body {
-      font-family: Montserrat;
-      overflow-x: hidden;
-      scroll-behavior: smooth;
-    }
-    @media (max-width: 768px) {
+      * {
+        margin: 0;
+        font-family: Montserrat;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      h1 {
+        font-family: Ysabeau;
+        font-size: 5rem;
+        font-weight: 900;
+        line-height: 7.5rem;
+      }
       h2 {
-        font-size: 2rem;
+        font-family: Ysabeau;
+        font-size: 3rem;
+        font-weight: 900;
+        line-height: 4.5rem;
       }
       h3 {
-        font-size: 1.5rem;
+        font-family: Montserrat;
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 3.3rem;
       }
-    }
-  </style>
+      main {
+        margin-top: 3.5rem;
+      }
+      html,
+      body {
+        font-family: Montserrat;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 2rem;
+        }
+        h3 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </body>
 </html>

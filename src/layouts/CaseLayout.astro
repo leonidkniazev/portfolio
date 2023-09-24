@@ -22,6 +22,7 @@ import "@fontsource/montserrat/900.css";
 import { getLangFromUrl } from "../i18n/utils";
 import { getEntry } from "astro:content";
 import Analytics from "../components/Analytics";
+import { ViewTransitions } from "astro:transitions";
 export interface Props {
   title: string;
 }
@@ -32,7 +33,7 @@ const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { metadata } = portfolio.data;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang={lang}>
   <head>
     <meta charset="UTF-8" />
@@ -42,90 +43,91 @@ const { metadata } = portfolio.data;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
+    <ViewTransitions />
   </head>
   <body>
     <Analytics client:only />
     <Header isSticky />
     <slot />
     <Footer />
-  </body>
-
-  <style is:global>
-    :root {
-      --primary: white;
-      --secondary: black;
-      --accent: #cfff68;
-      --fs-medium: 1rem;
-      --fs-small: 0.9rem;
-    }
-
-    .full-bleed {
-      box-shadow: 0 0 0 100vmax black;
-      clip-path: inset(0 -100vmax);
-    }
-    .wrapper {
-      width: min(100% - 3rem, 1280px);
-      margin-inline: auto;
-    }
-
-    * {
-      margin: 0;
-      font-family: Montserrat;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    a {
-      text-decoration: none;
-      color: white;
-    }
-    html,
-    body {
-      font-family: Montserrat;
-      scroll-behavior: smooth;
-    }
-
-    ul > li::marker {
-      font-size: 0.5rem;
-    ul > li::before {
-      content: "\2022";
-      font-size: 1.5rem;
-      position: absolute;
-      left: -1rem;
-    }
-    ul > li {
-      position: relative;
-      line-height: 1.5rem;
-      margin-left: 1rem;
-    }
-    ul {
-      list-style: none;
-    }
-    ol {
-      padding-left: 1rem;
-    }
-    ol > li {
-      margin: 0.5rem 0;
-      line-height: 1.5rem;
-    }
-    h2 {
-      font-size: 3.75rem;
-    }
-    h4 {
-      font-size: 2.25rem;
-    }
-    img {
-      display: block;
-      height: fit-content;
-      max-width: 100%;
-      object-fit: scale-down;
-    }
-    @media (max-width: 768px) {
-      h2 {
-        font-size: 3rem;
+    <style is:global>
+      :root {
+        --primary: white;
+        --secondary: black;
+        --accent: #cfff68;
+        --fs-medium: 1rem;
+        --fs-small: 0.9rem;
       }
-      h3 {
+
+      .full-bleed {
+        box-shadow: 0 0 0 100vmax black;
+        clip-path: inset(0 -100vmax);
+      }
+      .wrapper {
+        width: min(100% - 3rem, 1280px);
+        margin-inline: auto;
+      }
+
+      * {
+        margin: 0;
+        font-family: Montserrat;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      html,
+      body {
+        font-family: Montserrat;
+        scroll-behavior: smooth;
+      }
+
+      p {
+        min-width: 25rem;
+      }
+      ul > li::before {
+        content: "\2022";
         font-size: 1.5rem;
+        position: absolute;
+        left: -1rem;
       }
-    }
-  </style>
+      ul > li {
+        position: relative;
+        line-height: 1.5rem;
+        margin-left: 1rem;
+      }
+      ul {
+        list-style: none;
+      }
+      ol {
+        padding-left: 1rem;
+      }
+      ol > li {
+        margin: 0.5rem 0;
+        line-height: 1.5rem;
+      }
+      h2 {
+        font-size: 3.75rem;
+      }
+      h4 {
+        font-size: 2.25rem;
+      }
+      img {
+        display: block;
+        height: fit-content;
+        max-width: 100%;
+        object-fit: scale-down;
+      }
+      @media (max-width: 768px) {
+        h2 {
+          font-size: 3rem;
+        }
+        h3 {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </body>
 </html>
