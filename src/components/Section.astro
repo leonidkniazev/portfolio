@@ -17,8 +17,7 @@ const { isDark } = Astro.props;
   div {
     margin: auto;
     position: relative;
-    max-width: 1280px;
-    width: min(100% - 3rem, 1280px);
+    width: min(100% - 3rem, calc(1280px + 4rem));
   }
   @media (max-width: 350px) {
     div {
