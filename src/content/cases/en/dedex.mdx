@@ -1,0 +1,248 @@
+---
+title: DEDEX
+description: The web app for decentralized derivatives exchange
+figmaUrl: https://www.figma.com/proto/9o58TcPuQzNzNeyJ3m4msf/Raiffeisen-Bank?page-id=0%3A1&type=design&node-id=45-853&viewport=900%2C650%2C0.15&t=E93H99M8bpYnWA39-1&scaling=min-zoom&starting-point-node-id=38%3A79&show-proto-sidebar=1&mode=design
+behanceUrl: https://www.behance.net/gallery/175512615/Interface-of-forms
+heroImg: ~/assets/projects/article3/hero.png
+boxart: ~/assets/projects/3_eng.png
+date: 2023-08-08
+---
+
+import Columns from "../../../components/Cases/Columns.astro";
+import Video from "../../../components/Cases/Video.astro";
+import Figma from "../../../components/Cases/Iframe.astro";
+import MyVideo from "~/assets/projects/article3/Hero-video-of-using.mp4"
+import MyVideo2 from "~/assets/projects/article3/Before-after.mp4"
+
+
+## Introduction
+
+<Columns>
+
+    ### Context
+
+    Previous market cycles have demonstrated a significant risk associated with centralized cryptocurrency exchanges. Users have lost millions of dollars due to the collapses of MtGox (2014), Bitfinex (2015), and FTX (2022). This signifies that **users cannot fully trust centralized products and are seeking decentralized solutions**. Currently, there are solutions for decentralized asset exchange (such as Uniswap), but there is no fully decentralized solution for derivative trading.
+
+    ### Timeline
+
+    June 2023 – August 2023
+    
+    @@
+
+    ### Challenge
+
+    We need to create a prototype of a web application interface for a decentralized derivatives exchange that:
+    - Will fully meet the client’s requirements.
+    - Will be easy to learn and understand for users familiar with existing solutions on the market.
+    - Other requirements include simplicity, an appealing interface, sufficient data, and the potential for expanding future functionality.
+
+    @@
+
+    ### Role
+
+    - UX/UI Designer
+    - UX-researcher
+
+    **Responsibilities:** Conducting user and market research, auditing existing solutions, generating ideas, creating mockups and prototypes of various levels of detail, conducting usability testing, participating in team events aimed at product development.
+
+    @@
+
+    ### Process
+
+    The process was built on the principles of the Design Thinking Process and encompassed several stages. These stages weren’t linear; there were multiple iterations and versions of the product. The triggers for revisiting previous stages and introducing new iterations were usability research findings, insights uncovered in previous research, the need for continuous user empathy, and consultations with the design direction lead.
+
+</Columns>
+
+![timeline of process](~/assets/projects/article3/process.png)
+
+<Video src={MyVideo}/>
+
+## Research
+
+As I wasn’t familiar with the intricacies of cryptocurrency functioning, **I conducted a series of consultations with an industry specialist**. Based on the outcomes of these consultations, the decision was made to initiate **user research**. This involved exploring existing solutions, studying both direct and indirect competitors, and understanding the patterns commonly employed in the field.
+
+### User research
+
+The overall startup’s problem had already been formulated and validated, and I wanted to engage with users myself to gather data for formulating design hypotheses. I conducted a combination of **qualitative** (interviews) and **quantitative** (surveys) research to understand which applications users were using, the challenges they encountered, and what aspects were important to them in cryptocurrency-related applications.
+
+![timeline of process](~/assets/projects/article3/empathy_map.png)
+
+### Market research
+
+To comprehend the trends and practices of the industry, I studied research conducted by the startup at earlier stages, as well as other significant research in the field of financial and cryptocurrency organizations. Additionally, **I personally used applications of indirect competitors** (Binance, Okex, Bybit, DYDX, Perpetual Protocol, DerivaDEX), as there are no direct competitors in the market.
+
+### Insights
+
+
+- The primary factor influencing the choice of one competitor over another is its **competitive advantages and the potential to save on fees**. Design is mentioned by respondents as a decisive factor only in 21% of cases, but this doesn’t imply that design isn’t important. Rather, it suggests that for the majority of users, app design assists or at least doesn’t hinder task completion.
+- **58% prefer dark themes over light ones**, 32% have no preferences, and only 10% prefer light themes.
+- Among the compared competitors, applications **using high-contrast shades and monochromatic tones** (primarily blue-dark blue) are regarded as the best.
+- Frequently, accent shades incorporate gradients. The utilization of dashboard navigation systems is a market trend, and if a dashboard has a clear system, it enhances the user experience.
+
+![timeline of process](~/assets/projects/article3/insights.png)
+
+## Define
+
+### Personas
+
+![timeline of process](~/assets/projects/article3/Persona_1.png)
+
+![timeline of process](~/assets/projects/article3/Persona_2.png)
+
+## Ideate
+
+### Information Architecture
+
+To gain a better understanding of the structure, I developed an Information Architecture (IA).
+
+![timeline of process](~/assets/projects/article3/IA.png)
+
+### Sketching & Digital wireframes
+
+Despite our personas' preference for using the mobile version of the web application, I employed the **Progressive Enhancement Principle**. This involves initially developing a web application or site with full functionality for desktop devices, then progressively enhancing and adapting it for mobile devices and smaller screens. This approach ensures the best user experience across all device types, as functionality and visual presentation can be optimized for each screen.\
+\
+Below, you can observe how the appearance of the application changed and evolved:
+
+![timeline of process](~/assets/projects/article3/sketch_1.png)
+
+![timeline of process](~/assets/projects/article3/sketch_2.png)
+
+### Ideate UI
+
+Once the general UX was understood based on comprehensive application analysis, it was essential to address issues of color schemes, typography, iconography, layout, and graphics. A crucial aspect was **to avoid overly complex design solutions that would require excessive development resources.** The goal was to create an interface that is:
+<br></br>
+
+- Simple and minimalist
+- Unobtrusive, enhancing functionality without drawing excessive attention
+- Cost-effective in development
+- User-friendly
+<br></br>
+
+To simplify and standardize the application, graphics were intentionally not used. The layout was designed in a dashboard system, leveraging insights from previous research on its convenience.\
+\
+The preference for a dark theme was undisputed. Regarding color, two final options emerged, both based on a dark blue background. They differed in their accent shade: the first was a clean yellow (symbolizing a complementary color scheme concept), and the second was a purple gradient (representing a trendy shade in the field).\
+\
+After sketching several mockups, **a hallway usability study was conducted**. The priority was given to the second option, which offered a more harmonious use of white as a secondary accent color and their combination. The only requirement was to work on the shade to achieve maximum contrast for improved accessibility. (The initial versions were blue and yellow.)
+
+![timeline of process](~/assets/projects/article3/ideate.png)
+
+To convey **user-friendliness, safety, digitalization, and an innovative vibe**, as well as **to evoke pleasant emotions**, it was proposed to place interface elements on tiles with relatively large corner rounding. Additionally, emphasis was placed on hierarchy, order, and compactness in the application layout, ensuring that most of the interface could fit onto a single desktop screen.
+
+![timeline of process](~/assets/projects/article3/ideate_2.png)
+
+The font pairing of Outfit and Manrope appeared to effectively capture the brand’s desired psychology. Both are grotesque fonts but have distinct visual characteristics. The soft and geometric Outfit works well at larger sizes, radiating friendliness and was used as an accent font. Manrope, being more stern, was employed for body text and button text, symbolizing seriousness and the financial nature of the application.
+
+![timeline of process](~/assets/projects/article3/ideate_3.png)
+
+## Prototype
+
+Later, I created a prototype from the available screens, but it was quite far from the final version since the Testing stage was approaching. We conducted several iterations of testing our product prototype with users and addressed multiple iterations of issues that were identified. You’ll have the opportunity to try the prototype yourself when we work on the questions that arise in the next stage.
+
+![timeline of process](~/assets/projects/article3/prototype_plan.png)
+
+## Test
+
+At this stage, I’d like to share some of the challenges that arose during usability testing. Numerous minor details were adjusted during the usability research; **let’s discuss a few of them.**
+
+### Problems
+
+<Columns>
+
+The entire application is built around the principle of having one-third of the screen dedicated to the account management panel (vaults), while the remaining portion displays the account’s content panel. The application includes three user entities: Trader (T), Market Maker (MM), and Liquidator (L), with differing levels of user usage: approximately 82% for the first, 15% for the second, and 3% for the third.\
+\
+**Initially, the idea was** to place three sections with user selection on a vertical side panel, along with corresponding attributes for each user. However, an issue arose as T and MM have accounts within them, while L does not. Consequently, L should become a section, but this would disrupt their equal status. T and MM would become headings, while L would be reduced to a button. **The solution was** to transform T and MM into tabs.
+
+@@
+
+**The next challenge was** how to highlight the L button to make it noticeable despite space constraints. After much consideration, the decision was to align the three sections based on the participant’s name in the header. The side panel would appear when in T and MM sections, but disappear in the L section, creating room for content.
+
+</Columns>
+
+![timeline of process](~/assets/projects/article3/versions_1.png)
+
+As the screen width decreases, the aforementioned account management panel becomes hidden and can be accessed through a right-side dropdown menu triggered by an additional button press. However, **this solution proved unsuccessful for several reasons**:
+<br></br>
+- Unconventional shape of the trigger button
+- Ambiguity about it being a trigger
+- Poor placement of the trigger button;
+<br></br>
+A solution was proposed to transform the trigger button into a circular shape, located in the bottom right corner at a comfortable distance for the thumb. The button to close the dropdown panel remained in the same spot. This gave rise to the issue of positioning the button to open a new account, which needed to be consistent. **The resolution was to place the button at the same level, but in the form of a square, as illustrated.**
+<br></br>
+<Video src={MyVideo2}/>
+
+Some interface elements underwent minor changes, and it might not be necessary to detail all of them. However, I’d briefly touch on one element. **The first version** of the chart was highly uninformative. **The second version** incorporated several enhancements:
+<br></br>
+1. Price Axis Emphasis: Accents were placed on the ‘Price’ axis to make it more prominent.
+2. Display Format Functionality: Functionality for choosing the chart display format was added.
+3. Hover Interaction: When hovering over the chart, the price at the selected point in the past is displayed as a graphical pointer along with the numerical value and date.
+<br></br>
+To improve the UX, the appearance of the tabs for selecting the viewing period was altered to make them more noticeable and clear when selected. The central element of the account panel (Vault) gained increased utility. Subsequently, less substantial modifications were made to this element. I believe additional comments might be unnecessary.
+
+![timeline of process](~/assets/projects/article3/versions_2.png)
+
+<Columns>
+
+
+![timeline of process](~/assets/projects/article3/success.png)
+
+@@
+
+### How we measured success?
+
+Given that the overall interface is not complex and doesn’t entail an extensive array of functionalities, it’s not particularly practical to measure the time to achieve results. In my case, the challenge lies in prioritizing among the existing interface details.
+<br></br>
+Therefore, **we measured the percentage of correct first clicks**. One advantage of dashboard-oriented solutions was that users could reach any action within a maximum of two clicks.
+
+</Columns>
+
+The second and third metrics, **SUS (System Usability Scale)** and **NPS (Net Promoter Score)**, were subjectively chosen as usual. Thus, on the initial version, the percentage of correct first clicks hovered around **73%**. Through successive iterations, we managed to attain a rate of **91%**.
+SUS improved **from 57.5% to 82.5%**, while NPS increased **from 59 to 67**. The modest growth can be attributed to the high baseline effect resulting from a unique value proposition. It proved challenging to push this metric even higher.
+
+### Try to use current version
+
+<Figma src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Fproto%2FZyzeLE6ZElWwqqXFnnYKDZ%2FDEDEX%3Fpage-id%3D182%253A1925%26type%3Ddesign%26node-id%3D313-36680%26viewport%3D-213%252C-924%252C0.19%26t%3DwARMR503hN6b89ve-1%26scaling%3Dscale-down%26starting-point-node-id%3D313%253A36680%26mode%3Ddesign" />
+
+### Skills
+
+Software: Figma, Adobe Photoshop
+
+<Columns>
+
+- Prototyping
+- Wireframing
+- UX/UI design
+- Personas
+- Mobile web-app interface
+
+@@
+
+- User centred aproach
+- Design Thinking Process
+- Competitive Audit
+- User Research
+
+@@
+
+- Usability testing
+- Sketching
+- Informational Architecture
+
+</Columns>
+
+<Columns>
+
+### My thoughts
+
+I enjoyed working on this project, as it allowed me to once again go from ideation to realization of an IT product in a promising and dynamically evolving field. I learned a lot about complex financial instruments, engaged with specialists, and developed empathy for users – people I don’t encounter in everyday life.
+<br></br>
+**The challenge of the project** lay in working on something you don’t fully understand, showing empathy towards people you’ve never met before. Operating in a fast-paced environment, juggling multiple processes simultaneously, and rapidly learning new things added complexity to the work. It seems to me that **stepping out of the comfort zone** more often is necessary to continue expanding one’s skills and evolving as a professional.
+
+@@
+
+### What’s next?
+
+We will continue to work on improvements. As of the time of publishing this case, the work has been handed over to the development stage, and **I’m still consulting with developers on any arising questions**. Perhaps by the time you’re reading this, the application has already been released and is operational. 
+<br></br>
+Remember that this is just the first working version of the prototype, which will be presented to investors to secure funding. If all goes as expected, we’ll continue working on enhancing the application.
+
+</Columns>
