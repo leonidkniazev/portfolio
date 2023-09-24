@@ -95,43 +95,43 @@ export default function Table() {
     document.removeEventListener("scroll", onScroll);
   });
 
+  if (!isOpen()) return null;
+
   return (
     <>
-      {isOpen() && (
-        <div class={styles.container}>
-          <ol class={styles.list}>
-            {content.map((chapter) => (
-              <>
-                <li
-                  class={`${styles.large} ${
-                    chapter.number == currentItem() ? styles.active : ""
-                  }`}
-                >
-                  <a class={styles.link} href={chapter.href}>
-                    <span>{chapter.number}. </span>
-                    {chapter.title}
-                  </a>
-                </li>
-                <div
-                  class={`${styles.childrenContainer} ${
-                    chapter.number == currentItem() ? styles.open : ""
-                  }`}
-                >
-                  <ul>
-                    {chapter.children.map((child) => (
-                      <li class={styles.small}>
-                        <a href={child.href}>
-                          <span>{child.title}</span>
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </>
-            ))}
-          </ol>
-        </div>
-      )}
+      <div class={styles.container}>
+        <ol class={styles.list}>
+          {content.map((chapter) => (
+            <>
+              <li
+                class={`${styles.large} ${
+                  chapter.number == currentItem() ? styles.active : ""
+                }`}
+              >
+                <a class={styles.link} href={chapter.href}>
+                  <span>{chapter.number}. </span>
+                  {chapter.title}
+                </a>
+              </li>
+              <div
+                class={`${styles.childrenContainer} ${
+                  chapter.number == currentItem() ? styles.open : ""
+                }`}
+              >
+                <ul>
+                  {chapter.children.map((child) => (
+                    <li class={styles.small}>
+                      <a href={child.href}>
+                        <span>{child.title}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </>
+          ))}
+        </ol>
+      </div>
     </>
   );
 }
