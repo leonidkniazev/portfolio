@@ -30,6 +30,11 @@ const { image, href } = Astro.props;
     border: 1px solid;
     border-color: black;
     padding: 0.8rem;
+    transition: all 0.2s ease-in-out;
+  }
+  a:hover {
+    background: var(--accent);
+    border-color: var(--accent);
   }
   .svg {
     width: 95%;
