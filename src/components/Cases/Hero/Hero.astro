@@ -4,14 +4,12 @@ import Links from "./Links.astro";
 export type Props = {
   title?: string;
   description: string;
-  prototypeUrl: string;
   img: ImageMetadata;
   behanceUrl: string;
   figmaUrl: string;
 };
 
-const { title, description, prototypeUrl, img, behanceUrl, figmaUrl } =
-  Astro.props;
+const { title, description, img, behanceUrl, figmaUrl } = Astro.props;
 ---
 
 <div class="container">
@@ -22,11 +20,7 @@ const { title, description, prototypeUrl, img, behanceUrl, figmaUrl } =
     </div>
   </div>
   <div class="img-container">
-    <Links
-      prototypeUrl={prototypeUrl}
-      behanceUrl={behanceUrl}
-      figmaUrl={figmaUrl}
-    />
+    <Links behanceUrl={behanceUrl} figmaUrl={figmaUrl} />
     <img
       class="img"
       height={img.height}
