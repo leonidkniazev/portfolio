@@ -30,13 +30,23 @@ const { prototypeUrl, figmaUrl, behanceUrl } = Astro.props;
       <span>Website</span>
     </div>
     <div class="link-container">
-      <a href={figmaUrl} aria-label="Figma project page" class="link">
+      <a
+        href={figmaUrl}
+        target="_blank"
+        aria-label="Figma project page"
+        class="link"
+      >
         <img height={figma.height} width={figma.width} src={figma.src} alt="" />
       </a>
       <span>Figma</span>
     </div>
     <div class="link-container">
-      <a href={behanceUrl} aria-label="Behance project page" class="link">
+      <a
+        href={behanceUrl}
+        target="_blank"
+        aria-label="Behance project page"
+        class="link"
+      >
         <img
           height={behance.height}
           width={behance.width}
