@@ -1,5 +1,6 @@
 ---
 import { type ImageMetadata } from "astro";
+import { Image } from "astro:assets";
 import Links from "./Links.astro";
 export type Props = {
   title?: string;
@@ -21,13 +22,7 @@ const { title, description, img, behanceUrl, figmaUrl } = Astro.props;
   </div>
   <div class="img-container">
     <Links behanceUrl={behanceUrl} figmaUrl={figmaUrl} />
-    <img
-      class="img"
-      height={img.height}
-      width={img.width}
-      src={img.src}
-      alt=""
-    />
+    <Image class="img" src={img} alt="" />
   </div>
 </div>
 <div class="footer full-bleed"></div>
