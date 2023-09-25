@@ -22,7 +22,7 @@ const { title, description, img, behanceUrl, figmaUrl } = Astro.props;
   </div>
   <div class="img-container">
     <Links behanceUrl={behanceUrl} figmaUrl={figmaUrl} />
-    <Image class="img" src={img} alt="" />
+    <Image loading="eager" class="img" src={img} alt="" />
   </div>
 </div>
 <div class="footer full-bleed"></div>
