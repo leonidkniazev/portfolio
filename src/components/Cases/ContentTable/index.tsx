@@ -18,11 +18,11 @@ type SubChapter = {
 
 export default function Table() {
   const [currentItem, setCurrentItem] = createSignal(1);
-  const [isOpen, setIsOpen] = createSignal(true);
-  const headings = getHeadings();
-  let content = generateContent();
+  const [content, setContent] = createSignal<
+    ReturnType<typeof generateContent>
+  >([]);
 
-  function generateContent() {
+  function generateContent(headings: ReturnType<typeof getHeadings>) {
     let result: Chapter[] = [];
     let number = 0;
     for (const heading of headings) {
@@ -65,9 +65,8 @@ export default function Table() {
   }
 
   function onScroll() {
-    if (!isOpen()) return;
     const currentScroll = window.scrollY;
-    content.forEach((item) => {
+    content().forEach((item) => {
       if (item.topOffset < currentScroll) {
         setCurrentItem(item.number);
         return;
@@ -75,63 +74,50 @@ export default function Table() {
     });
   }
 
-  function onResize() {
-    if (window.innerWidth <= 768) {
-      setIsOpen(false);
-    } else {
-      content = generateContent();
-      setIsOpen(true);
-    }
-  }
-
   onMount(() => {
+    let headings = getHeadings();
+    setContent(generateContent(headings));
     onScroll();
-    onResize();
-    window.addEventListener("resize", onResize);
     document.addEventListener("scroll", onScroll);
   });
   onCleanup(() => {
-    window.removeEventListener("resize", onResize);
-    document.removeEventListener("scroll", onScroll);
+    if (typeof window != "undefined")
+      document.removeEventListener("scroll", onScroll);
   });
 
-  if (!isOpen()) return null;
-
   return (
-    <>
-      <div class={styles.container}>
-        <ol class={styles.list}>
-          {content.map((chapter) => (
-            <>
-              <li
-                class={`${styles.large} ${
-                  chapter.number == currentItem() ? styles.active : ""
-                }`}
-              >
-                <a class={styles.link} href={chapter.href}>
-                  <span>{chapter.number}. </span>
-                  {chapter.title}
-                </a>
-              </li>
-              <div
-                class={`${styles.childrenContainer} ${
-                  chapter.number == currentItem() ? styles.open : ""
-                }`}
-              >
-                <ul>
-                  {chapter.children.map((child) => (
-                    <li class={styles.small}>
-                      <a href={child.href}>
-                        <span>{child.title}</span>
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </>
-          ))}
-        </ol>
-      </div>
-    </>
+    <div class={styles.container}>
+      <ol class={styles.list}>
+        {content().map((chapter) => (
+          <>
+            <li
+              class={`${styles.large} ${
+                chapter.number == currentItem() ? styles.active : ""
+              }`}
+            >
+              <a class={styles.link} href={chapter.href}>
+                <span>{chapter.number}. </span>
+                {chapter.title}
+              </a>
+            </li>
+            <div
+              class={`${styles.childrenContainer} ${
+                chapter.number == currentItem() ? styles.open : ""
+              }`}
+            >
+              <ul>
+                {chapter.children.map((child) => (
+                  <li class={styles.small}>
+                    <a href={child.href}>
+                      <span>{child.title}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </>
+        ))}
+      </ol>
+    </div>
   );
 }

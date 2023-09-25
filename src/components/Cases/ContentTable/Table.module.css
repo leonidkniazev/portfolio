@@ -88,3 +88,9 @@
 .open {
   grid-template-rows: 1fr;
 }
+
+@media (max-width: 768px) {
+  .container {
+    display: none;
+  }
+}
