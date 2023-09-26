@@ -14,7 +14,7 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<PortfolioLayout title="Portfolio">
+<PortfolioLayout title="Leonid Kniazev portfolio">
   <main>
     <PhotoSection />
     <Seperation title={t("section.projects")} id="projects" />
@@ -29,4 +29,4 @@ const t = useTranslations(lang);
     <Seperation isDark title={t("section.contacts")} id="contacts" />
     <Contacts />
   </main>
-</Layout>
+</PortfolioLayout>
