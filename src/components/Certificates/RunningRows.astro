@@ -1,3 +1,21 @@
+<template id="running_row_content_template">
+  <div>CERTIFICATES</div>
+</template>
+
+<template id="running_row_styles_template">
+  <style>
+    div {
+      font-weight: 700;
+      font-size: 1.7rem;
+      color: white;
+      padding: 0px 1rem;
+      white-space: nowrap;
+      font-family: Montserrat;
+      line-height: 150%;
+    }
+  </style>
+</template>
+
 <div class="wrapper">
   <running-row style="rotate:0.13rad;filter:none"></running-row>
   <running-row style="rotate:-0.05rad"></running-row>
@@ -19,9 +37,12 @@
   };
 
   class RunningRow extends HTMLElement {
+    private runningRowContentTemplate: HTMLTemplateElement;
+
     private getElementsAmount() {
       return Math.max(10, Math.floor(window.innerWidth / ELEMENT_SIZE));
     }
+
     private resetAnimation(elements: HTMLDivElement[]) {
       for (let i = 0; i < elements.length; i++) {
         elements[i].animate(ANIMATION, ANIMATION_OPTIONS);
@@ -29,16 +50,8 @@
     }
 
     private createDiv() {
-      const div = document.createElement("div");
-      div.style.fontWeight = "700";
-      div.style.fontSize = "1.7rem";
-      div.style.color = "white";
-      div.style.padding = "0px 1rem";
-      div.style.whiteSpace = "nowrap";
-      div.style.fontFamily = "Montserrat";
-      div.style.lineHeight = "150%";
-      div.innerText = "CERTIFICATES";
-      return div;
+      return this.runningRowContentTemplate.content.cloneNode(true)
+        .firstChild as HTMLDivElement;
     }
 
     private handleResize() {
@@ -51,7 +64,8 @@
         this.resetAnimation(this.elements);
       }
       if (oldAmount > newAmount) {
-        this.removeChild(this.elements.pop());
+        let elementToRemove = this.elements.pop();
+        if (elementToRemove) this.removeChild(elementToRemove);
       }
     }
 
@@ -59,13 +73,28 @@
 
     constructor() {
       super();
-      this.elements = [...Array(this.getElementsAmount())].map(() => {
+      let shadowRoot = this.attachShadow({ mode: "open" });
+      let styles = document.getElementById(
+        "running_row_styles_template",
+      ) as HTMLTemplateElement;
+      shadowRoot.appendChild(styles.content.cloneNode(true));
+    }
+    connectedCallback() {
+      this.runningRowContentTemplate = document.getElementById(
+        "running_row_content_template",
+      ) as HTMLTemplateElement;
+      let amount = this.getElementsAmount();
+      this.elements = [...Array(amount)].map(() => {
         const div = this.createDiv();
-        this.append(div);
+        console.log(div);
+        this.shadowRoot!.append(div);
         div.animate(ANIMATION, { duration: 2000, iterations: Infinity });
         return div;
       });
       window.addEventListener("resize", this.handleResize.bind(this));
+    }
+    disconnectedCallback() {
+      window.removeEventListener("resize", this.handleResize.bind(this));
     }
   }
 

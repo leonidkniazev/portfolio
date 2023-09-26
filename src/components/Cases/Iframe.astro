@@ -13,24 +13,21 @@ const t = useTranslations(lang);
 const { src } = Astro.props;
 ---
 
-<div id="iframe-prototype" class="container">
-  <prototype-component data-src={src} data-alt="Prototype">
-    <div role="button" class="inner-container">
-      <Image src={Placeholder} alt="Prototype placeholder" />
-      <span>{t("case.prototypetitle")}</span>
-    </div>
-  </prototype-component>
-</div>
+<prototype-component data-src={src} data-alt="Prototype">
+  <Image src={Placeholder} alt="Prototype placeholder" />
+  <span>{t("case.prototypetitle")}</span>
+</prototype-component>
 
 <script>
   class Prototype extends HTMLElement {
+    placeholderImageContainer: HTMLDivElement | null;
+
     handleClick() {
+      this.placeholderImageContainer = null;
       while (this.firstElementChild) {
         let child = this.firstElementChild;
         this.removeChild(child);
       }
-      console.log(this.dataset.src);
-      console.log(this.dataset.alt);
       if (this.dataset.src && this.dataset.alt) {
         let prototype = document.createElement("iframe");
         prototype.src = this.dataset.src;
@@ -41,19 +38,60 @@ const { src } = Astro.props;
         this.appendChild(prototype);
       }
     }
+
     constructor() {
       super();
-      let image = this.querySelector("div")!;
-      image.addEventListener("click", this.handleClick.bind(this));
+      let shadowRoot = this.attachShadow({ mode: "open" });
+      shadowRoot.innerHTML = `
+      <div id="iframe-prototype" class="container">
+        <div role="button" id="button">
+          <slot/>
+        </div>
+      </div>
+      <style>
+        div {
+          display: flex;
+          overflow: hidden;
+          position: relative;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          height: 600px;
+          background-color: darkgrey;
+          cursor: pointer;
+        }
+        .container {
+          scroll-margin-top: 4rem;
+        }
+        iframe {
+          border: none;
+        }
+      </style>
+      `;
+    }
+
+    connectedCallback() {
+      let placeholderImageContainer = this.shadowRoot!.querySelector(
+        "div#iframe-prototype",
+      ) as HTMLDivElement;
+      this.placeholderImageContainer = placeholderImageContainer;
+      placeholderImageContainer.addEventListener(
+        "click",
+        this.handleClick.bind(this),
+      );
+    }
+
+    disconnectedCallback() {
+      this.placeholderImageContainer?.removeEventListener(
+        "click",
+        this.handleClick.bind(this),
+      );
     }
   }
   customElements.define("prototype-component", Prototype);
 </script>
 
 <style>
-  .container {
-    scroll-margin-top: 4rem;
-  }
   prototype-component {
     display: flex;
     justify-content: center;
@@ -61,18 +99,6 @@ const { src } = Astro.props;
     max-width: 100%;
     margin: 1rem 0 1rem 0;
   }
-  .inner-container {
-    display: flex;
-    overflow: hidden;
-    position: relative;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 600px;
-    background-color: darkgrey;
-    cursor: pointer;
-  }
-
   span {
     position: absolute;
     user-select: none;
@@ -97,9 +123,5 @@ const { src } = Astro.props;
     img:hover {
       filter: none;
     }
-  }
-
-  iframe {
-    border: none;
   }
 </style>
