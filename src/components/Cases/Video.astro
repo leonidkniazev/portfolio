@@ -26,18 +26,38 @@ const { src } = Astro.props;
       `;
     }
 
+    preventEvents(e: Event) {
+      e.preventDefault();
+    }
+
+    disableFullscreen(e: Event) {
+      e.preventDefault();
+      let fullScreenElement = document.fullscreenElement;
+      if (fullScreenElement == this || fullScreenElement == this.video) {
+        document.exitFullscreen();
+      }
+    }
+
     connectedCallback() {
       let src = this.dataset.src;
       let video = this.shadowRoot!.querySelector("video");
       if (src && video) {
         video.src = src;
         this.video = video;
-        video.addEventListener("contextmenu", (e) => e.preventDefault());
+        video.addEventListener("contextmenu", this.preventEvents);
+        video.addEventListener(
+          "fullscreenchange",
+          this.disableFullscreen.bind(this),
+        );
       }
     }
 
     disconnectedCallback() {
-      this.video.removeEventListener("contextmenu", (e) => e.preventDefault());
+      this.video.removeEventListener("contextmenu", this.preventEvents);
+      this.video.removeEventListener(
+        "fullscreenchange",
+        this.disableFullscreen.bind(this),
+      );
     }
   }
 
