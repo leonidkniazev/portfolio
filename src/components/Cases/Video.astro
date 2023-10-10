@@ -15,7 +15,7 @@ const { src } = Astro.props;
       super();
       let shadowRoot = this.attachShadow({ mode: "open" });
       shadowRoot.innerHTML = `
-      <video autoplay loop muted>
+      <video autoplay loop muted playsinline>
         Your browser can't play videos
       </video>
       <style>
