@@ -25,10 +25,6 @@ import Analytics from "../components/Analytics";
 import BaseHead from "../components/BaseHead.astro";
 export type Slug = CollectionEntry<"cases">["slug"];
 export type SlugLang<T> = T extends `${typeof lang}/${infer U}` ? U : never;
-export interface Props {
-  title: string;
-}
-
 const lang = getLangFromUrl(Astro.url);
 const { id } = Astro.params as { id: SlugLang<Slug> };
 const entry = await getEntry({
@@ -40,13 +36,11 @@ const { description, title: projectTitle } = entry.data;
 
 <!doctype html>
 <html lang={lang}>
-  <head>
-    <BaseHead
-      title={projectTitle}
-      description={description}
-      additionalKeywords={[projectTitle]}
-    />
-  </head>
+  <BaseHead
+    title={projectTitle}
+    description={description}
+    additionalKeywords={[projectTitle]}
+  />
   <body>
     <Analytics client:only />
     <Header isSticky />

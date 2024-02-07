@@ -26,72 +26,74 @@ const portfolio = await getEntry("portfolio", `${lang}/data`);
 const { metadata } = portfolio.data;
 ---
 
-<ViewTransitions />
+<head>
+  <ViewTransitions />
 
-<!-- Global Metadata -->
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-<meta name="generator" content={Astro.generator} />
+  <!-- Global Metadata -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="generator" content={Astro.generator} />
 
-<!-- Canonical URL -->
-<link rel="canonical" href={canonicalURL} />
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
 
-<!-- Primary Meta Tags -->
-<title>{title}</title>
-<meta name="title" content={title} />
-<meta name="description" content={description} />
-<meta
-  name="keywords"
-  content={[...metadata.keywords, ...(additionalKeywords ?? [])].join(", ")}
-/>
+  <!-- Primary Meta Tags -->
+  <title>{title}</title>
+  <meta name="title" content={title} />
+  <meta name="description" content={description} />
+  <meta
+    name="keywords"
+    content={[...metadata.keywords, ...(additionalKeywords ?? [])].join(", ")}
+  />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
-<meta property="og:title" content={title} />
-<meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image, Astro.url)} />
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={new URL(image, Astro.url)} />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image, Astro.url)} />
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content={Astro.url} />
+  <meta property="twitter:title" content={title} />
+  <meta property="twitter:description" content={description} />
+  <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<!-- Styles -->
-<style is:global>
-  :root {
-    --primary: white;
-    --secondary: black;
-    --accent: #cfff68;
-    --fs-medium: 1rem;
-    --fs-small: 0.9rem;
-  }
+  <!-- Styles -->
+  <style is:global>
+    :root {
+      --primary: white;
+      --secondary: black;
+      --accent: #cfff68;
+      --fs-medium: 1rem;
+      --fs-small: 0.9rem;
+    }
 
-  .full-bleed {
-    box-shadow: 0 0 0 100vmax black;
-    clip-path: inset(0 -100vmax);
-  }
-  .wrapper {
-    width: min(100% - 3rem, 1280px);
-    margin-inline: auto;
-  }
+    .full-bleed {
+      box-shadow: 0 0 0 100vmax black;
+      clip-path: inset(0 -100vmax);
+    }
+    .wrapper {
+      width: min(100% - 3rem, 1280px);
+      margin-inline: auto;
+    }
 
-  * {
-    margin: 0;
-    font-family: Montserrat;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  a {
-    text-decoration: none;
-    color: white;
-  }
-  html,
-  body {
-    font-family: Montserrat;
-    scroll-behavior: smooth;
-  }
-</style>
+    * {
+      margin: 0;
+      font-family: Montserrat;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    a {
+      text-decoration: none;
+      color: white;
+    }
+    html,
+    body {
+      font-family: Montserrat;
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>

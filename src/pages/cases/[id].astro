@@ -43,7 +43,7 @@ const { title, description, figmaUrl, behanceUrl, heroImg } = entry.data;
 const { Content } = await entry.render();
 ---
 
-<CaseLayout title={`Case: ${title}`}>
+<CaseLayout>
   <ContentTable client:media="(min-width: 768px)" />
   <Section>
     <article>
